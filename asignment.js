@@ -391,3 +391,209 @@ console.log(typeof isIsland); */
 
 // describePopulation("iran", 92);
 // describePopulation("Japan", 132);
+
+// LECTURE: Basic Array Operations (Methods)
+// 1. Create an array containing all the neighbouring countries of a country of your
+// choice. Choose a country which has at least 2 or 3 neighbours. Store the array
+// into a variable called 'neighbours'
+// 2. At some point, a new country called 'Utopia' is created in the neighbourhood of
+// your selected country. So add it to the end of the 'neighbours' array
+// 3. Unfortunately, after some time, the new country is dissolved. So remove it from
+// the end of the array
+// 4. If the 'neighbours' array does not include the country ‘Germany’, log to the
+// console: 'Probably not a central European country :D'
+// 5. Change the name of one of your neighbouring countries. To do that, find the
+// index of the country in the 'neighbours' array, and then use that index to
+// change the array at that index position. For example, you can search for
+// 'Sweden' in the array, and then replace it with 'Republic of Sweden'.
+
+// const neighbours = ['Iraq', 'Turkey', 'Pakistan','Afghanistan'];
+// console.log(neighbours);
+
+// neighbours.push('Utopia');
+// console.log(neighbours);
+
+// neighbours.pop();
+// console.log(neighbours);
+
+// if (!neighbours.includes('Germany')) {
+//   console.log('Probably not a central European country :D');
+// };
+
+// neighbours[neighbours.indexOf('Turkey')] = 'Republic of Turkey';
+// console.log(neighbours);
+
+// const tip = 15/100;
+// // const tip = 20/100;
+// console.log(tip);
+
+// const bill = 430;
+// const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// console.log(tip);
+
+// console.log(`The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`);
+
+// function calcTip (bill) {
+// return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// };
+
+// console.log(calcTip(100));
+
+// const bills = [125, 555, 44]
+// console.log(bills);
+
+// const tips = [
+//   calcTip(bills[0]),
+//   calcTip(bills[1]),
+//   calcTip(bills[2]),
+// ];
+
+// console.log(tips);
+
+// const total = [
+//   bills[0] + tips[0],
+//   bills[1] + tips[1],
+//   bills[2] + tips[2],
+// ];
+
+// console.log(total);
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtman',
+//   age: 'teacehr',
+//   friends: ['Micheal', 'peter', 'Steven']
+// };
+
+// const myCountry = {
+//   country: 'Iran',
+//   capital: 'Tehran',
+//   language: 'Persian',
+//   population: 92,
+//   neighbours: ['Turkey', 'Iraq', 'Afghanistan']
+// };
+
+// console.log(myCountry);
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtman',
+//   age: 2037 - 1991,
+//   job: 'teacehr',
+//   friends: ['Micheal', 'peter', 'Steven']
+// };
+
+// console.log(jonas);
+
+// console.log(jonas.lastName);
+// console.log(jonas['lastName']);
+
+// const nameKey = 'Name';
+// console.log(jonas['first' + nameKey]);
+// console.log(jonas['last' + nameKey]);
+
+// const  interestedIn = prompt('what do you want to know about Jonas? choose between firstName, lastName, age, job, and friends');
+// console.log(jonas[interestedIn]);
+
+// if (jonas[interestedIn]) {
+//   console.log(jonas[interestedIn]);
+// } else {
+//   console.log('Wrong request! Choose between firstName , lastName, age, job, and friends');
+// }
+
+// jonas.location = 'Portugal';
+// jonas['twitter'] = '@jonasschemdtman';
+// console.log(jonas);
+
+// Challenge
+// "Jonas has 3 friends. and his best friend is called Micheal"
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtman',
+//   age: 2037 - 1991,
+//   job: 'teacehr',
+//   friends: ['Micheal', 'peter', 'Steven']
+// };
+
+// console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+// const myCountry = {
+//   country: 'Finland',
+//   capital: 'Helsinki',
+//   language: 'finnish-speaking',
+//   population: 6,
+//   neighbours: ['Turkey', 'Iraq', 'Afghanistan']
+// };
+
+// console.log(myCountry);
+
+// console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language} people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}.`);
+
+// myCountry.population += 2;
+// console.log(myCountry.population);
+
+// myCountry ['population'] -= 2;
+// console.log(myCountry.population);
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   lastName: 'Schmedtman',
+//   birthYear: 1991,
+//   job: 'teacehr',
+//   friends: ['Micheal', 'peter', 'Steven'],
+//   hasDriverLicense: true,
+
+//   calAge: function () {
+//     this.age = 2037 - this.birthYear;
+//     return this.age;
+//   }
+// };
+
+// console.log(jonas.calAge());
+
+// // console.log(jonas.calAge());
+// console.log(jonas.age);
+
+// const jonas = {
+//   firstName: 'Jonas',
+//   birthYear: 1991,
+//   job: 'teacehr',
+//   hasDriverLicense: true,
+
+//      calAge: function () {
+//     this.age = 2037 - this.birthYear;
+//     return this.age;
+//      },
+
+//   getSummary: function () {
+//        return `${this.firstName} is a ${this.calAge()}-year old ${jonas.job}, and he has ${this.hasDriverLicense ? 'a' : 'no'} driver's license.`
+//         }
+//   };
+
+//  console.log(jonas.calAge());
+//  console.log(jonas.age);
+
+// console.log(jonas.getSummary());
+
+// const myCountry = {
+//   country: "Finland",
+//   capital: "Helsinki",
+//   language: "finnish-speaking",
+//   population: 6,
+//   neighbours: ["Turkey", "Iraq", "Afghanistan"],
+
+//   describe: function () {
+//     return `${this.country} has ${this.population} million ${this.language} people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`;
+//   },
+
+//   checkIsland: function () {
+//     this.isIsland = this.neighbours.length === 0 ? true : false;
+//   },
+// };
+
+// console.log(myCountry.describe());
+
+// myCountry.checkIsland();
+
+// console.log(myCountry.isIsland);
