@@ -597,3 +597,45 @@ console.log(typeof isIsland); */
 // myCountry.checkIsland();
 
 // console.log(myCountry.isIsland);
+
+
+// for (let vot = 1; vot <= 50; vot++) {
+//   console.log(`Voter number ${vot} is currently voting `);
+// }
+
+// function percentageOfWorld1(population) {
+//   return (population / 7900) * 100;
+// }
+
+// const percentages = [
+//   percentageOfWorld1(populations[0]),
+//   percentageOfWorld1(populations[1]),
+//   percentageOfWorld1(populations[2]),
+//   percentageOfWorld1(populations[3]),
+// ];
+// console.log(percentages);
+
+// function percentageOfWorld1(population) {
+//   return (population / 7900) * 100;
+// }
+
+// const populations = [92, 123, 52, 62];
+
+// const percentages = [
+//   percentageOfWorld1(populations[0]),
+//   percentageOfWorld1(populations[1]),
+//   percentageOfWorld1(populations[2]),
+//   percentageOfWorld1(populations[3]),
+// ];
+
+// const percentages2 = [];
+
+// for (let per = 0; per < populations.length; per++) {
+//   percentages2.push(percentageOfWorld1(populations[per]));
+// }
+
+// console.log(percentages);
+// console.log(percentages2);
+
+
+

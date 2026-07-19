@@ -223,30 +223,109 @@ console.log(friends.includes('Steven'));
 
 if (friends.includes('Steven')) {
   console.log('You have a friend called Steven');
-} */
+} 
+
+const markMiller = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  },
+};
+
+const johnSmith = {
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  },
+};
+
+markMiller.calcBMI();
+johnSmith.calcBMI();
+
+if (markMiller.BMI > johnSmith.BMI) {
+  console.log(
+    `${markMiller.fullName}'s BMI (${markMiller.BMI}) is higher than ${johnSmith.fullName}'s BMI (${johnSmith.BMI})!`
+  );
+} else {
+  console.log(
+    `${johnSmith.fullName}'s BMI (${johnSmith.BMI}) is higher than ${markMiller.fullName}'s 
+    BMI (${markMiller.BMI})!`
+  );
+}
+  */
+
+// console.log('Lifting Weights repetition 1 🎳');
+// console.log('Lifting Weights repetition 2 🎳');
+// console.log('Lifting Weights repetition 3 🎳');
+// console.log('Lifting Weights repetition 4 🎳');
+// console.log('Lifting Weights repetition 5 🎳');
+// console.log('Lifting Weights repetition 6 🎳');
+// console.log('Lifting Weights repetition 7 🎳');
+// console.log('Lifting Weights repetition 8 🎳');
+// console.log('Lifting Weights repetition 9 🎳');
+// console.log('Lifting Weights repetition 10 🎳');
+
+// for (let rep = 1; rep <= 10; rep++ ) {
+//   console.log(`Lifting Weights repetition ${rep} 🎳`);
+// }
+
+// const jonas = [
+//   'Jonas',
+//   'Schmedtman',
+//   2037 - 1991,
+//   'teacher',
+//   ['Micheal', 'Peter', 'Steven'],
+//   true
+// ];
+
+// const types = [];
+
+// for (let  i = 0; i < jonas.length; i++) {
+//   console.log(jonas[i], typeof jonas[i]);
+
+//   // types[i] = typeof jonas[i];
+//  types.push(typeof jonas[i]);
+//   }
+
+//   console.log(types);
+
+// const years = [1991, 2007, 1969, 2020];
+// const ages = [];
 
 
+// for (let i = 0; i < years.length; i++) {
+//   ages.push(2037 - years[i]);
+// }
+// console.log(ages);
+
+// const jonas = [
+//   'Jonas',
+//   'Schmedtman',
+//   2037 - 1991,
+//   'teacher',
+//   ['Micheal', 'Peter', 'Steven'],
+//   true
+// ];
+
+// const types = [];
+
+// for (let  i = 0; i < jonas.length; i++) {
+//  if (typeof jonas[i] !== 'string') continue;
+
+//  console.log(jonas[i], typeof jonas[i]);
+// }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
 
 
 
