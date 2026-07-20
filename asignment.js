@@ -598,7 +598,6 @@ console.log(typeof isIsland); */
 
 // console.log(myCountry.isIsland);
 
-
 // for (let vot = 1; vot <= 50; vot++) {
 //   console.log(`Voter number ${vot} is currently voting `);
 // }
@@ -637,5 +636,88 @@ console.log(typeof isIsland); */
 // console.log(percentages);
 // console.log(percentages2);
 
+// LECTURE: Looping Backwards and Loops in Loops
+// 1. Store this array of arrays into a variable called 'listOfNeighbours'
+// [['Canada', 'Mexico'], ['Spain'], ['Norway', 'Sweden',
+// 'Russia']];
+// 2. Log only the neighbouring countries to the console, one by one, not the entire
+// arrays. Log a string like 'Neighbour: Canada' for each country
+// 3. You will need a loop inside a loop for this. This is actually a bit tricky, so don't
+// worry if it's too difficult for you! But you can still try to figure this out anyway
+
+// const listOfNeighbours = [
+//   ['Canada', 'Mexico'],
+//   ['Spain'],
+//   ['Norway', 'Sweden', 'Russia'],
+// ];
+
+// for (let li = 0; li < listOfNeighbours.length; li++) {
+//   for (let j = 0; j < listOfNeighbours[li].length; j++) {
+//     console.log(`Neighbour: ${listOfNeighbours[li][j]}`);
+//   }
+// }
+
+// function percentageOfWorld1(population) {
+//   return (population / 7900) * 100;
+// }
+
+// const populations = [10, 1441, 332, 83];
+// const percentages3 = [];
+
+// let i = 0;
+
+// while (i < populations.length) {
+//   percentages3.push(percentageOfWorld1(populations[i]));
+//   i++;
+// }
+
+// console.log(percentages3);
+
+// // function calcTip(bill) {
+// //   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// // }
+
+// // console.log(calcTip(100));
+
+// // const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+// // const tips = [];
+// // const totals = [];
+
+// // for (let b = 0; b < bills.length; b++) {
+// //   tips.push(calcTip(bills[b]));
+// //   totals.push(bills[b] + calcTip(bills[b]));
+// // }
+
+// // console.log(tips);
+// // console.log(totals);
 
 
+// function calcTip(bill) {
+//   return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+// }
+
+// const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+// const tips = [];
+// const totals = [];
+
+// for (let b = 0; b < bills.length; b++) {
+//   tips.push(calcTip(bills[b]));
+//   totals.push(bills[b] + calcTip(bills[b]));
+// }
+
+// console.log(tips);
+// console.log(totals);
+
+
+// // Bonus
+// function calcAverage(arr) {
+//   let sum = 0;
+
+//   for (let i = 0; i < arr.length; i++) {
+//     sum += arr[i];
+//   }
+
+//  return sum / arr.length;
+// }
+
+// console.log(calcAverage(totals)); 
