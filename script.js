@@ -1,56 +1,46 @@
-// Remember, we're gonna use strict mode in all scripts now!
 'use strict';
 
-// const x = '23';
+/*
+console.log(document.querySelector('.message').textContent);
+document.querySelector('.message').textContent = '🎉 Correct Number!';
 
-// const calcAge = birthYear => 2037 - birthYear;
-// console.log(calcAge(1991));
-
-// const measureKelvin = function () {
-//   const measurement = {
-//     tyep: 'temp',
-//     unit: 'celsius',
-//     value: prompt('Degrees celsius:'),
-//   };
-
-//   // console.log(measurement);
-//   console.table(measurement);
-  
-
-// // console.log(measurement.value);
-// // console.warn(measurement.value);
-// // console.error(measurement.value);
+document.querySelector('.number').textContent = 13;
+document.querySelector('.score').textContent = 10;
 
 
+ document.querySelector('.guess').value = 23;
+console.log(document.querySelector('.guess').value);
+*/
 
+const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
+document.querySelector('.number').textContent = secretNumber;
 
+document.querySelector('.check').addEventListener('click', function () {
+  const guess = Number(document.querySelector('.guess').value);
+  console.log(guess, typeof guess);
 
-//   // const kelvin = +prompt(measurement.value) + 273;
-//   return kelvin;
-// };
-
-// console.log(measureKelvin());
-
-// using a debugging 
-
-
-// const calcTempAmplitudeNewBug = function (t1, t2) {
-//   const temps = t1.concat(t2);
-//   console.log(temps);
-
-//   let max = 0;
-//   let min = 0;
-
-//   for (let i = 0; i < temps.length; i++) {
-//     const curTemp = temps[i];
-//     if (typeof curTemp !== 'number') continue;
-
-//     if (curTemp > max) max = curTemp;
-//     if (curTemp < min) min = curTemp;
-//   }
-//   console.log(max, min);
-//   return max - min;
-// };
-// const amplitudeNew = calcTempAmplitudeNewBug([3, 5, 1], [9, 4, 5]);
-// console.log(amplitudeNew);
-
+  if (!guess) {
+    document.querySelector('.message').textContent = '👀 No number!';
+  } else if (guess === secretNumber) {
+    document.querySelector('.message').textContent = '🎉 Correct Number!';
+  } else if (guess > secretNumber) {
+    if (score > 1) {
+      document.querySelector('.message').textContent = '📈Too high';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = '💥You lost the game!';
+      document.querySelector('.score').textContent = 0;
+    }
+  } else if (guess < secretNumber) {
+    if (score > 1) {
+      document.querySelector('.message').textContent = '📉 Too low';
+      score--;
+      document.querySelector('.score').textContent = score;
+    } else {
+      document.querySelector('.message').textContent = '💥You lost the game!';
+      document.querySelector('.score').textContent = 0;
+    }
+  }
+});
