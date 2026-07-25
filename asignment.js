@@ -787,3 +787,10 @@ console.log(typeof isIsland); */
 // printForecast([17, 21, 23]);
 
 // printForecast([12, 5, -5, 0, 4]);
+ 
+// const ali = {
+//   Name: 'Ali',
+//   Age: 28,
+//   City: 'Shiraz'
+// };
+
