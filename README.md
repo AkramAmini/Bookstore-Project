@@ -15,5 +15,5 @@ The goal of these exercises is to build a strong foundation in JavaScript and im
 ## Learning Progress:
 I am following Jonas Schmedtmann's JavaScript course and uploading my exercises and projects to track my progress.
 
----
+----------------------
 Created by Hadis Amini
