@@ -1,36 +1,38 @@
 'use strict';
 
-const score0El = document.querySelector('#score--0');
-const score1El = document.getElementById('score--1');
-const current0El = document.getElementById('current--0');
-const current1El = document.getElementById('current--1');
+function calcAge(birthYear) {
+  const age = 2037 - birthYear;
 
-const diceEl = document.querySelector('.dice');
-const btnNew = document.querySelector('.btn--new');
-const btnRoll = document.querySelector('.btn--roll');
-const btnHold = document.querySelector('.btn--hold');
+function printAge() {
+  const output = `${firstName}, you are ${age}, born in ${birthYear}`
+  console.log(output);
 
-score0El.textContent = 0;
-score1El.textContent = 0;
-diceEl.classList.add('hidden');
+  if(birthYear >= 1981 && birthYear<= 1996) {
+    var millenial = true;
+    const firstName = 'Steven';
 
-let currentScore = 0;
+     output = 'NEW OUTPUT!';
 
+    const str = `Oh, and you're a millenial, ${firstName}`;
+    console.log(str);
 
-btnRoll.addEventListener('click', function () {
-  const dice = Math.trunc(Math.random() * 6) + 1;
-  console.log(dice);
+    function addd(a, b) {
+      return a + b;
+    }
+   
+  }
+  // console.log(str);
+  console.log(millenial);
+  // console.log(addd(2, 3));
+  console.log(output);
   
-diceEl.classList.remove('hidden');
-diceEl.src = `dice-${dice}.png`;
-
-if(dice !== 1) {
-currentScore += dice;
-current0El.textContent = currentScore;
-} else {
-
 }
-})
+printAge();
 
+  return age;
+}
 
-
+const firstName = 'Jonas';
+calcAge(1991);
+// console.log(age);
+// printAge();
