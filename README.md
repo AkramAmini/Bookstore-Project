@@ -1,4 +1,4 @@
-# JavaScript Practice - Week 1
+# JavaScript Practice
 
 This folder contains my JavaScript practice exercises from the first week of learning JavaScript.
 
@@ -16,4 +16,4 @@ The goal of these exercises is to build a strong foundation in JavaScript and im
 I am following Jonas Schmedtmann's JavaScript course and uploading my exercises and projects to track my progress.
 
 ----------------------
-Created by Hadis Amini 12345678911111111111111111
+Created by Hadis Amini 
