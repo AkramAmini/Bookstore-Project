@@ -1,87 +1,83 @@
 'use strict';
 
-// function calcAge(birthYear) {
-//   const age = 2037 - birthYear;
+// Data needed for a later exercise
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
-// function printAge() {
-//   const output = `${firstName}, you are ${age}, born in ${birthYear}`
-//   console.log(output);
+// Data needed for first part of the section
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-//   if(birthYear >= 1981 && birthYear<= 1996) {
-//     var millenial = true;
-//     const firstName = 'Steven';
+  openingHours: {
+    thu: {
+      open: 12,
+      close: 22,
+    },
+    fri: {
+      open: 11,
+      close: 23,
+    },
+    sat: {
+      open: 0, // Open 24 hours
+      close: 24,
+    },
+  },
 
-//      output = 'NEW OUTPUT!';
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
-//     const str = `Oh, and you're a millenial, ${firstName}`;
-//     console.log(str);
+  orderDelivery: function ({
+    starterIndex = 1,
+    mainIndex = 0,
+    time = '20:00',
+    address,
+  }) {
+    console.log(
+      `order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`,
+    );
+  },
+};
 
-//     function addd(a, b) {
-//       return a + b;
-//     }
-   
-//   }
-//   // console.log(str);
-//   console.log(millenial);
-//   // console.log(addd(2, 3));
-//   console.log(output);
-  
-// }
-// printAge();
+restaurant.orderDelivery({
+  time: '22:30',
+  address: 'Via del Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
 
-//   return age;
-// }
+restaurant.orderDelivery({
+  address: 'Via del Sole, 21',
+  starterIndex: 1,
+});
 
-// const firstName = 'Jonas';
-// calcAge(1991);
-// // console.log(age);
-// // printAge();
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
 
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
 
+// Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
 
+// Mutating variables
+let a = 111;
+let b = 999;
+const obj = { a: 23, b: 7, c: 14 };
+({ a, b } = obj);
+console.log(a, b);
 
-
-
-
-// console.log(me);
-// console.log(job);
-// console.log(year);
-
-// var me = 'Jonas';
-// let job = 'teacher';
-// const year = 1991;
-
-// console.log(addDecl(2, 3));
-// console.log(addExper(2, 3));
-// console.log(addArrow(2, 3));
-
-
-function addDecl(a,b) {
-  return a + b;
-}
-
-var addExper = function (a,b) {
-  return a + b;
-}
-
-var addArrow = (a, b)=>a+b;
-
-console.log(undefined);
-
-if(!numProducts) deletShoppingCart();
-
-var numProducts = 10;
-
-function deletShoppingCart() {
-  console.log('All product deleted!');
-}
-
-var x = 1;
-let y = 2;
-const z = 3;
-
-console.log(x === window.x);
-console.log(y === window.y);
-console.log(z === window.z);
-
-
+// Nested objects
+const {
+  fri: { open: o, close: c },
+} = openingHours;
+console.log(o, c);
