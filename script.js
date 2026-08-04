@@ -1,95 +1,77 @@
 'use strict';
 
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
+// // Data needed for a later exercise
+// const flights =
+//   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// // Data needed for first part of the section
+
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[4]]: {
+    open: 0, // Open 24 hours
+    close: 12 + 12,
   },
 };
 
-// // برای هر تیم یک آرایه از بازیکنان ایجاد کن و آن‌ها را در دو متغیر به نام‌های players1 و players2 ذخیره کن.
-// const [players1, players2] = game.players;
-// console.log(game.players);
+const restaurant = {
+  name: 'Classico Italiano',
+  location: 'Via Angelo Tavanti 23, Firenze, Italy',
+  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
+  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
+  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-// //دروازه‌بان تیم اول را در متغیر gk ذخیره کن و بقیه ۱۰ بازیکن را در آرایه fieldPlayers قرار بده.
+  // ES6 enhanced object literals
+  openingHours,
 
-// const [gk, ...fieldPlayers] = players1;
-// console.log(gk);
-// console.log(fieldPlayers);
+  order(starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  },
 
-// //یک آرایه به نام allPlayers بساز که شامل بازیکنان هر دو تیم (۲۲ بازیکن) باشد
+  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
+    console.log(
+      `order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`,
+    );
+  },
 
-// const allPlayers = [...players1, ...players2];
-// console.log(allPlayers);
+  orderPasta(ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`,
+    );
+  },
 
-// //یک آرایه جدید به نام players1Final بساز که شامل تمام بازیکنان اصلی تیم اول (players1) به اضافه سه بازیکن ذخیره باشد: Thiago، Coutinho و Perisic.
+  orderPizza(mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
+};
 
-// const players1Final = [...players1,  'Thiago', 'Coutinho', 'Perisic' ];
-// console.log(players1Final);
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
 
-// //از آبجکت game.odds سه متغیر بساز:
-// // team1 → ضریب برد تیم اول
-// // draw → ضریب مساوی
-// // team2 → ضریب برد تیم دوم
+// WITH optional changing
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
 
-// const { team1, x: draw, team2 } = game.odds;
-// console.log(team1);
-// console.log(draw);
-// console.log(team2);
+// Example
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 
-// //یک تابع به نام printGoals بساز که هر تعداد نام بازیکن دریافت کند و نام هر بازیکن را در کنسول چاپ کند. همچنین تعداد کل گل‌ها را (برابر با تعداد بازیکن‌های واردشده) چاپ کند.
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
+  console.log(`on ${day}, we open at ${open}`);
+}
 
-// const printGoals = function (...players) {
-//   for (const player of players) {
-//     console.log(player);
-//   }
+// Methods
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
 
-//   console.log(`${players.length} goals were scored`);
-// };
-
-// printGoals('Davies', 'Muller', 'Lewandowski', 'Kimmich');
-// printGoals(...game.scored);
-
-//تیمی که ضریب برد کمتری دارد را پیدا کن و نام آن تیم را در کنسول چاپ کن؛ بدون استفاده از if/else و بدون استفاده از عملگر سه‌تایی (? :).
-// یعنی:
-
-// اگر team1 ضریب کمتری داشت → نام تیم اول را چاپ کن.
-// اگر team2 ضریب کمتری داشت → نام تیم دوم را چاپ کن.
-const team1 = game.odds.team1;
-const team2 = game.odds.team2;
-
-console.log((team1 < team2 && game.team1) || game.team2);
+// Arrays
+const users = [{ name: 'Jonas', email: 'hello@jonas.io' }];
+console.log(users[0]?.name ?? 'User array empty');
