@@ -829,93 +829,87 @@ console.log(typeof isIsland); */
 // const [p=1, q=1, r=1] = [8, 9];
 // console.log(p, q, r);
 
-// const game = {
-//   team1: 'Bayern Munich',
-//   team2: 'Borrussia Dortmund',
-//   players: [
-//     [
-//       'Neuer',
-//       'Pavard',
-//       'Martinez',
-//       'Alaba',
-//       'Davies',
-//       'Kimmich',
-//       'Goretzka',
-//       'Coman',
-//       'Muller',
-//       'Gnarby',
-//       'Lewandowski',
-//     ],
-//     [
-//       'Burki',
-//       'Schulz',
-//       'Hummels',
-//       'Akanji',
-//       'Hakimi',
-//       'Weigl',
-//       'Witsel',
-//       'Hazard',
-//       'Brandt',
-//       'Sancho',
-//       'Gotze',
-//     ],
-//   ],
-//   score: '4:0',
-//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
-//   date: 'Nov 9th, 2037',
-//   odds: {
-//     team1: 1.33,
-//     x: 3.25,
-//     team2: 6.5,
-//   },
-// };
+// Coding Challenge #3
+// Let's continue with our football betting app! This time, we have a map called
+// 'gameEvents' (see below) with a log of the events that happened during the
+// game. The values are the events themselves, and the keys are the minutes in which
+// each event happened (a football game has 90 minutes plus some extra time).
+// Your tasks:
+// 1. Create an array 'events' of the different game events that happened (no
+// duplicates)
+// 2. After the game has finished, is was found that the yellow card from minute 64
+// was unfair. So remove this event from the game events log.
+// 3. Compute and log the following string to the console: "An event happened, on
+// average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// 4. Loop over 'gameEvents' and log each element to the console, marking
+// whether it's in the first half or second half (after 45 min) of the game, like this:
+// [FIRST HALF] 17: ⚽ GOAL
+// GOOD LUCK 😀
 
-// // خلاصه ترجمه هر ۴ سؤال:
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
 
-// // ۱) روی آرایه
-// // game.scored
-// // حلقه بزن و نام هر گل‌زن را همراه با شماره گل چاپ کن.
+// سوال اول :1. یک آرایه به نام
+// events
+//  بسازید که شامل رویدادهای مختلفی باشد که در بازی اتفاق افتاده‌اند (بدون موارد تکراری).ا
+const events = [...new Set(gameEvents.values())];
+console.log(events);
 
-// // ۲) با استفاده از یک حلقه، میانگین ضرایب
-// // (odds)
-// // بازی را حساب کن و چاپ کن.
+// سوال دوم: بعد از تمام شدن بازی مشخص شد که کارت زرد دقیقه‌ی ۶۴ اشتباه بوده است. بنابراین این رویداد را از لیست ثبت وقایع بازی حذف کنید.
 
-// // ۳) سه ضریب بازی را با فرمت مشخص چاپ کن و اسم تیم‌ها را از خود آبجکت game
-// // بگیر، نه دستی بنویس.
+gameEvents.delete(64);
+console.log(gameEvents);
 
-// // ۴) یک آبجکت
-// // scorers
-// //  بساز که تعداد گل‌های هر بازیکن را حساب کند.
-// // سوال 1
-// for (const [i, player] of game.scored.entries()) {
-//   console.log(`Goal ${i + 1} : ${player}`);
-// }
-// // سوال 2
-// const odds = Object.values(game.odds);
+// سوال سوم: عبارت زیر را محاسبه کرده و در کنسول نمایش دهید:
 
-// let sum = 0;
+// "An event happened, on average, every 9 minutes"
 
-// for (const odd of odds) {
-//   sum += odd;
-// }
+// (در نظر داشته باشید که یک بازی فوتبال ۹۰ دقیقه است.)
 
-// console.log(sum / odds.length);
-// //  سوال 3
-// for (const [team, odd] of Object.entries(game.odds)) {
-//   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
+// یعنی حساب کنید به طور میانگین هر چند دقیقه یک اتفاق در بازی افتاده است
 
-//   console.log(`Odd of ${teamStr}: ${odd}`);
-// }
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`,
+);
 
-// //  سوال 4
-// const scorers = {};
+// یا این
 
-// for (const player of game.scored) {
-//   if (scorers[player]) {
-//     scorers[player]++;
+const average = 90 / gameEvents.size;
+
+console.log(`An event happened, on average, every ${average} minutes`);
+
+// سوال 4 :
+// روی
+// gameEvents
+//  حلقه بزنید و هر رویداد را در کنسول چاپ کنید و مشخص کنید که در نیمه اول بوده یا نیمه دوم (بعد از دقیقه ۴۵)، به این شکل:
+// [FIRST HALF] 17: ⚽ GOAL
+//یعنی:
+
+// اگر دقیقه ≤ ۴۵ بود → نیمه اول (FIRST HALF)
+// اگر دقیقه > ۴۵ بود → نیمه دوم (SECOND HALF)
+
+// for (const [minute, event] of gameEvents) {
+//   if (minute <= 45) {
+//     console.log(`[FIRST HALF] ${minute}: ${event}`);
 //   } else {
-//     scorers[player] = 1;
+//     console.log(`[SECOND HALF] ${minute}: ${event}`);
 //   }
 // }
 
-// console.log(scorers);
+// یا
+for (const [minute, event] of gameEvents) {
+  const half = minute <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF] ${minute}: ${event}`);
+}
+
