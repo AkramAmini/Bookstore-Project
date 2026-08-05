@@ -787,14 +787,13 @@ console.log(typeof isIsland); */
 // printForecast([17, 21, 23]);
 
 // printForecast([12, 5, -5, 0, 4]);
- 
+
 // const ali = {
 //   Name: 'Ali',
 //   Age: 28,
 //   City: 'Shiraz'
 // };
 
- 
 // const arr = [2, 3, 4];
 // const a = arr[0];
 // const b = arr[1];
@@ -830,98 +829,93 @@ console.log(typeof isIsland); */
 // const [p=1, q=1, r=1] = [8, 9];
 // console.log(p, q, r);
 
+// const game = {
+//   team1: 'Bayern Munich',
+//   team2: 'Borrussia Dortmund',
+//   players: [
+//     [
+//       'Neuer',
+//       'Pavard',
+//       'Martinez',
+//       'Alaba',
+//       'Davies',
+//       'Kimmich',
+//       'Goretzka',
+//       'Coman',
+//       'Muller',
+//       'Gnarby',
+//       'Lewandowski',
+//     ],
+//     [
+//       'Burki',
+//       'Schulz',
+//       'Hummels',
+//       'Akanji',
+//       'Hakimi',
+//       'Weigl',
+//       'Witsel',
+//       'Hazard',
+//       'Brandt',
+//       'Sancho',
+//       'Gotze',
+//     ],
+//   ],
+//   score: '4:0',
+//   scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+//   date: 'Nov 9th, 2037',
+//   odds: {
+//     team1: 1.33,
+//     x: 3.25,
+//     team2: 6.5,
+//   },
+// };
 
-const game = {
-team1: 'Bayern Munich',
-team2: 'Borrussia Dortmund',
-players: [
-[
-'Neuer',
-'Pavard',
-'Martinez',
-'Alaba',
-'Davies',
-'Kimmich',
-'Goretzka',
-'Coman',
-'Muller',
-'Gnarby',
-'Lewandowski',
-],
-[
-'Burki',
-'Schulz',
-'Hummels',
-'Akanji',
-'Hakimi',
-'Weigl',
-'Witsel',
-'Hazard',
-'Brandt',
-'Sancho',
-'Gotze',
-],
-],
-score: '4:0',
-scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
-'Hummels'],
-date: 'Nov 9th, 2037',
-odds: {
-team1: 1.33,
-x: 3.25,
-team2: 6.5,
-},
-};
+// // خلاصه ترجمه هر ۴ سؤال:
 
+// // ۱) روی آرایه
+// // game.scored
+// // حلقه بزن و نام هر گل‌زن را همراه با شماره گل چاپ کن.
 
+// // ۲) با استفاده از یک حلقه، میانگین ضرایب
+// // (odds)
+// // بازی را حساب کن و چاپ کن.
 
+// // ۳) سه ضریب بازی را با فرمت مشخص چاپ کن و اسم تیم‌ها را از خود آبجکت game
+// // بگیر، نه دستی بنویس.
 
-// خلاصه ترجمه هر ۴ سؤال:
+// // ۴) یک آبجکت
+// // scorers
+// //  بساز که تعداد گل‌های هر بازیکن را حساب کند.
+// // سوال 1
+// for (const [i, player] of game.scored.entries()) {
+//   console.log(`Goal ${i + 1} : ${player}`);
+// }
+// // سوال 2
+// const odds = Object.values(game.odds);
 
-// ۱) روی آرایه 
-// game.scored 
-// حلقه بزن و نام هر گل‌زن را همراه با شماره گل چاپ کن.
+// let sum = 0;
 
-// ۲) با استفاده از یک حلقه، میانگین ضرایب 
-// (odds) 
-// بازی را حساب کن و چاپ کن.
+// for (const odd of odds) {
+//   sum += odd;
+// }
 
-// ۳) سه ضریب بازی را با فرمت مشخص چاپ کن و اسم تیم‌ها را از خود آبجکت game 
-// بگیر، نه دستی بنویس.
+// console.log(sum / odds.length);
+// //  سوال 3
+// for (const [team, odd] of Object.entries(game.odds)) {
+//   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
 
-// ۴) یک آبجکت 
-// scorers
-//  بساز که تعداد گل‌های هر بازیکن را حساب کند.
-// سوال 1
-for (const [i, player] of game.scored.entries()) {
-  console.log(`Goal ${i + 1} : ${player}`);
-}
-// سوال 2
-const odds = Object.values(game.odds);
+//   console.log(`Odd of ${teamStr}: ${odd}`);
+// }
 
-let sum = 0;
+// //  سوال 4
+// const scorers = {};
 
-for (const odd of odds) {
-  sum += odd;
-}
+// for (const player of game.scored) {
+//   if (scorers[player]) {
+//     scorers[player]++;
+//   } else {
+//     scorers[player] = 1;
+//   }
+// }
 
-console.log(sum / odds.length);
-//  سوال 3
-for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
-
-  console.log(`Odd of ${teamStr}: ${odd}`);
-}
-
-//  سوال 4
-const scorers = {};
-
-for (const player of game.scored) {
-  if (scorers[player]) {
-    scorers[player]++;
-  } else {
-    scorers[player] = 1;
-  }
-}
-
-console.log(scorers);
+// console.log(scorers);
