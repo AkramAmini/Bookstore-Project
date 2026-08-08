@@ -846,58 +846,58 @@ console.log(typeof isIsland); */
 // [FIRST HALF] 17: ⚽ GOAL
 // GOOD LUCK 😀
 
-const gameEvents = new Map([
-  [17, '⚽ GOAL'],
-  [36, '🔁 Substitution'],
-  [47, '⚽ GOAL'],
-  [61, '🔁 Substitution'],
-  [64, '🔶 Yellow card'],
-  [69, '🔴 Red card'],
-  [70, '🔁 Substitution'],
-  [72, '🔁 Substitution'],
-  [76, '⚽ GOAL'],
-  [80, '⚽ GOAL'],
-  [92, '🔶 Yellow card'],
-]);
+// const gameEvents = new Map([
+//   [17, '⚽ GOAL'],
+//   [36, '🔁 Substitution'],
+//   [47, '⚽ GOAL'],
+//   [61, '🔁 Substitution'],
+//   [64, '🔶 Yellow card'],
+//   [69, '🔴 Red card'],
+//   [70, '🔁 Substitution'],
+//   [72, '🔁 Substitution'],
+//   [76, '⚽ GOAL'],
+//   [80, '⚽ GOAL'],
+//   [92, '🔶 Yellow card'],
+// ]);
 
-// سوال اول :1. یک آرایه به نام
-// events
-//  بسازید که شامل رویدادهای مختلفی باشد که در بازی اتفاق افتاده‌اند (بدون موارد تکراری).ا
-const events = [...new Set(gameEvents.values())];
-console.log(events);
+// // سوال اول :1. یک آرایه به نام
+// // events
+// //  بسازید که شامل رویدادهای مختلفی باشد که در بازی اتفاق افتاده‌اند (بدون موارد تکراری).ا
+// const events = [...new Set(gameEvents.values())];
+// console.log(events);
 
-// سوال دوم: بعد از تمام شدن بازی مشخص شد که کارت زرد دقیقه‌ی ۶۴ اشتباه بوده است. بنابراین این رویداد را از لیست ثبت وقایع بازی حذف کنید.
+// // سوال دوم: بعد از تمام شدن بازی مشخص شد که کارت زرد دقیقه‌ی ۶۴ اشتباه بوده است. بنابراین این رویداد را از لیست ثبت وقایع بازی حذف کنید.
 
-gameEvents.delete(64);
-console.log(gameEvents);
+// gameEvents.delete(64);
+// console.log(gameEvents);
 
-// سوال سوم: عبارت زیر را محاسبه کرده و در کنسول نمایش دهید:
+// // سوال سوم: عبارت زیر را محاسبه کرده و در کنسول نمایش دهید:
 
-// "An event happened, on average, every 9 minutes"
+// // "An event happened, on average, every 9 minutes"
 
-// (در نظر داشته باشید که یک بازی فوتبال ۹۰ دقیقه است.)
+// // (در نظر داشته باشید که یک بازی فوتبال ۹۰ دقیقه است.)
 
-// یعنی حساب کنید به طور میانگین هر چند دقیقه یک اتفاق در بازی افتاده است
+// // یعنی حساب کنید به طور میانگین هر چند دقیقه یک اتفاق در بازی افتاده است
 
-console.log(
-  `An event happened, on average, every ${90 / gameEvents.size} minutes`,
-);
+// console.log(
+//   `An event happened, on average, every ${90 / gameEvents.size} minutes`,
+// );
 
-// یا این
+// // یا این
 
-const average = 90 / gameEvents.size;
+// const average = 90 / gameEvents.size;
 
-console.log(`An event happened, on average, every ${average} minutes`);
+// console.log(`An event happened, on average, every ${average} minutes`);
 
-// سوال 4 :
-// روی
-// gameEvents
-//  حلقه بزنید و هر رویداد را در کنسول چاپ کنید و مشخص کنید که در نیمه اول بوده یا نیمه دوم (بعد از دقیقه ۴۵)، به این شکل:
-// [FIRST HALF] 17: ⚽ GOAL
-//یعنی:
+// // سوال 4 :
+// // روی
+// // gameEvents
+// //  حلقه بزنید و هر رویداد را در کنسول چاپ کنید و مشخص کنید که در نیمه اول بوده یا نیمه دوم (بعد از دقیقه ۴۵)، به این شکل:
+// // [FIRST HALF] 17: ⚽ GOAL
+// //یعنی:
 
-// اگر دقیقه ≤ ۴۵ بود → نیمه اول (FIRST HALF)
-// اگر دقیقه > ۴۵ بود → نیمه دوم (SECOND HALF)
+// // اگر دقیقه ≤ ۴۵ بود → نیمه اول (FIRST HALF)
+// // اگر دقیقه > ۴۵ بود → نیمه دوم (SECOND HALF)
 
 // for (const [minute, event] of gameEvents) {
 //   if (minute <= 45) {
@@ -907,9 +907,9 @@ console.log(`An event happened, on average, every ${average} minutes`);
 //   }
 // }
 
-// یا
-for (const [minute, event] of gameEvents) {
-  const half = minute <= 45 ? 'FIRST' : 'SECOND';
-  console.log(`[${half} HALF] ${minute}: ${event}`);
-}
+// // یا
+// for (const [minute, event] of gameEvents) {
+//   const half = minute <= 45 ? 'FIRST' : 'SECOND';
+//   console.log(`[${half} HALF] ${minute}: ${event}`);
+// }
 
