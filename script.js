@@ -1,35 +1,21 @@
 'use strict';
 
-const flight = 'LH234';
-const jonas = {
-  name: 'Jonas Schmedtmann',
-  passport: 24739479284,
-};
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
 
-const CheckIn = function (flightNum, passenger) {
-  flightNum = 'LH999';
-  passenger.name = 'Mr. ' + passenger.name;
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
 
-  if (passenger.passport === 24739479284) {
-    alert('Checked in');
-  } else {
-    alert('Wrong passport!');
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+
+    console.log(`${output.padEnd(20)}${'💧'.repeat(i + 1)}`);
   }
-};
+});
 
-CheckIn(flight, jonas);
-console.log(flight);
-console.log(jonas);
-
-// Is the same as doing...
-const flightNum = flight;
-const passenger = jonas;
-
-const newPassport = function (person) {
-  person.passport = Math.trunc(Math.random() * 1000000000);
-};
-
-newPassport(jonas);
-CheckIn(flight, jonas);
-
-// اگر آبجکت به فانکشن ها بدهیم و آن ها را دستکاری کنیم آبجکت اصلی هم دستکاری میشه در تغییر دوم رانگ پسورد گرفتیم
