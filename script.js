@@ -1,109 +1,28 @@
 'use strict';
 
-// Data needed for a later exercise
-const flights =
-  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+const bookings = [];
 
-// Data needed for first part of the section
+const createBooking = function (
+  flightNum,
+  numPassengers = 1,
+  price = 199 * numPassengers,
+) {
+  //ES5
+  // numPassengers = numPassengers || 1;
+  // price = price || 199;
 
-const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-const openingHours = {
-  [weekdays[3]]: {
-    open: 12,
-    close: 22,
-  },
-  [weekdays[4]]: {
-    open: 11,
-    close: 23,
-  },
-  [weekdays[5]]: {
-    open: 0, // Open 24 hours
-    close: 12 + 12,
-  },
+  const booking = {
+    flightNum,
+    numPassengers,
+    price,
+  };
+  console.log(booking);
+  bookings.push(booking);
 };
 
-const restaurant = {
-  name: 'Classico Italiano',
-  location: 'Via Angelo Tavanti 23, Firenze, Italy',
-  categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
-  starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
-  mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+createBooking('LH123');
+createBooking('LH123', 2, 800);
+createBooking('LH123', 2);
+createBooking('LH123', 5);
 
-  // ES6 enhanced object literals
-  openingHours,
-
-  order(starterIndex, mainIndex) {
-    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
-  },
-
-  orderDelivery({ starterIndex = 1, mainIndex = 0, time = '20:00', address }) {
-    console.log(
-      `order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`,
-    );
-  },
-
-  orderPasta(ing1, ing2, ing3) {
-    console.log(
-      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`,
-    );
-  },
-
-  orderPizza(mainIngredient, ...otherIngredients) {
-    console.log(mainIngredient);
-    console.log(otherIngredients);
-  },
-};
-
-
-
-
-
-// split and Join
-console.log('a+very+nice+string'.split('+'));
-console.log('Jonas Schmedtmann'.split(' '));
-
-const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
-
-const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
-console.log(newName);
-
-const capitalizeName = function (name) {
-  const names = name.split(' ');
-  const namesUpper = [];
-
-  for (const n of names) {
-    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
-    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
-  }
-  console.log(namesUpper.join(' '));
-};
-
-capitalizeName('jessica ann smith davis');
-capitalizeName('jonas schmedtmann');
-
-// Padding
-const message = 'Go to gate 23!';
-console.log(message.padStart(20, '+').padEnd(30, '+'));
-console.log('Jonas'.padStart(20, '+').padEnd(30, '+')); // 30کاراکتر بشه
-
-const maskCreditCard = function (number) {
-  const str = number + '';
-  const last = str.slice(-4);
-  return last.padStart(str.length, '*');
-};
-
-console.log(maskCreditCard(28458952)); // فقط 4 عدد اخر نشان داده بقیه ستاره کرده
-
-console.log(maskCreditCard(28955412222444222));
-console.log(maskCreditCard('125746544444444455251211122'));
-
-// Repeat
-const message2 = 'Bad weather ... All Departues Delayed...';
-console.log(message2.repeat(5));
-
-const planesInLine = function(n) {
-  console.log(`There are ${n} planes in line ${'✈'.repeat(n)}`);
-};
-planesInLine(5);
-planesInLine(3);
-planesInLine(12);
+createBooking('LH123', undefined, 1000);
