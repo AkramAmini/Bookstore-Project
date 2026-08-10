@@ -1,21 +1,28 @@
 'use strict';
 
-document.body.append(document.createElement('textarea'));
-document.body.append(document.createElement('button'));
+const oneWord = function (str) {
+  return str.replace(/ /g, '').toLowerCase();
+};
 
-document.querySelector('button').addEventListener('click', function () {
-  const text = document.querySelector('textarea').value;
-  const rows = text.split('\n');
+const upperFirstWorld = function (str) {
+  const [first, ...others] = str.split(' ');
+  return [first.toUpperCase(), ...others].join(' ');
+};
 
-  for (const [i, row] of rows.entries()) {
-    const [first, second] = row.toLowerCase().trim().split('_');
+// Higher-order function
+const transformer = function (str, fn) {
+  console.log(`Orginal string: ${str}`);
+  console.log(`Transformed string: ${fn(str)}`);
 
-    const output = `${first}${second.replace(
-      second[0],
-      second[0].toUpperCase()
-    )}`;
+  console.log(`Transformed by: ${fn.name}`);
+};
 
-    console.log(`${output.padEnd(20)}${'💧'.repeat(i + 1)}`);
-  }
-});
+transformer('JavaScript is the best!', upperFirstWorld);
+transformer('JavaScript is the best!', oneWord);
 
+// JS uses callbacks all the time
+const high5 = function() {
+console.log('🖐');
+};
+document.body.addEventListener('click', high5);
+['Jonas', 'Martha', 'Adam'].forEach(high5);
