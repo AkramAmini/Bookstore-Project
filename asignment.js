@@ -981,8 +981,6 @@ console.log(typeof isIsland); */
 // Hints: Use many of the tools you learned about in this and the last section 😉
 // // GOOD LUCK 😀
 
-
-
 // const poll = {
 //   question: 'What is your favourite programming language?',
 //   options: [
@@ -1023,7 +1021,6 @@ console.log(typeof isIsland); */
 //   .querySelector('.poll')
 //   .addEventListener('click', poll.registerNewAnswer.bind(poll));
 
-
 // // BONUS
 
 // const data1 = [5, 2, 3];
@@ -1047,13 +1044,205 @@ console.log(typeof isIsland); */
 // the time you need. Think about when exactly the callback function is executed,
 // and what that means for the variables involved in this example.
 
+// (function () {
+//   const header = document.querySelector('h1');
 
-(function () {
-  const header = document.querySelector('h1');
+//   header.style.color = 'red';
 
-  header.style.color = 'red';
+//   document.querySelector('body').addEventListener('click', function () {
+//     header.style.color = 'blue';
+//   });
+// })();
 
-  document.querySelector('body').addEventListener('click', function () {
-    header.style.color = 'blue';
-  });
-})();
+// const temperature = 30;
+// if (temperature > 25) {
+//console.log(`It's hot!`);
+// } else {
+//   console.log(`It's not hot.`);
+// }
+
+// const numbers = [2, 4, 6, 8, 10];
+// for (let i = 0; i < numbers.length; i++) {
+//   console.log(numbers[i]);
+// }
+
+// const numbers = [3, 8, 12, 5, 20, 7];
+// for (let i = 0; i < numbers.length; i++)
+//     if (numbers[i] > 10) {
+//   console.log(numbers[i]);
+// };
+
+// function sum(a, b) {
+// return a + b
+// }
+
+//  console.log(sum(5, 3));
+
+// function checkAge(age) {
+//   if (age >= 18) {
+//     return 'Adult';
+//   } else {
+//     return 'Minor';
+//   }
+// };
+
+// console.log(checkAge(25));
+// console.log(checkAge(15));
+
+// const numbers = [10, 20, 30, 40, 50];
+
+// function calcAverage(numbers) {
+//   let sum = 0;
+
+//   for (let i = 0; i < numbers.length; i++) {
+//     sum = sum + numbers[i];
+//   }
+
+//   return sum / numbers.length;
+// }
+
+// console.log(calcAverage(numbers));
+
+// const numbers = [5, 10, 15, 20, 25];
+
+// function calcAverage(numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     sum = sum + numbers[i];
+//   }
+//   return sum / numbers.length;
+// }
+
+// console.log(calcAverage(numbers));
+
+// const numbers = [12, 45, 7, 89, 34, 21];
+
+// function findMax(numbers) {
+//   let maxNumber = numbers[0];
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] > maxNumber) {
+//       maxNumber = numbers[i];
+//     }
+//   }
+//   return maxNumber;
+// }
+
+// console.log(findMax(numbers));
+
+// const numbers = [8, 12, 16, 20, 24];
+
+// function calcAverage(numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     sum = sum + numbers[i];
+//   }
+//   return sum / numbers.length
+// }
+
+// console.log(calcAverage(numbers));
+
+// const numbers = [34, 12, 67, 5, 89, 41];
+
+// function findMax(numbers) {
+//   let maxNumber = numbers[0];
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (maxNumber < numbers[i]) maxNumber = numbers[i];
+//   }
+//   return maxNumber;
+// }
+
+// console.log(findMax(numbers));
+
+// const numbers = [56, 23, 91, 14, 72, 38];
+
+// function findMax(numbers) {
+//   let maxNumber = numbers [0];
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (maxNumber < numbers[i])  maxNumber = numbers[i];
+//   }
+//   return maxNumber;
+// }
+
+// console.log(findMax(numbers));
+
+// const numbers = [17, 42, 8, 63, 29, 51];
+// function findHighest(numbers) {
+//   let maxNumber = numbers[0];
+//   for (let i = 0; i < numbers.length; i++) {
+//   if(maxNumber < numbers[i]) maxNumber = numbers[i]
+//   }
+//   return maxNumber
+// }
+
+// console.log(findHighest(numbers));
+
+// const numbers = [45, 12, 78, 3, 29, 56];
+
+// function findMin(numbers) {
+//   let minNumber = numbers[0];
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (minNumber > numbers[i]) minNumber = numbers[i];
+//   }
+//   return minNumber;
+// }
+
+// console.log(findMin(numbers));
+
+// const numbers = [4, 15, 8, 22, 7, 31, 10, 18];
+
+// function countAboveTen(numbers) {
+//   let count = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] > 10) count++
+//   }
+//   return count;
+// }
+
+// console.log(countAboveTen(numbers));
+
+// const numbers = [3, 8, 11, 14, 17, 20, 25, 30];
+
+// function countEven(numbers) {
+//   let count = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] % 2 === 0) count++;
+//   }
+//   return count;
+// }
+
+// console.log(countEven(numbers));
+
+// const numbers = [4, 7, 10, 13, 16, 21, 24];
+
+// function sumEven(numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] % 2 === 0) sum = sum + numbers[i];
+//   }
+//   return sum;
+// }
+
+// console.log(sumEven(numbers));
+
+// const numbers = [4, 7, 10, 13, 16, 21, 24];
+
+// function sumEven(numbers) {
+//   let sum = 0;
+//   let count = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] % 2 === 0) sum = sum + numbers[i];
+//   }
+//   return sum;
+// }
+
+// const numbers = [5, 12, 8, 21, 16, 3, 30];
+
+// function sumOdd(numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] % 2 !== 0) sum = sum + numbers[i];
+//   }
+//   return sum;
+// }
+
+// console.log(sumOdd(numbers));
