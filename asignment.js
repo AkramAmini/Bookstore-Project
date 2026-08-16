@@ -1246,3 +1246,196 @@ console.log(typeof isIsland); */
 // }
 
 // console.log(sumOdd(numbers));
+
+// const scores = [12, 18, 7, 20, 15];
+
+// function getTotal(scores) {
+//   let sum = 0;
+//   for (let i = 0; i < scores.length; i++) {
+//     sum = sum + scores[i];
+//   }
+//   return sum;
+// }
+
+// console.log(getTotal(scores));
+
+// const prices = [100, 250, 80, 300, 150];
+
+// function countExpensive(prices) {
+//   let count = 0;
+//   for (let i = 0; i < prices.length; i++) {
+//     if (prices [i] > 150)  count++;
+//   }
+//   return count;
+// }
+
+// console.log(countExpensive(prices));
+
+// const temperatures = [18, 25, 31, 14, 28, 35, 22];
+
+// function getAverageAbove20(temperatures) {
+//   let sum = 0;
+//   let count = 0;
+
+//   for (let i = 0; i < temperatures.length; i++) {
+//     if (temperatures[i] > 20) {
+//       count++;
+//       sum = sum + temperatures[i];
+//     }
+//   }
+
+//   return sum / count;
+// }
+
+// console.log(getAverageAbove20(temperatures));
+
+// const scores = [10, 18, 25, 14, 30, 7, 22];
+
+// function getAverageAbove15(scores) {
+//   let sum = 0;
+//   let count = 0;
+//   for (let i = 0; i < scores.length; i++) {
+//     if (scores[i] > 15) {
+//       count++;
+//       sum = sum + scores[i];
+//     }
+//   }
+//   return sum / count;
+// }
+
+// console.log(getAverageAbove15(scores));
+
+// const numbers = [-8, -3, -10, 7, 12, 4];
+
+// function findFirstPositive(numbers) {
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] > 0) {
+//   return numbers[i];
+// }
+//   }
+// }
+
+// console.log(findFirstPositive(numbers));
+
+// const numbers = [5, 8, 12, -4, 20, -7];
+// function findFirstNegative(numbers) {
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i]< 0){
+//       return numbers[i]
+//     }
+//   }
+// }
+
+// console.log(findFirstNegative(numbers));
+
+// const prices = [100, 200, 300, 400, 500];
+
+// function increasePrices(prices) {
+//   for (let i = 0; i < prices.length; i++) {
+//     if (prices[i] > 250) {
+//       prices[i] = prices[i] * 1.2;
+//     }
+//   }
+//   return prices;
+// }
+
+// console.log(increasePrices(prices));
+
+// const salaries = [1000, 1500, 2000, 2500, 3000];
+
+// function increaseSalaries(salaries) {
+//   for (let i = 0; i < salaries.length; i++) {
+//     if (salaries[i]> 1800) salaries[i] = salaries[i] * 1.3 ;
+//   }
+//   return salaries
+// }
+
+// console.log(increaseSalaries(salaries));
+
+// const numbers = [5, 18, 7, 25, 12, 30, 9];
+
+// function findSecondAbove10(numbers) {
+//   let count = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] > 10) {
+//       count++;
+//       if (count === 2) {
+//     return numbers[i];
+//   }
+// }
+//   }
+// }
+
+// console.log(findSecondAbove10(numbers));
+
+// const numbers = [4, 15, 8, 22, 17, 30, 11];
+
+// function findThirdAbove10(numbers) {
+//   let count = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] > 10) {
+//       count++;
+//       if (count === 3) {
+//         return numbers[i];
+//       }
+//     }
+//   }
+// }
+
+// console.log(findThirdAbove10(numbers));
+
+// const numbers = [5, 12, 8, 21, 30, 7, 18];
+
+// function getAbove10(numbers) {
+//   const result = [];
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] > 10) {
+//       result.push(numbers[i]);
+//     }
+//   }
+//     return result;
+// }
+
+// console.log(getAbove10(numbers));
+
+// const numbers = [7, 16, 4, 25, 11, 32, 9, 20];
+
+// function getEvenNumbers(numbers) {
+//   const result = [];
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] %2 === 0) {
+//       result.push(numbers[i])
+//   }
+// }
+// return result
+// }
+
+// console.log(getEvenNumbers(numbers));
+
+// const numbers = [5, 12, 8, 21, 30, 7, 18];
+
+// function sumAbove10(numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] > 10) {
+//       sum = sum + numbers[i];
+//     }
+//   }
+//   return sum;
+// }
+
+// console.log(sumAbove10(numbers));
+
+// const numbers = [4, 15, 8, 22, 17, 30, 9, 12, 7];
+
+// function sumEvenAbove10(numbers) {
+//   let sum = 0;
+//   for (let i = 0; i < numbers.length; i++) {
+//     if (numbers[i] % 2 === 0 && numbers[i] > 10) {
+//       sum = sum + numbers[i];
+//     }
+//   }
+//   return sum;
+// }
+
+// console.log(sumEvenAbove10(numbers));
