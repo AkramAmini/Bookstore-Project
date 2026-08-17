@@ -1439,3 +1439,173 @@ console.log(typeof isIsland); */
 // }
 
 // console.log(sumEvenAbove10(numbers));
+
+// const person = {
+//   name: 'Ali',
+//   age: 25,
+//   city: 'Tehran',
+// };
+
+// function getName(person) {
+//   return person.name;
+// }
+
+// console.log(getName(person));
+
+// const car = {
+//   brand: 'Toyota',
+//   model: 'Corolla',
+//   year: 2020
+// };
+
+// function getModel(car) {
+//   return car.model;
+// }
+
+// console.log(getModel(car));
+
+// const student = {
+//   name: 'Sara',
+//   age: 20,
+//   score: 18,
+// };
+
+// function checkScore(student) {
+//   if (student.score >= 10) {
+//     return 'Passed';
+//   } else {
+//     return 'Failed';
+//   }
+// }
+
+// console.log(checkScore(student));
+
+// const user = {
+//   name: 'Mina',
+//   age: 28,
+//   city: 'Shiraz',
+// };
+
+// function increaseAge(user) {
+//   user.age = user.age + 1;
+//   return user;
+// }
+
+// console.log(increaseAge(user));
+
+// const product = {
+//   name: 'Laptop',
+//   price: 800,
+//   quantity: 3,
+// };
+
+// function getTotalPrice(product) {
+//   const totalPrice = product.price * product.quantity;
+//   return totalPrice;
+// }
+
+// console.log(getTotalPrice(product));
+
+// const product = {
+//   name: 'Phone',
+//   price: 500,
+//   quantity: 4,
+// };
+
+// function getDiscountedPrice(product) {
+//   let totalPrice = product.price * product.quantity;
+//   if (totalPrice > 1500) {
+//     totalPrice = totalPrice * 0.9;
+//   }
+//     return totalPrice;
+//   }
+
+// console.log(getDiscountedPrice(product));
+
+// const user = {
+//   firstName: 'Sara',
+//   lastName: 'Ahmadi',
+//   age: 25,
+// };
+
+// function getFullName(user) {
+//   const fullName = user.firstName + ' ' + user.lastName;
+//   return fullName;
+// }
+
+// console.log(getFullName(user));
+
+// const user = {
+//   name: 'javascript',
+//   age: 25,
+// };
+
+// function formatName(user) {
+//   const name =user.name[0].toUpperCase() +
+//   user.name.slice(1).toLowerCase()
+//   return name
+// }
+
+// console.log(formatName(user));
+
+// const user = {
+//   name: 'aHMADI',
+//   age: 30,
+// };
+
+// function formatLastName(user) {
+//   const name = user.name[0].toUpperCase() + user.name.slice(1).toLowerCase();
+//   return name;
+// }
+
+// console.log(formatLastName(user));
+
+// const user = {
+//   name: 'Ali',
+//   username: 'Ali123',
+//   age: 25
+// };
+
+// function checkUsername(user) {
+//   if(user.username.length > 5) {
+//     return 'Valid'
+//   }else{
+//     return 'Too Short'
+//   }
+// }
+
+// console.log(checkUsername(user));
+
+// const user = {
+//   name: 'JavaScript',
+//   age: 25,
+// };
+
+// function countA(user) {
+//   let count = 0;
+//   for (let i = 0; i < user.name.length; i++) {
+//     if (user.name[i].toLowerCase() === 'a')
+//      count++
+//   }
+//   return count;
+// }
+
+// console.log(countA(user));
+
+//
+// const product = {
+//   name: 'JavaScript',
+//   price: 120,
+//   quantity: 3,
+// };
+
+// function getProductInfo(product) {
+//   let totalPrice = product.price * product.quantity;
+//   if (totalPrice > 300) {
+//     return 'JavaScript - Expensive';
+//   } else {
+//     return 'JavaScript - Affordable';
+//   }
+// }
+
+// console.log(getProductInfo(product));
