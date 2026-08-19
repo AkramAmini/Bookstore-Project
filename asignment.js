@@ -1823,3 +1823,191 @@ console.log(typeof isIsland); */
 // }
 
 // console.log(getAboveAverageResult(student));
+
+// const student = {
+//   name: 'Ali',
+//   scores: [12, 17, 9, 20, 14, 8],
+// };
+
+// function getPassedScoreCount(student) {
+//   let count = 0;
+//   for (let i = 0; i < student.scores.length; i++) {
+//     if (student.scores[i] >= 10) count++;
+//   }
+//   return count;
+// }
+// console.log(getPassedScoreCount(student));
+
+// const student = {
+//   name: 'Sara',
+//   scores: [11, 18, 7, 15, 20, 9],
+// };
+
+// function getFailedScoreCount(student) {
+//   let count = 0;
+//   for (let i = 0; i < student.scores.length; i++) {
+//     if (student.scores[i] < 10) count++;
+//   }
+//   return count;
+// }
+
+// console.log(getFailedScoreCount(student));
+
+// const student = {
+//   name: 'Mina',
+//   scores: [8, 14, 19, 11, 6, 17],
+// };
+
+// function getTotalScore(student) {
+//   let sum = 0;
+//   for (let i = 0; i < student.scores.length; i++) {
+//     sum = sum + student.scores[i];
+//   }
+//   return sum;
+// }
+
+// console.log(getTotalScore(student));
+
+// const student = {
+//   name: 'Reza',
+//   scores: [13, 18, 9, 16, 20, 11],
+// };
+
+// function getHighestScore(student) {
+//   let highestScore = student.scores[0];
+//   for (let i = 0; i < student.scores.length; i++) { if (highestScore < student.scores[i])
+//     highestScore = student.scores[i]
+//   }
+//   return highestScore
+// }
+
+// console.log(getHighestScore(student));
+
+// const student = {
+//   name: 'Sara',
+//   scores: [15, 7, 19, 12, 8, 17],
+// };
+
+// function getLowestScore(student) {
+//   let lowestScore = student.scores[0];
+//   for (let i = 0; i < student.scores.length; i++) {
+//     if (student.scores[i] < lowestScore) lowestScore = student.scores[i];
+//   }
+//   return lowestScore;
+// }
+
+// console.log(getLowestScore(student));
+
+// const student = {
+//   name: 'Ali',
+//   scores: [12, 18, 15, 20, 10, 17],
+// };
+
+// function getAverageScore(student) {
+//   let sum = 0;
+//   for (let i = 0; i < student.scores.length; i++) { sum = sum + student.scores[i]
+
+//   }
+//   return sum / student.scores.length
+// }
+
+// console.log(getAverageScore(student));
+
+// const student = {
+//   name: 'Mina',
+//   scores: [9, 14, 18, 7, 16, 20],
+// };
+
+// function getPassedScoresSum(student) {
+//   let sum = 0
+//   for (let i = 0; i < student.scores.length; i++) { if ( student.scores[i] >= 10)
+//     sum = sum + student.scores[i]
+
+//   }
+//   return sum
+// }
+
+// console.log(getPassedScoresSum(student));
+
+// const student = {
+//   name: 'Nima',
+//   scores: [8, 13, 19, 11, 6, 17],
+// };
+
+// function getAboveAverageCount(student) {
+//   let sum = 0;
+//   let count = 0;
+//   let average = 0;
+//   for (let i = 0; i < student.scores.length; i++) {
+//     sum = sum + student.scores[i];
+//   }
+//   average = sum / student.scores.length;
+//   for (let i = 0; i < student.scores.length; i++) {
+//     if (student.scores[i] > average) count++;
+//   }
+//   return count;
+// }
+
+// console.log(getAboveAverageCount(student));
+
+// const student = {
+//   name: 'Sara',
+//   scores: [12, 5, 18, 9, 20, 14],
+// };
+
+// function hasPerfectScore(student) {
+//   for (let i = 0; i < student.scores.length; i++) {
+//     if (student.scores[i] === 20) return true;
+//   }
+//     return false;
+//   }
+
+// console.log(hasPerfectScore(student));
+
+// const student = {
+//   name: 'Ali',
+//   scores: [8, 15, 12, 19, 6, 17],
+// };
+
+// function getFirstPassedScore(student) {
+//   for (let i = 0; i < student.scores.length; i++) {
+//     if (student.scores[i] >= 10) return student.scores[i];
+//   }
+// }
+
+// console.log(getFirstPassedScore(student));
+
+// const student = {
+//   name: 'Mina',
+//   scores: [11, 7, 18, 9, 14, 20],
+// };
+
+// function getLastPassedScore(student) {
+//   let lastScorePassed = 11;
+//   for (let i = 0; i < student.scores.length; i++) { if (student.scores[i] >= 10) lastScorePassed = student.scores[i]
+//   }
+// return lastScorePassed
+// }
+
+// console.log(getLastPassedScore(student));
+
+// const student = {
+//   name: 'Nima',
+//   scores: [10, 18, 7, 15, 20, 8],
+// };
+
+// function getStudentResult(student) {
+//   let sum = 0;
+//   let average = 0;
+//   for (let i = 0; i < student.scores.length; i++) {
+//     sum = sum + student.scores[i];
+//   }
+//   average = sum / student.scores.length;
+//     if (average >= 10) {
+//       return `${student.name} passed with an average of ${average}`;
+//   } else {
+//       return `${student.name} failed with an average of ${average}`;
+//   }
+// }
+
+// console.log(getStudentResult(student));
