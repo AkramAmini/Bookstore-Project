@@ -84,7 +84,6 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // ??
 
-
 // console.log(friends.includes('Sara'));
 
 // console.log(friends.indexOf('Mina'));
@@ -158,15 +157,49 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // console.log(names.splice(-2));
 // console.log(names);
 
+// const friends = ['Ali', 'Sara', 'Reza'];
 
+// friends.forEach(function (friend) {
+//   console.log(friend);
+// });
 
+// const numbers = [10, 20, 30, 40];
 
+// numbers.forEach(function (number) {
+//   console.log(number);
+// });
 
+// const numbers = [10, 20, 30, 40];
 
+// numbers.forEach(function (number) {
+//   number = number * 2;
+//   console.log(number);
+// });
 
+// const names = ['Ali', 'Sara', 'Reza'];
 
+// names.forEach(function (name) {
+//   name = 'Hello' + ' ' + name;
+//   console.log(name);
+// });
 
+// const numbers = [5, 10, 15, 20];
 
+// numbers.forEach(function (number) {
+//   number = number + ' is a number';
+//   console.log(number);
+// });
 
+// const prices = [100, 200, 300, 400];
 
+// prices.forEach(function (price) {
+//   price = price + price * 0.1;
 
+//   console.log(price);
+// });
+
+// const scores = [8, 15, 12, 19, 6, 17];
+
+// scores.forEach(function (score) {
+//   if (score >= 10) console.log(score);
+// });
