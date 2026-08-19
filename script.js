@@ -1,169 +1,172 @@
 'use strict';
 
-// const lufthansa = {
-//   airline: 'Lufthansa',
-//   iataCode: 'LH',
-//   booking: [],
-//   book(flightNum, name) {
-//     console.log(
-//       `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`,
-//     );
-//     this.booking.push({ flight: `${this.iataCode}${flightNum}, name` });
-//   },
-// };
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// BANKIST APP
 
-// lufthansa.book(239, 'Jonas Schmedtman');
-// lufthansa.book(635, 'John Smith');
+// Data
+const account1 = {
+  owner: 'Jonas Schmedtmann',
+  movements: [200, 450, -400, 3000, -650, -130, 70, 1300],
+  interestRate: 1.2, // %
+  pin: 1111,
+};
 
-// const eurowings = {
-//   airline: 'Eurowings',
-//   iataCode: 'EW',
-//   booking: [],
-// };
+const account2 = {
+  owner: 'Jessica Davis',
+  movements: [5000, 3400, -150, -790, -3210, -1000, 8500, -30],
+  interestRate: 1.5,
+  pin: 2222,
+};
 
-// const book = lufthansa.book;
+const account3 = {
+  owner: 'Steven Thomas Williams',
+  movements: [200, -200, 340, -300, -20, 50, 400, -460],
+  interestRate: 0.7,
+  pin: 3333,
+};
 
-// // call Method
-// book.call(eurowings, 23, 'Sarah Williams');
-// console.log(eurowings);
+const account4 = {
+  owner: 'Sarah Smith',
+  movements: [430, 1000, 700, 50, 90],
+  interestRate: 1,
+  pin: 4444,
+};
 
-// book.call(lufthansa, 239, 'Mary Cooper');
-// console.log(lufthansa);
+const accounts = [account1, account2, account3, account4];
 
-// const swiss = {
-//   airline: 'Swiss Air Lines',
-//   iataCode: 'LX',
-//   booking: [],
-// };
-// book.call(swiss, 583, 'Mary Cooper');
-// console.log(swiss);
+// Elements
+const labelWelcome = document.querySelector('.welcome');
+const labelDate = document.querySelector('.date');
+const labelBalance = document.querySelector('.balance__value');
+const labelSumIn = document.querySelector('.summary__value--in');
+const labelSumOut = document.querySelector('.summary__value--out');
+const labelSumInterest = document.querySelector('.summary__value--interest');
+const labelTimer = document.querySelector('.timer');
 
-// // Apply method
-// const flightData = [583, 'George Cooper'];
-// book.apply(swiss, flightData);
-// console.log(swiss);
+const containerApp = document.querySelector('.app');
+const containerMovements = document.querySelector('.movements');
 
-// book.call(swiss, ...flightData);
+const btnLogin = document.querySelector('.login__btn');
+const btnTransfer = document.querySelector('.form__btn--transfer');
+const btnLoan = document.querySelector('.form__btn--loan');
+const btnClose = document.querySelector('.form__btn--close');
+const btnSort = document.querySelector('.btn--sort');
 
-// // Bind method
-// // book.call(eurowings, 23, 'Sarah Williams');
+const inputLoginUsername = document.querySelector('.login__input--user');
+const inputLoginPin = document.querySelector('.login__input--pin');
+const inputTransferTo = document.querySelector('.form__input--to');
+const inputTransferAmount = document.querySelector('.form__input--amount');
+const inputLoanAmount = document.querySelector('.form__input--loan-amount');
+const inputCloseUsername = document.querySelector('.form__input--user');
+const inputClosePin = document.querySelector('.form__input--pin');
 
-// const bookEW = book.bind(eurowings);
-// const bookLH = book.bind(lufthansa);
-// const bookLX = book.bind(swiss);
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+// LECTURES
 
-// console.log(23, 'Steven Williams');
+const currencies = new Map([
+  ['USD', 'United States dollar'],
+  ['EUR', 'Euro'],
+  ['GBP', 'Pound sterling'],
+]);
 
-// const bookEW23 = book.bind(eurowings, 23);
-// bookEW23('Jonas Schmedtmann');
-// bookEW23('Martha Cooper');
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-// // Event Listeners
-// lufthansa.planes = 300;
-// lufthansa.buyPlane = function () {
-//   console.log(this);
+/////////////////////////////////////////////////
 
-//   this.planes++;
-//   console.log(this.planes);
-// };
-// // lufthansa.buyPlane()
+// const friends = ['Ali', 'Sara', 'Reza'];
+// friends.push('Mina');
+// console.log(friends);
 
-// document
-//   .querySelector('.buy')
-//   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// friends.unshift('Nima');
+// console.log(friends);
 
-//   // Partial application
+// ??
 
-//   const addTax = (rate, value) => value + value * rate;
-//   console.log(addTax(0.1, 200));
 
-//   const addVAT = addTax.bind(null, 0.23);
-//   // addVAT = value => value + value * 0.23;
+// console.log(friends.includes('Sara'));
 
-//   console.log(addVAT(100));
-//   console.log(addVAT(23));
+// console.log(friends.indexOf('Mina'));
 
-//   const addTaxRate = function(rate) {
-//     return function(value) {
-//       return value + value + rate;
-//     };
-//   };
-//   const addVAT2 = addTaxRate(0.23);
-//   console.log(addVAT2(100));
-//   console.log(addVAT2(23));
+// const numbers = [10, 20, 30, 40];
 
-// const runOnce = function () {
-//   console.log('This will never run again');
-// };
-// runOnce();
+// numbers.push(50);
+// console.log(numbers);
 
-// (function () {
-//   console.log('This will never run again');
-// })();
+// numbers.unshift(5);
+// console.log(numbers);
 
-// (() => console.log('This will ALSO never run again'))();
+// numbers.pop();
+// console.log(numbers);
 
-// {
-//   const isPrivate = 23;
-//   var notPrivate = 46;
-// }
-// // console.log(isPrivate);
-// console.log(notPrivate);
+// numbers.shift();
+// console.log(numbers);
 
-// const secureBooking = function() {
-//   let passengerCount = 0;
+// console.log(numbers.includes(30));
+// console.log(numbers.indexOf(40));
 
-//   return function() {
-//     passengerCount++;
-//     console.log(`${passengerCount} passengers`);
-//   }
-// }
+// const cities = ['Tehran', 'Shiraz', 'Tabriz'];
 
-// const booker = secureBooking();
+// cities.unshift('Mashhad');
+// console.log(cities);
 
-// booker();
-// booker();
-// booker();
+// cities.pop();
+// console.log(cities);
 
-// console.dir(booker);
+// const passengers = ['Sara', 'Ali', 'Reza', 'Mina'];
 
-// Example 1
-// let f;
+// passengers.push('Nima')
+// console.log(passengers);
 
-// const g = function () {
-//   const a = 23;
-//   f = function () {
-//     console.log(a * 2);
-//   };
-// };
+// passengers.shift();
+// console.log(passengers);
 
-// const h = function () {
-//   const b = 777;
-//   f = function () {
-//     console.log(b * 2);
-//   };
-// };
+// passengers.unshift('Maryam');
+// console.log(passengers);
 
-// g();
-// f();
-// console.dir(f);
+// passengers.pop();
+// console.log(passengers);
 
-// // Re-assigning f function
-// h();
-// f();
-// console.dir(f);
+// console.log(passengers.includes('Reza'));
+// console.log(passengers.indexOf('Mina'));
 
-// // Example 2
-// const boardPassengers = function (n, wait) {
-//   const perGroup = n / 3;
+// const colors = ['red', 'blue', 'green', 'yellow', 'black'];
 
-//   setTimeout(function () {
-//     console.log(`We are now boarding all ${n} passengers`);
-//     console.log(`There are 3 groups, each with ${perGroup} passengers`);
-//   }, wait * 1000);
+// console.log(colors.slice(1, 4));
 
-//   console.log(`Will start boarding in ${wait} second`);
-// };
+// const numbers = [10, 20, 30, 40, 50, 60];
 
-// const perGroup = 1000;
-// boardPassengers(180, 3);
+// console.log(numbers.slice(1, 4));
+
+// const names = ['Ali', 'Sara', 'Reza', 'Mina', 'Nima'];
+
+// console.log(names.slice(2, 4));
+
+// const numbers = [10, 20, 30, 40, 50, 60];
+
+// console.log(numbers.slice(-3));
+
+// const numbers = [10, 20, 30, 40, 50];
+
+// console.log(numbers.splice(2, 1));
+
+// console.log(numbers);
+
+// const names = ['Ali', 'Sara', 'Reza', 'Mina', 'Nima'];
+
+// console.log(names.splice(-2));
+// console.log(names);
+
+
+
+
+
+
+
+
+
+
+
+
+

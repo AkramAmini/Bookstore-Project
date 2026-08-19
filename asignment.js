@@ -2011,3 +2011,5 @@ console.log(typeof isIsland); */
 // }
 
 // console.log(getStudentResult(student));
+
+
