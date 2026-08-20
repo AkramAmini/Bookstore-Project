@@ -1,5 +1,7 @@
 'use strict';
 
+const { createElement } = require('react');
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
@@ -61,17 +63,37 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+
+    const html = `
+  <div class="movements__row">
+    <div class="movements__type movements__type--${type}">
+      ${i + 1} ${type}
+    </div>
+    <div class="movements__value">${mov}</div>
+  </div>
+`;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+
+displayMovements(account1.movements);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
 
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
@@ -242,13 +264,82 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //   console.log(key,value);
 // });
 
-const scores = new Map([
-  ['Ali', 8],
-  ['Sara', 15],
-  ['Reza', 12],
-  ['Mina', 6],
-]);
+// const scores = new Map([
+//   ['Ali', 8],
+//   ['Sara', 15],
+//   ['Reza', 12],
+//   ['Mina', 6],
+// ]);
 
-scores.forEach(function (value, key) {
-  if (value >= 10) console.log(key);
-});
+// scores.forEach(function (value, key) {
+//   if (value >= 10) console.log(key);
+// });
+
+// const ul = document.createElement('ul');
+
+// const li1 = document.createElement('li');
+// li1.textContent = 'HTML';
+
+// const li2 = document.createElement('li');
+// li2.textContent = 'CSS';
+
+// const li3 = document.createElement('li');
+// li3.textContent = 'JavaScript';
+
+// ul.append(li1, li2, li3);
+// document.body.append(ul);
+
+// const div = document.createElement('div');
+
+// const h2 = document.createElement('h2');
+// h2.textContent = 'My Journey';
+// h2.classList.add('title');
+
+// const p = document.createElement('p');
+// p.textContent = 'I am learning Javascript';
+// p.classList.add('text');
+
+// div.append(h2, p);
+// document.body.append(div);
+
+// const div = document.createElement('div');
+
+// const h2 = document.createElement('h2');
+// h2.textContent = 'My Skills';
+
+// const ul = document.createElement('ul');
+
+// const li1 = document.createElement('li');
+// li1.textContent = 'HTML';
+// const li2 = document.createElement('li');
+// li2.textContent = 'CSS';
+// const li3 = document.createElement('li');
+// li3.textContent = 'JavaScript';
+
+// document.body.append(div);
+// div.append(h2, ul);
+// ul.append(li1, li2, li3);
+
+// const myButton = document.createElement('button');
+// myButton.textContent = 'Start Learning';
+// document.body.append(myButton);
+
+// const link = document.createElement('a');
+// link.textContent = 'Visit Google';
+// link.href = 'https://www.google.com';
+// link.classList.add('link');
+// document.body.append(link);
+
+// const img = document.createElement('img');
+// img.src = 'https://via.placeholder.com/200';
+// img.alt = 'Profile Image';
+// img.classList.add('profile-image');
+// document.body.append(img);
+
+// const img = document.createElement('img');
+
+// img.src = 'https://via.placeholder.com/200';
+// img.alt = 'Profile Image';
+// img.classList.add('profile-image');
+
+// document.body.append(img);
