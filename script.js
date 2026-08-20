@@ -203,3 +203,52 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // scores.forEach(function (score) {
 //   if (score >= 10) console.log(score);
 // });
+
+// const numbers = new Set([10, 20, 30]);
+
+// numbers.forEach(function (number) {
+//   console.log(number);
+// });
+
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling']
+// ]);
+
+// currencies.forEach(function (value, key) {
+//   console.log(key, value);
+// });
+
+// const numbers = new Set([10, 20, 30, 40]);
+
+// numbers.forEach(function (number) {
+//   console.log(number);
+// });
+
+// const numbers = new Set([5, 10, 15, 20]);
+
+// numbers.forEach(function (number) {
+//   if (number > 10) console.log(number);
+// });
+
+// const countries = new Map([
+//   ['IR', 'Iran'],
+//   ['TR', 'Turkey'],
+//   ['DE', 'Germany'],
+// ]);
+
+// countries.forEach(function (value, key) {
+//   console.log(key,value);
+// });
+
+const scores = new Map([
+  ['Ali', 8],
+  ['Sara', 15],
+  ['Reza', 12],
+  ['Mina', 6],
+]);
+
+scores.forEach(function (value, key) {
+  if (value >= 10) console.log(key);
+});
