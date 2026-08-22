@@ -460,20 +460,31 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(initials);
 
-const accountsss = [
-  { owner: 'Jonas Schmedtmann' },
-  { owner: 'Sarah Smith' },
-  { owner: 'Mike Davis' },
-];
+// const accountsss = [
+//   { owner: 'Jonas Schmedtmann' },
+//   { owner: 'Sarah Smith' },
+//   { owner: 'Mike Davis' },
+// ];
 
-const createUsernamess = function (accs) {
-  accs.forEach(function (acc) {
-    acc.username = acc.owner
-      .toLocaleLowerCase()
-      .split(' ')
-      .map(name => name[0])
-      .join('');
-  });
-};
+// const createUsernamess = function (accs) {
+//   accs.forEach(function (acc) {
+//     acc.username = acc.owner
+//       .toLocaleLowerCase()
+//       .split(' ')
+//       .map(name => name[0])
+//       .join('');
+//   });
+// };
 
-createUsernames(accountsss);
+// createUsernames(accountsss);
+
+// const deposite = movements.filter(function (mov) {
+//   return mov > 0;
+// });
+
+// console.log(movements);
+// console.log(deposite);
+
+// const withdrawals = movements.filter(mov => mov < 0);
+
+// console.log(withdrawals);
