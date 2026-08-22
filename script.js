@@ -369,4 +369,58 @@
 
 // checkDogs(dogsJulia, dogsKate);
 
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
+// const doubled = movements.map(function (mov) {
+//   return mov * 2;
+
+// const withdrawals = movements.filter(function (mov) {
+// return mov < 0;
+
+//   const balance = movements.reduce(function (acc, mov) {
+//   return acc + mov;
+// }, 0);
+
+// const numbers = [2, 4, 6, 8];
+
+// const doubled = numbers.map(function (num) {
+//   return num * 2
+// });
+
+// const movements = [200, -400, 300, -100, 500];
+
+// const positive = movements.map(function(mov) {
+//   return Math.abs(mov);
+// });
+
+// const movements = [200, -400, 300, -100, 500];
+
+// const withdrawals = movements.filter(function (mov) {
+//   return mov < 0;
+// });
+
+// const movements = [200, -400, 300, -100, 500];
+
+// const balance = movements.reduce(function(acc, mov) {
+//   return acc + mov;
+// }, 0);
+
+// const movements = [200, -400, 300, -100, 500, -50];
+
+// const withdrawal = movements.filter(function (mov) {
+//   return mov < 0;
+// });
+
+// const totalWithdrawal = balance.reduce(function (acc, mov) {
+//   return acc + mov;
+// }, 0);
+
+// const movements = [100, -50, 200, -30, 400];
+
+// const positive = movements.filter(function (mov) {
+//   return mov > 0;
+// });
+
+// const totalPositive = positive.reduce(function(acc, mov) {
+//   return acc + mov
+// }, 0);
