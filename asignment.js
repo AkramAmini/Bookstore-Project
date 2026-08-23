@@ -2011,21 +2011,57 @@ console.log(typeof isIsland); */
 // }
 
 // console.log(getStudentResult(student));
-const data1 = [5, 2, 4, 1, 15, 8, 3];
-const data2 = [16, 6, 10, 5, 6, 1, 4];
-const calcAverageHumanAge = ages =>
-  ages
-    .map(age => {
-      if (age <= 2) {
-        return age * 2;
-      } else {
-        return age * 4 + 16;
-      }
-    })
-    .filter(age => age >= 18)
-    .reduce((acc, age, i, arr) => {
-      return acc + age / arr.length;
-    }, 0);
+// const data1 = [5, 2, 4, 1, 15, 8, 3];
+// const data2 = [16, 6, 10, 5, 6, 1, 4];
+// const calcAverageHumanAge = ages =>
+//   ages
+//     .map(age => {
+//       if (age <= 2) {
+//         return age * 2;
+//       } else {
+//         return age * 4 + 16;
+//       }
+//     })
+//     .filter(age => age >= 18)
+//     .reduce((acc, age, i, arr) => {
+//       return acc + age / arr.length;
+//     }, 0);
 
-console.log(calcAverageHumanAge(data1));
-console.log(calcAverageHumanAge(data2));
+// console.log(calcAverageHumanAge(data1));
+// console.log(calcAverageHumanAge(data2));
+
+// const numbers = [5, 12, 8, 20];
+
+// const firstBigNumber = numbers.find(num => num > 10);
+
+// console.log(firstBigNumber);
+
+// const ages = [12, 18, 25, 16, 30];
+// const firstBigNumber = ages.find(age => age>=18) ;
+// console.log(firstBigNumber);
+
+// const movementss = [200, -400, 300, -100, 500, -50];
+// const firstNegative = movementss.find(mov => mov< 0 );
+// console.log(firstNegative);
+
+// const accounts = [
+//   { owner: 'Jonas', balance: 1000 },
+//   { owner: 'Sarah', balance: 500 },
+//   { owner: 'Mike', balance: 2000 },
+// ];
+
+// const sarahAccount = accounts.find(acc => acc.owner === 'Sarah').balance;
+
+// console.log(sarahAccount);
+
+const accounts = [
+  { owner: 'Jonas', balance: 1000 },
+  { owner: 'Sarah', balance: 500 },
+  { owner: 'Mike', balance: 2000 },
+  { owner: 'Emma', balance: 750 },
+];
+
+const firstAcount = accounts.find(acc => acc.balance === 500);
+console.log(firstAcount);
+
+
