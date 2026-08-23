@@ -552,26 +552,63 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(average);
 
-const ages1 = [5, 2, 4, 1, 15, 8, 3];
-const ages2 = [16, 6, 10, 5, 6, 1, 4];
+// const ages1 = [5, 2, 4, 1, 15, 8, 3];
+// const ages2 = [16, 6, 10, 5, 6, 1, 4];
 
-const calcAverageHumanAge = function (ages) {
-  const calcAverageHumanAgee = ages.map(function (age) {
-    if (age <= 2) return age * 2;
-    else return age * 4 + 16;
-  });
+// const calcAverageHumanAge = function (ages) {
+//   const calcAverageHumanAgee = ages.map(function (age) {
+//     if (age <= 2) return age * 2;
+//     else return age * 4 + 16;
+//   });
 
-  const deletHumanAge = calcAverageHumanAgee.filter(function (age) {
-    return age >= 18;
-  });
+//   const deletHumanAge = calcAverageHumanAgee.filter(function (age) {
+//     return age >= 18;
+//   });
 
-  const average =
-    deletHumanAge.reduce(function (acc, age) {
-      return acc + age;
-    }, 0) / deletHumanAge.length;
+//   const average =
+//     deletHumanAge.reduce(function (acc, age) {
+//       return acc + age;
+//     }, 0) / deletHumanAge.length;
 
-  return average;
-};
+//   return average;
+// };
 
-console.log(calcAverageHumanAge(ages1));
-console.log(calcAverageHumanAge(ages2));
+// console.log(calcAverageHumanAge(ages1));
+// console.log(calcAverageHumanAge(ages2));
+
+// const numbers = [2, 5, 8, 1, 10];
+
+// const bigNumber = numbers
+// .filter(num => num > 4)
+// .map(num => num * 2);
+
+// console.log(bigNumber);
+
+// const movementss = [200, -400, 300, -100, 500];
+
+// const positiveNumber = movementss
+//   .filter(mov => mov > 0)
+//   .map(mov => mov * 2)
+//   .reduce((acc, mov) => acc + mov, 0);
+
+// console.log(positiveNumber);
+
+// const movementss = [200, -400, 300, -100, 500, -50];
+
+// const result = movementss
+// .filter(mov => mov < 0)
+// .map(mov => Math.abs(mov))
+// .reduce((acc, mov) => acc+mov, 0)
+
+// console.log(result);
+
+// const movementss = [200, -400, 300, -100, 500, -50];
+
+// const result = movementss
+// .filter(mov => mov > 0)
+// .map(mov => mov / 1000)
+// .reduce((acc, mov) => acc + mov, 0);
+
+// console.log(result);
+
+
