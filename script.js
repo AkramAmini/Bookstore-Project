@@ -488,3 +488,38 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // const withdrawals = movements.filter(mov => mov < 0);
 
 // console.log(withdrawals);
+// const numbers = [2, 4, 6, 8];
+
+// const newNumbers = numbers.reduce(function (acc, num) {
+//   return acc * num
+// }, 1);
+//  console.log(newNumbers);
+
+// const movementss = [200, -400, 300, -100, 500];
+
+// const highestNumber = movementss.reduce(function (acc, mov) {
+//   return Math.max(acc, mov);
+// }, movementss[0]);
+
+// console.log(highestNumber);
+
+// const lowestNumber = movementss.reduce(function (acc, mov) {
+//   return Math.min(acc, mov);
+// }, movementss[0]);
+
+// console.log(lowestNumber);
+
+// const average = movementss.reduce(function (acc, mov) {
+//   return acc+mov;
+// }, 0) / movementss.length;
+
+// console.log(average);
+
+// const movementss = [200, -400, 300, -100, 500, -50];
+
+// const totalPositive = movementss.reduce(function (acc, mov) {
+//   if (mov > 0) return (mov + acc);
+//   else return (acc);
+// }, 0);
+
+// console.log(totalPositive);
