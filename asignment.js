@@ -2011,5 +2011,21 @@ console.log(typeof isIsland); */
 // }
 
 // console.log(getStudentResult(student));
+const data1 = [5, 2, 4, 1, 15, 8, 3];
+const data2 = [16, 6, 10, 5, 6, 1, 4];
+const calcAverageHumanAge = ages =>
+  ages
+    .map(age => {
+      if (age <= 2) {
+        return age * 2;
+      } else {
+        return age * 4 + 16;
+      }
+    })
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => {
+      return acc + age / arr.length;
+    }, 0);
 
-
+console.log(calcAverageHumanAge(data1));
+console.log(calcAverageHumanAge(data2));
