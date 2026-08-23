@@ -81,6 +81,13 @@ const displayMovements = function (movements) {
 
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -523,3 +530,48 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // }, 0);
 
 // console.log(totalPositive);
+
+// const ages = [5, 2, 4, 1, 15, 8, 3];
+
+// const calcAverageHumanAge = ages.map(function (age) {
+//   if (age <= 2) return age * 2;
+//   else return age * 4 + 16;
+// });
+
+// console.log(calcAverageHumanAge);
+
+// const deletHumanAge = calcAverageHumanAge.filter(function (age) {
+//   return age >= 18;
+// });
+// console.log(deletHumanAge);
+
+// const average =
+//   deletHumanAge.reduce(function (acc, age) {
+//     return acc + age;
+//   }, 0) / deletHumanAge.length;
+
+// console.log(average);
+
+const ages1 = [5, 2, 4, 1, 15, 8, 3];
+const ages2 = [16, 6, 10, 5, 6, 1, 4];
+
+const calcAverageHumanAge = function (ages) {
+  const calcAverageHumanAgee = ages.map(function (age) {
+    if (age <= 2) return age * 2;
+    else return age * 4 + 16;
+  });
+
+  const deletHumanAge = calcAverageHumanAgee.filter(function (age) {
+    return age >= 18;
+  });
+
+  const average =
+    deletHumanAge.reduce(function (acc, age) {
+      return acc + age;
+    }, 0) / deletHumanAge.length;
+
+  return average;
+};
+
+console.log(calcAverageHumanAge(ages1));
+console.log(calcAverageHumanAge(ages2));
