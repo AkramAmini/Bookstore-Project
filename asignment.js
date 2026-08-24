@@ -2054,14 +2054,61 @@ console.log(typeof isIsland); */
 
 // console.log(sarahAccount);
 
-const accounts = [
-  { owner: 'Jonas', balance: 1000 },
-  { owner: 'Sarah', balance: 500 },
-  { owner: 'Mike', balance: 2000 },
-  { owner: 'Emma', balance: 750 },
-];
+// const accounts = [
+//   { owner: 'Jonas', balance: 1000 },
+//   { owner: 'Sarah', balance: 500 },
+//   { owner: 'Mike', balance: 2000 },
+//   { owner: 'Emma', balance: 750 },
+// ];
 
-const firstAcount = accounts.find(acc => acc.balance === 500);
-console.log(firstAcount);
+// const firstAcount = accounts.find(acc => acc.balance === 500);
+// console.log(firstAcount);
 
+// const accounts = [
+//   {
+//     owner: 'Jonas Schmedtmann',
+//     username: 'js',
+//     pin: 1111
+//   },
+//   {
+//     owner: 'Jessica Davis',
+//     username: 'jd',
+//     pin: 2222
+//   }
+// ];
 
+// const account = accounts.find(acc => acc.username === username);
+
+// const accounts = [
+//   { owner: 'Jonas', username: 'js', pin: 1111 },
+//   { owner: 'Sarah', username: 'sd', pin: 2222 },
+//   { owner: 'Mike', username: 'md', pin: 3333 },
+// ];
+
+// const username = 'sd';
+
+// const account = accounts.find(acc => acc.username === 'sd');
+
+// const pin = 2222;
+
+// if (account) {
+//   if (account.pin === pin) {
+//     console.log('Login successful!');
+//   } else {
+//     console.log('Wrong PIN');
+//   }
+// } else {
+//   console.log(`Wrong username`);
+// }
+
+// const account = {
+//   owner: 'Sarah Smith',
+//   username: 'ss',
+//   pin: 2222,
+// };
+
+// const pin = 2222;
+
+// if (account.pin === pin) {
+//   console.log(`Welcome back, ${account.owner}`);
+// }
