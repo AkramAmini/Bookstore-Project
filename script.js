@@ -175,7 +175,7 @@ btnTransfer.addEventListener('click', function (e) {
 
   if (
     amount > 0 &&
-    receiverAcc &&
+    receiverAcc && // یوزرنیم درست وجود داشته باشد
     currentAccount.balance >= amount &&
     receiverAcc?.username !== currentAccount.username
   ) {
@@ -824,4 +824,25 @@ console.log(dogsSorted);
 
 // console.log(firstAcount);
 
+// const numbers = [10, 20, 30, 40, 50];
 
+// const index = numbers.findIndex(num => num > 30);
+
+// const accounts = [
+//   { owner: 'Jonas', username: 'js', balance: 1000 },
+//   { owner: 'Sarah', username: 'ss', balance: 500 },
+//   { owner: 'Mike', username: 'mk', balance: 2000 },
+// ];
+
+// const index = accounts.findIndex(acc => acc.username === 'ss');
+
+// console.log(index);
+
+// const index = accounts.findIndex(acc => acc.balance>1000);
+
+// const index = accounts.findIndex(acc => acc.username === 'ss');
+// accounts.splice(index, 1);
+const movements = [200, -400, 300, -100, 500, -50];
+
+const index = movements.findIndex(mov => mov === -100);
+console.log(index);
