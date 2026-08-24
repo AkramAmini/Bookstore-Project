@@ -2112,3 +2112,37 @@ console.log(typeof isIsland); */
 // if (account.pin === pin) {
 //   console.log(`Welcome back, ${account.owner}`);
 // }
+
+// const amount = 500;
+// const receiver = 'Sarah';
+
+// const receiverAcc = accounts.find(
+//   acc => acc.username === receiver
+// );
+
+// const accounts = [
+//   { owner: 'Jonas', username: 'js', balance: 1000 },
+//   { owner: 'Sarah', username: 'ss', balance: 500 },
+//   { owner: 'Mike', username: 'mk', balance: 2000 },
+// ];
+
+// const amount = 300;
+// currentAccount.balance = 1000;
+// const receiverAcc = accounts.find(acc => acc.username === 'ss');
+
+// if ( receiverAcc && amount > 0 && currentAccount.balance >= amount) {
+//   console.log('Transfer possible');
+// }
+
+// currentAccount.balance -= amount;
+// receiverAcc.balance += amount;
+
+// const currentAccount = {
+//   movements: [200, -400, 300]
+// };
+
+// currentAccount.balance -= amount;
+// receiverAcc.balance += amount;
+
+// currentAccount.movements.push(-amount);
+// receiverAcc.movements.push(amount);

@@ -154,7 +154,7 @@ btnLogin.addEventListener('click', function (e) {
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
     }`;
-    containerApp.style.opacity = 100;
+    containerApp.style.opacity = 100; // نمایش صفحه کاربری که قبل لاگ این مخفی بوده است
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
