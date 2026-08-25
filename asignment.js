@@ -2226,5 +2226,26 @@ console.log(typeof isIsland); */
 
 // const sortedMovements = [...movements].sort((a, b) => b-a);
 
-const names = ['Jonas', 'Sarah', 'Mike', 'Adam'];
-names.sort();
+// const names = ['Jonas', 'Sarah', 'Mike', 'Adam'];
+// names.sort();
+
+// const numbers = new Array(5);
+// numbers.fill(10);
+
+// const numbers = new Array(5);
+
+// numbers.fill(7, 1, 3);
+
+// const zeros = Array.from({ length: 5 }, () => 0);
+
+// const numbers = Array.from({ length: 5 }, (_, i) => i*2);
+// const numbers = Array.from({ length: 5 }, (_, i) => i + 5 * 2);
+
+
+// const numbers = Array.from({ length: 5 }, (_, i) => i+1 * 10);
+
+// const numbers = Array.from({ length: 5 }, (_, i) => (i+1) * 100);
+
+// const numbers = Array.from({ length: 5 }, (_, i) => (i+1) * 3);
+
+const numbers = Array.from({ length: 5 }, (_, i) => (i+1) * 2);
