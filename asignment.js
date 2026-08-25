@@ -2199,3 +2199,32 @@ console.log(typeof isIsland); */
 // const result = movements.flatMap(mov => [mov, Math.abs(mov)]);
 
 // console.log(result);
+
+// const names = ['Jonas', 'Sarah', 'Mike'];
+
+// names.sort();
+
+// console.log(names);
+
+// const numbers = [40, 10, 30, 20, 50];
+
+// numbers.sort((a, b) => a - b);
+
+// const numbers = [40, 10, 30, 20, 50];
+// numbers.sort((a, b) => b - a);
+
+// const numbers = [40, 10, 30];
+
+// numbers.sort((a, b) => a - b);
+
+// console.log(numbers);
+
+// const movements = [200, -400, 300, -100, 500];
+// movements.sort((a, b) => a - b);
+
+// const sortedMovements = [...movements].sort((a, b) => a - b);
+
+// const sortedMovements = [...movements].sort((a, b) => b-a);
+
+const names = ['Jonas', 'Sarah', 'Mike', 'Adam'];
+names.sort();
