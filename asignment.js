@@ -2172,3 +2172,30 @@ console.log(typeof isIsland); */
 // const result = movements.some(mov => mov > 1000);
 // console.log(result);
 
+// const arr = [1, 2, [3, 4], 5];
+
+// const open = arr.flat();
+// console.log(open);
+
+// const arr = [1, 2, 3];
+
+// const result = arr.flatMap(num => [num, num * 2]);
+
+// console.log(result);
+
+// const numbers = [1, 2, [3, 4], 5];
+
+// const newNumbers = numbers.flat();
+// console.log(newNumbers);
+
+// const numbers = [1, 2, 3, 4];
+
+// const result = numbers.flatMap(num => [num, num * 2]);
+
+// console.log(result);
+
+// const movements = [200, -400, 300];
+
+// const result = movements.flatMap(mov => [mov, Math.abs(mov)]);
+
+// console.log(result);
