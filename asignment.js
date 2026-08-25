@@ -2146,3 +2146,29 @@ console.log(typeof isIsland); */
 
 // currentAccount.movements.push(-amount);
 // receiverAcc.movements.push(amount);
+
+// const movements = [200, -400, 300, -100, 500];
+
+// const bigamount = movements.some(mov => mov>400);
+// console.log(bigamount);
+
+// const movements = [200, -400, 300, -100, 500];
+
+// const result = movements.some(mov => mov < 0);
+// console.log(result);
+
+// const movements = [200, -400, 300, -100, 500];
+
+// const positive = movements.every(mov => mov > 0);
+// console.log(positive);
+
+// const movements = [200, -400, 300, -100, 500];
+
+// const numbers = movements.every(mov => typeof mov === 'number');
+// console.log(numbers);
+
+// const movements = [200, -400, 300, -100, 500];
+ 
+// const result = movements.some(mov => mov > 1000);
+// console.log(result);
+

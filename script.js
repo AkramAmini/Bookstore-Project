@@ -842,7 +842,7 @@ console.log(dogsSorted);
 
 // const index = accounts.findIndex(acc => acc.username === 'ss');
 // accounts.splice(index, 1);
-const movements = [200, -400, 300, -100, 500, -50];
+// const movements = [200, -400, 300, -100, 500, -50];
 
-const index = movements.findIndex(mov => mov === -100);
-console.log(index);
+// const index = movements.findIndex(mov => mov === -100);
+// console.log(index);
