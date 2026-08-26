@@ -2168,7 +2168,7 @@ console.log(typeof isIsland); */
 // console.log(numbers);
 
 // const movements = [200, -400, 300, -100, 500];
- 
+
 // const result = movements.some(mov => mov > 1000);
 // console.log(result);
 
@@ -2240,7 +2240,6 @@ console.log(typeof isIsland); */
 
 // const numbers = Array.from({ length: 5 }, (_, i) => i*2);
 // const numbers = Array.from({ length: 5 }, (_, i) => i + 5 * 2);
-
 
 // const numbers = Array.from({ length: 5 }, (_, i) => i+1 * 10);
 
@@ -2321,9 +2320,63 @@ console.log(typeof isIsland); */
 // 1.10). Basically, the current portion should be between 90% and 110% of the
 // recommended portion.
 // Test data:
-const dogs = [
-{ weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
-{ weight: 8, curFood: 200, owners: ['Matilda'] },
-{ weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
-{ weight: 32, curFood: 340, owners: ['Michael'] },
-];
+// const dogs = [
+//   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+//   { weight: 8, curFood: 200, owners: ['Matilda'] },
+//   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+//   { weight: 32, curFood: 340, owners: ['Michael'] },
+// ];
+
+// recommendedFood = weight ** 0.75 * 28;
+
+// dogs.forEach(dog => {
+//   dog.recommendedFood = dog.weight ** 0.75 * 28;
+// });
+
+// const dogSarah = dogs.find(dog => dog.owners.some(owner => owner === 'Sarah'));
+// if (dogSarah.curFood > dogSarah.recommendedFood * 1.1)
+//   console.log('eating too much');
+// else if (dogSarah.curFood < dogSarah.recommendedFood * 0.9)
+//   console.log('eating too little');
+
+// dogs.forEach(dog => {
+// if (dog.curFood > dog.recommendedFood * 1.1) {
+//     ownersEatTooMuch.push(...dog.owners);
+//   }
+
+
+// else if (dog.curFood < dog.recommendedFood * 0.9)
+//   ownersEatTooLittle.push(...dog.owners);
+// });
+
+// const ownersEatTooMuch = [];
+// const ownersEatTooLittle = [];
+
+// dogs.forEach(dog => {
+//   if (dog.curFood > dog.recommendedFood * 1.1) {
+//     ownersEatTooMuch.push(...dog.owners);
+//   } else if (dog.curFood < dog.recommendedFood * 0.9) {
+//     ownersEatTooLittle.push(...dog.owners);
+//   }
+// });
+
+
+// console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!'`);
+// console.log(`${ownersEatTooLittle.join('and')}'s dogs eat too little!'`);
+
+// const exactly = dogs.some(dog => dog.recommendedFood === dog.curFood);
+// console.log(exactly);
+
+// const dogsOkay = dogs.filter(
+//   dog =>
+//     dog.curFood > dog.recommendedFood * 0.9 &&
+//     dog.curFood < dog.recommendedFood * 1.1
+// );
+
+// console.log(dogsOkay);
+
+// const dogsSorted = [...dogs].sort((a, b) => a.recommendedFood-b.recommendedFood);
+// console.log(dogsSorted);
+
+
+
