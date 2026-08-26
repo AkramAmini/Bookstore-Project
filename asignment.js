@@ -2248,4 +2248,14 @@ console.log(typeof isIsland); */
 
 // const numbers = Array.from({ length: 5 }, (_, i) => (i+1) * 3);
 
-const numbers = Array.from({ length: 5 }, (_, i) => (i+1) * 2);
+// const numbers = Array.from({ length: 5 }, (_, i) => (i+1) * 2);
+map()       → تبدیل عناصر
+filter()    → انتخاب عناصر
+reduce()    → تبدیل آرایه به یک نتیجه
+find()      → پیدا کردن یک عنصر
+findIndex() → پیدا کردن index یک عنصر
+some()      → حداقل یک عنصر؟
+every()     → همه عناصر؟
+flat()      → باز کردن آرایه تو‌در‌تو
+flatMap()   → map + flat(1)
+sort()      → مرتب کردن
