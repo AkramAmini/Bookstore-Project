@@ -299,9 +299,27 @@ btnSort.addEventListener('click', function (e) {
 //   }
 // }
 
-labelBalance.addEventListener('click', function () {
-  [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
-    if (i % 2 === 0) row.style.backgroundColor = `orangered`;
-    if (i % 3 === 0) row.style.backgroundColor = `blue`;
-  });
-});
+/////////////////////////////
+
+// labelBalance.addEventListener('click', function () {
+//   [...document.querySelectorAll('.movements__row')].forEach(function (row, i) {
+//     if (i % 2 === 0) row.style.backgroundColor = `orangered`;
+//     if (i % 3 === 0) row.style.backgroundColor = `blue`;
+//   });
+// });
+/////////////////////////////////////
+
+// const diameter = 287460000000;
+// console.log(287_460_000_000 === 287460000000);
+// // true
+
+// const a = 1000000000;
+// const b = 1_000_000_000;
+
+// console.log(1000_000_000);
+// console.log(250_000_000);
+// console.log(1_234_567.89);
+
+// console.log(9_876_543_210.55);
+
+
