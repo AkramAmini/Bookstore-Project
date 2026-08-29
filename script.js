@@ -322,4 +322,30 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(9_876_543_210.55);
 
+// 1. ساخت BigInt
+const bigNum = 12345678901234567890n;
 
+// 2. بررسی نوع
+console.log(typeof bigNum);
+// "bigint"
+
+// 3. عملیات ریاضی
+console.log(100n + 50n); // 150n
+console.log(100n - 50n); // 50n
+console.log(20n * 5n);   // 100n
+console.log(20n / 6n);   // 3n
+
+// 4. Number و BigInt را مستقیم ترکیب نکن
+console.log(100n + 50); // ❌ Error
+
+// 5. تبدیل Number به BigInt
+console.log(BigInt(50)); // 50n
+
+// 6. تبدیل BigInt به Number
+console.log(Number(50n)); // 50
+
+// 7. Numeric Separator همراه BigInt
+const huge = 9_007_199_254_740_991n;
+
+// 8. BigInt تقسیم اعشاری ندارد
+console.log(25n / 4n); // 6n
