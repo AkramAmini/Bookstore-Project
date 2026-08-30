@@ -322,30 +322,84 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(9_876_543_210.55);
 
-// 1. ساخت BigInt
-const bigNum = 12345678901234567890n;
+// // 1. ساخت BigInt
+// const bigNum = 12345678901234567890n;
 
-// 2. بررسی نوع
-console.log(typeof bigNum);
-// "bigint"
+// // 2. بررسی نوع
+// console.log(typeof bigNum);
+// // "bigint"
 
-// 3. عملیات ریاضی
-console.log(100n + 50n); // 150n
-console.log(100n - 50n); // 50n
-console.log(20n * 5n);   // 100n
-console.log(20n / 6n);   // 3n
+// // 3. عملیات ریاضی
+// console.log(100n + 50n); // 150n
+// console.log(100n - 50n); // 50n
+// console.log(20n * 5n);   // 100n
+// console.log(20n / 6n);   // 3n
 
-// 4. Number و BigInt را مستقیم ترکیب نکن
-console.log(100n + 50); // ❌ Error
+// // 4. Number و BigInt را مستقیم ترکیب نکن
+// console.log(100n + 50); // ❌ Error
 
-// 5. تبدیل Number به BigInt
-console.log(BigInt(50)); // 50n
+// // 5. تبدیل Number به BigInt
+// console.log(BigInt(50)); // 50n
 
-// 6. تبدیل BigInt به Number
-console.log(Number(50n)); // 50
+// // 6. تبدیل BigInt به Number
+// console.log(Number(50n)); // 50
 
-// 7. Numeric Separator همراه BigInt
-const huge = 9_007_199_254_740_991n;
+// // 7. Numeric Separator همراه BigInt
+// const huge = 9_007_199_254_740_991n;
 
-// 8. BigInt تقسیم اعشاری ندارد
-console.log(25n / 4n); // 6n
+// // 8. BigInt تقسیم اعشاری ندارد
+// console.log(25n / 4n); // 6n
+
+// const now = new Date();
+
+// console.log(now);
+
+// const date = new Date('Aug 30, 2026');
+
+// console.log(date);
+
+// const date = new Date('December 24, 2026');
+
+// const date = new Date(2026, 7, 30);
+
+// const date = new Date(2026, 7, 30, 11, 30, 45);
+// // Year, Month, Day, Hour, Minute, Second
+
+// console.log(date);
+
+// new Date(2026, 7, 30, 11, 30)
+
+// console.log(new Date(0));
+// const date = new Date(2025, 0, 1);
+
+// console.log(date);
+
+// const date = new Date(2024, 11, 25, 14, 30);
+
+// console.log(date);
+
+// const date = new Date(2024, 1, 29);
+
+// console.log(date);
+
+// const date = new Date(2024, 0, 1, 12, 30, 45);
+
+// console.log(date);
+
+// تاریخ و زمان فعلی
+new Date();
+
+// ساخت تاریخ با String
+new Date('December 24, 2026');
+
+// ساخت با اجزای تاریخ
+new Date(2026, 7, 30);
+
+// Year, Month, Day, Hour, Minute, Second
+new Date(2026, 7, 30, 11, 30, 45);
+
+// Timestamp
+new Date(0); // Jan 1, 1970
+
+// میلی‌ثانیه
+new Date(3_600_000); // 1 hour after Jan 1, 1970
