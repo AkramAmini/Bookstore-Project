@@ -387,19 +387,25 @@ btnSort.addEventListener('click', function (e) {
 // console.log(date);
 
 // تاریخ و زمان فعلی
-new Date();
+// new Date();
 
-// ساخت تاریخ با String
-new Date('December 24, 2026');
+// // ساخت تاریخ با String
+// new Date('December 24, 2026');
 
-// ساخت با اجزای تاریخ
-new Date(2026, 7, 30);
+// // ساخت با اجزای تاریخ
+// new Date(2026, 7, 30);
 
-// Year, Month, Day, Hour, Minute, Second
-new Date(2026, 7, 30, 11, 30, 45);
+// // Year, Month, Day, Hour, Minute, Second
+// new Date(2026, 7, 30, 11, 30, 45);
 
-// Timestamp
-new Date(0); // Jan 1, 1970
+// // Timestamp
+// new Date(0); // Jan 1, 1970
 
-// میلی‌ثانیه
-new Date(3_600_000); // 1 hour after Jan 1, 1970
+// // میلی‌ثانیه
+// new Date(3_600_000); // 1 hour after Jan 1, 1970
+
+Date → تاریخ
+Timestamp → میلی‌ثانیه
+date2 - date1 → اختلاف دو تاریخ
+1000 × 60 × 60 × 24 → میلی‌ثانیه یک روز
+Math.round() → گرد کردن تعداد روزها
