@@ -81,7 +81,7 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
-const formatMovementDate = function (date) {
+const formatMovementDate = function (date, locale) {
   const calcDaysPassed = (date1, date2) =>
     Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
 
@@ -91,10 +91,11 @@ const formatMovementDate = function (date) {
   if (daysPassed === 0) return 'Today';
   if (daysPassed === 1) return 'Yesterday';
   if (daysPassed <= 7) return `${daysPassed} days ago`;
-  const day = `${date.getDate()}`.padStart(2, 0);
-  const month = `${date.getMonth() + 1}`.padStart(2, 0);
-  const year = date.getFullYear();
-  return `${day}/${month}/${year}`;
+  // const day = `${date.getDate()}`.padStart(2, 0);
+  // const month = `${date.getMonth() + 1}`.padStart(2, 0);
+  // const year = date.getFullYear();
+  // return `${day}/${month}/${year}`;
+  return new Intl.DateTimeFormat(locale).format(date);
 };
 
 const displayMovements = function (acc, sort = false) {
@@ -108,7 +109,7 @@ const displayMovements = function (acc, sort = false) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
 
     const date = new Date(acc.movementsDates[i]);
-    const displayDate = formatMovementDate(date);
+    const displayDate = formatMovementDate(date, acc.locale);
 
     const html = `
       <div class="movements__row">
@@ -182,8 +183,6 @@ currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
 
-// day/month/year
-
 btnLogin.addEventListener('click', function (e) {
   // Prevent form from submitting
   e.preventDefault();
@@ -201,13 +200,30 @@ btnLogin.addEventListener('click', function (e) {
     containerApp.style.opacity = 100;
 
     // Create current date and time
+
     const now = new Date();
-    const day = `${now.getDate()}`.padStart(2, 0);
-    const month = `${now.getMonth() + 1}`.padStart(2, 0);
-    const year = now.getFullYear();
-    const hour = `${now.getHours()}`.padStart(2, 0);
-    const min = `${now.getMinutes()}`.padStart(2, 0);
-    labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
+    const options = {
+      hour: 'numeric',
+      minute: 'numeric',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      // weekday: 'long',
+    };
+
+    // const locale = navigator.language;
+    // console.log(locale);
+
+    labelDate.textContent = new Intl.DateTimeFormat(
+      currentAccount.locale,
+      options,
+    ).format(now);
+    // const day = `${now.getDate()}`.padStart(2, 0);
+    // const month = `${now.getMonth() + 1}`.padStart(2, 0);
+    // const year = now.getFullYear();
+    // const hour = `${now.getHours()}`.padStart(2, 0);
+    // const min = `${now.getMinutes()}`.padStart(2, 0);
+    // labelDate.textContent = `${day}/${month}/${year}, ${hour}:${min}`;
 
     // Clear input fields
     inputLoginUsername.value = inputLoginPin.value = '';
@@ -607,7 +623,6 @@ btnSort.addEventListener('click', function (e) {
 
 // new Intl.DateTimeFormat('en-GB').format(date);
 
-
 // const date = new Date(2026, 7, 31);
 
 // const formatter = new Intl.DateTimeFormat('en-US');
@@ -691,8 +706,6 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(formatter.format(new Date(2026, 7, 5)));
 
-
-
 // const options = {
 //   day: 'numeric',
 //   month: 'numeric',
@@ -738,3 +751,141 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(formatter.format(date));
 
+// const num = 1234567.89;
+
+// const formatter = new Intl.NumberFormat('en-US');
+
+// console.log(formatter.format(num));
+
+// new Intl.NumberFormat(acc.locale).format(mov)
+// acc.locale = 'en-US';
+
+// const options = {
+//   style: 'currency',
+//   currency: 'USD',
+// };
+
+// const formatter = new Intl.NumberFormat('en-US', options);
+
+// console.log(formatter.format(123456.89));
+
+
+// const num = 1234567.89;
+
+// const formatter = new Intl.NumberFormat('en-US');
+
+// console.log(formatter.format(num));
+
+// const num = 1234567.89;
+
+// const formatter = new Intl.NumberFormat('de-DE');
+
+// console.log(formatter.format(num));
+
+
+
+// const num = 1234.5;
+
+// const options = {
+//   style: 'currency',
+//   currency: 'USD',
+// };
+
+// const formatter = new Intl.NumberFormat('en-US', options);
+
+// console.log(formatter.format(num));
+
+
+// const num = 1234.5;
+
+// const options = {
+//   style: 'currency',
+//   currency: 'EUR',
+// };
+
+// const formatter = new Intl.NumberFormat('de-DE', options);
+
+// console.log(formatter.format(num));
+
+
+// const num = 0.75;
+
+// const options = {
+//   style: 'percent',
+// };
+
+// const formatter = new Intl.NumberFormat('en-US', options);
+
+// console.log(formatter.format(num));
+
+// const num = 0.125;
+
+// const options = {
+//   style: 'percent',
+// };
+
+// const formatter = new Intl.NumberFormat('en-US', options);
+
+// console.log(formatter.format(num));
+
+// const options = {
+//   style: 'percent',
+//   ???: 1,
+// };
+
+// const options = {
+//   style: 'percent',
+//   maximumFractionDigits: 1,
+// };
+
+// const num = 1234.5678;
+
+// const options = {
+//   maximumFractionDigits: 2,
+// };
+
+// const formatter = new Intl.NumberFormat('en-US', options);
+
+// console.log(formatter.format(num));
+
+// const num = 1234;
+
+// const options = {
+//   minimumFractionDigits: 2,
+// };
+
+// const formatter = new Intl.NumberFormat('en-US', options);
+
+// console.log(formatter.format(num));
+
+// const options = {
+//   style: 'currency',
+//   currency: 'EUR',
+// };
+
+// const formatter = new Intl.NumberFormat('de-DE', options);
+
+// console.log(formatter.format(1999.9));
+
+
+
+// const options = {
+//   style: 'percent',
+//   maximumFractionDigits: 1,
+// };
+
+// const formatter = new Intl.NumberFormat('en-US', options);
+
+// console.log(formatter.format(0.456));
+
+
+// const num = 1234567.89;
+
+// const options = {
+//   style: 'currency',
+//   currency: 'USD',
+// };
+
+// const formatter = new Intl.NumberFormat('en-US', options);
+
+// console.log(formatter.format(num));
