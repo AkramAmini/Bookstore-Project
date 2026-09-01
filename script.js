@@ -25,8 +25,8 @@ const account1 = {
     '2020-07-11T23:36:17.929Z',
     '2020-07-12T10:51:36.790Z',
   ],
-  currency: 'EUR',
-  locale: 'pt-PT', // de-DE
+  currency: 'USD',
+  locale: 'en-US', // de-DE
 };
 
 const account2 = {
@@ -98,6 +98,13 @@ const formatMovementDate = function (date, locale) {
   return new Intl.DateTimeFormat(locale).format(date);
 };
 
+const formatCur = function (value, locale, currency) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(value);
+};
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -111,13 +118,15 @@ const displayMovements = function (acc, sort = false) {
     const date = new Date(acc.movementsDates[i]);
     const displayDate = formatMovementDate(date, acc.locale);
 
+    const formattedMov = formatCur(mov, acc.locale, acc.currency);
+
     const html = `
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${
           i + 1
         } ${type}</div>
             <div class="movements__date">${displayDate}</div>
-        <div class="movements__value">${mov.toFixed(2)}€</div>
+        <div class="movements__value">${formattedMov}€</div>
       </div>
     `;
 
@@ -127,29 +136,29 @@ const displayMovements = function (acc, sort = false) {
 
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance.toFixed(2)}€`;
+  labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency);
 };
 
 const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency);
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
+  labelSumOut.textContent = formatCur(Math.abs(out), acc.locale, acc.currency);
 
-  const interest = acc.movements
-    .filter(mov => mov > 0)
-    .map(deposit => (deposit * acc.interestRate) / 100)
-    .filter((int, i, arr) => {
-      // console.log(arr);
-      return int >= 1;
-    })
-    .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+const interest = acc.movements
+  .filter(mov => mov > 0)
+  .map(deposit => (deposit * acc.interestRate) / 100)
+  .filter((int, i, arr) => {
+    // console.log(arr);
+    return int >= 1;
+  })
+  .reduce((acc, int) => acc + int, 0);
+labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency);
 };
 
 const createUsernames = function (accs) {
@@ -769,7 +778,6 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(formatter.format(123456.89));
 
-
 // const num = 1234567.89;
 
 // const formatter = new Intl.NumberFormat('en-US');
@@ -782,8 +790,6 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(formatter.format(num));
 
-
-
 // const num = 1234.5;
 
 // const options = {
@@ -795,7 +801,6 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(formatter.format(num));
 
-
 // const num = 1234.5;
 
 // const options = {
@@ -806,7 +811,6 @@ btnSort.addEventListener('click', function (e) {
 // const formatter = new Intl.NumberFormat('de-DE', options);
 
 // console.log(formatter.format(num));
-
 
 // const num = 0.75;
 
@@ -867,8 +871,6 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(formatter.format(1999.9));
 
-
-
 // const options = {
 //   style: 'percent',
 //   maximumFractionDigits: 1,
@@ -877,7 +879,6 @@ btnSort.addEventListener('click', function (e) {
 // const formatter = new Intl.NumberFormat('en-US', options);
 
 // console.log(formatter.format(0.456));
-
 
 // const num = 1234567.89;
 
@@ -889,3 +890,131 @@ btnSort.addEventListener('click', function (e) {
 // const formatter = new Intl.NumberFormat('en-US', options);
 
 // console.log(formatter.format(num));
+
+
+// setTimeout(function () {
+//   console.log('Hello');
+// }, 3000);
+
+// const timer = setTimeout(function () {
+//   console.log('Hello');
+// }, 3000);
+
+// clearTimeout(timer);
+
+
+
+
+// setInterval(function () {
+//   console.log('Hello');
+// }, 3000);
+
+// const interval = setInterval(function () {
+//   console.log('Hello');
+// }, 3000);
+
+// clearInterval(interval);
+
+
+// console.log('A');
+
+// setTimeout(function () {
+//   console.log('B');
+// }, 2000);
+
+// console.log('C');
+
+// const greet = function (name) {
+//   console.log(`Hello ${name}`);
+// };
+
+// setTimeout(greet, 2000, 'Hadis');
+
+
+// console.log('A');
+
+// setTimeout(function () {
+//   console.log('B');
+// }, 2000);
+
+// console.log('C');
+
+// console.log('Start');
+
+// setTimeout(() => {
+//   console.log('Hello');
+// }, 3000);
+
+// console.log('End');
+
+// setInterval(() => {
+//   console.log('Hello');
+// }, 2000);
+
+// const timer = setTimeout(() => {
+//   console.log('Hello');
+// }, 5000);
+
+// clearTimeout(timer);
+
+// const greet = function (name) {
+//   console.log(`Hello ${name}`);
+// };
+
+// setTimeout(greet, 2000, 'Hadis');
+
+// const timer = setTimeout(() => {
+//   console.log('Hello');
+// }, 3000);
+
+// console.log(timer);
+
+// const timer = setTimeout(() => {
+//   console.log('Hello');
+// }, 3000);
+
+// setTimeout(() => {
+//   clearTimeout(timer);
+// }, 1000);
+
+// console.log('1');
+
+// setTimeout(() => {
+//   console.log('2');
+// }, 0);
+
+// console.log('3');
+
+// let count = 0;
+
+// const timer = setInterval(() => {
+//   count++;
+//   console.log(count);
+
+//   if (count === 3) {
+//     clearInterval(timer);
+//   }
+// }, 1000);
+
+// setTimeout(() => {
+//   console.log('Hello');
+// }, 0);
+
+// console.log('World');
+
+// let count = 0;
+
+// const timer = setInterval(() => {
+//   count++;
+
+//   if (count === 5) {
+//     clearInterval(timer);
+//   }
+
+//   console.log(count);
+// }, 1000);
+
+
+
+
+
