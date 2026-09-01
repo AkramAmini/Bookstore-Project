@@ -150,15 +150,15 @@ const calcDisplaySummary = function (acc) {
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = formatCur(Math.abs(out), acc.locale, acc.currency);
 
-const interest = acc.movements
-  .filter(mov => mov > 0)
-  .map(deposit => (deposit * acc.interestRate) / 100)
-  .filter((int, i, arr) => {
-    // console.log(arr);
-    return int >= 1;
-  })
-  .reduce((acc, int) => acc + int, 0);
-labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency);
+  const interest = acc.movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * acc.interestRate) / 100)
+    .filter((int, i, arr) => {
+      // console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency);
 };
 
 const createUsernames = function (accs) {
@@ -276,14 +276,15 @@ btnLoan.addEventListener('click', function (e) {
   const amount = Math.floor(inputLoanAmount.value);
 
   if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
+    setTimeout(function () {
+      currentAccount.movements.push(amount);
 
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
+      // Add loan date
+      currentAccount.movementsDates.push(new Date().toISOString());
 
-    // Update UI
-    updateUI(currentAccount);
+      // Update UI
+      updateUI(currentAccount);
+    }, 2500);
   }
   inputLoanAmount.value = '';
 });
@@ -891,7 +892,6 @@ btnSort.addEventListener('click', function (e) {
 
 // console.log(formatter.format(num));
 
-
 // setTimeout(function () {
 //   console.log('Hello');
 // }, 3000);
@@ -902,9 +902,6 @@ btnSort.addEventListener('click', function (e) {
 
 // clearTimeout(timer);
 
-
-
-
 // setInterval(function () {
 //   console.log('Hello');
 // }, 3000);
@@ -914,7 +911,6 @@ btnSort.addEventListener('click', function (e) {
 // }, 3000);
 
 // clearInterval(interval);
-
 
 // console.log('A');
 
@@ -929,7 +925,6 @@ btnSort.addEventListener('click', function (e) {
 // };
 
 // setTimeout(greet, 2000, 'Hadis');
-
 
 // console.log('A');
 
@@ -1011,10 +1006,53 @@ btnSort.addEventListener('click', function (e) {
 //     clearInterval(timer);
 //   }
 
-//   console.log(count);
-// }, 1000);
+// //   console.log(count);
+// // }, 1000);
+
+// const startLogOutTimer = function () {
+//   const future = new Date(Date.now() + 300000);
+
+//   const tick = function () {
+//     const diff = future - new Date();
+
+//     const min = Math.trunc(diff / 1000 / 60);
+//     const sec = Math.trunc(diff / 1000) % 60;
+
+//     console.log(`${min}:${sec}`);
+
+//     if (diff <= 0) {
+//       clearInterval(timer);
+//     }
+//   };
+
+//   tick();
+
+//   const timer = setInterval(tick, 1000);
+// };
+
+// tick();
+// setInterval(tick, 1000);
 
 
+// const seconds = 125;
+// const min = Math.trunc(seconds / 60);
 
+// const sec = 5;
 
+// console.log(`${sec}`.padStart(2, '0'));
 
+// const seconds = 125;
+
+// const min = Math.trunc(seconds / 60);
+// const sec = seconds % 60;
+
+// console.log(`${min}:${`${sec}`.padStart(2, '0')}`);
+
+// const seconds = 367;
+
+// const min = Math.trunc(seconds / 60);
+// const sec = seconds % 60;
+
+// console.log(`${min}:${`${sec}`.padStart(2, '0')}`);
+
+// const future = new Date(Date.now() + 300000);
