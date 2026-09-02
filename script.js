@@ -1,5 +1,7 @@
 'use strict';
 
+const { createElement } = require('react');
+
 ///////////////////////////////////////
 // Modal window
 
@@ -33,38 +35,84 @@ document.addEventListener('keydown', function (e) {
   }
 });
 
-///////////////////////
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+// ///////////////////////
+// console.log(document.documentElement);
+// console.log(document.head);
+// console.log(document.body);
 
-const header = document.querySelector('.header');
-const allSection = document.querySelectorAll('.section');
-console.log(allSection);
+// const header = document.querySelector('.header');
+// const allSection = document.querySelectorAll('.section');
+// console.log(allSection);
 
-document.getElementById('section--1');
-const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
+// document.getElementById('section--1');
+// const allButtons = document.getElementsByTagName('button');
+// console.log(allButtons);
 
-console.log(document.getElementsByClassName('btn'));
+// console.log(document.getElementsByClassName('btn'));
 
-// Creating and inserting elements
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-// message.textContent = 'We use cookied for improved functionality and analytics.';
-message.innerHTML =
-  'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it</button>';
+// // Creating and inserting elements
+// const message = document.createElement('div');
+// message.classList.add('cookie-message');
+// // message.textContent = 'We use cookied for improved functionality and analytics.';
+// message.innerHTML =
+//   'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it</button>';
 
+// // header.prepend(message);
+// header.append(message);
+// // header.append(message.cloneNode(true));
+
+// // header.before(message);
+// // header.after(message);
+
+// //delet elements
+// document
+//   .querySelector('.btn--close-cookie')
+//   .addEventListener('click', function () {
+//     message.remove();
+//   });
+
+// const body = document.querySelector('body');
+// console.log(body);
+
+// const header = document.querySelector('.header');
+// console.log(header);
+
+// const sections = document.querySelectorAll('.section');
+// console.log(sections);
+
+// const buttons = document.getElementsByTagName('button');
+// console.log(buttons);
+
+// const section1 = document.getElementById('section--1');
+// console.log(section1);
+
+// const message = document.createElement('div');
+// console.log(message);
+// message.classList.add('test-message');
+// message.textContent = 'Hello Hadis!';
+// header.append(message);
 // header.prepend(message);
-header.append(message);
-// header.append(message.cloneNode(true));
 
-// header.before(message);
-// header.after(message);
+// const paragraph = document.createElement('p');
+// console.log(paragraph);
+// header.before(paragraph);
 
-//delet elements
+// const messages = document.createElement('div');
+// console.log(messages);
+// header.after(messages);
+// messages.remove();
+
+const messages = document.createElement('div');
+
+messages.classList.add('cookie-message');
+
+messages.innerHTML =
+  'We use cookies! <button class="btn--close-cookie">Got it</button>';
+
+header.append(messages);
+
 document
   .querySelector('.btn--close-cookie')
   .addEventListener('click', function () {
-    message.remove();
+    messages.remove();
   });
