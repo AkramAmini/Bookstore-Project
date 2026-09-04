@@ -169,4 +169,57 @@ logo.classList.add('c'); // not includes
 logo.classList.add('c');
 
 // Don't use
-logo.className = 'jonas'
+logo.className = 'jonas';
+
+const message = document.querySelector('.message');
+
+message.style.color = 'red';
+
+document.querySelector('.message').style.color = 'red';
+
+document.querySelector('.message').style.color = 'red';
+
+document.querySelector('.message').style.backgroundColor = 'yellow';
+
+document.querySelector('.message').style.height = '100px';
+document.querySelector('.message').style.width = '200px';
+document.querySelector('.message').style.fontSize = '20px';
+
+console.log(document.querySelector('.message').style.backgroundColor);
+
+const photo = document.querySelector('.photo');
+photo.setAttribute('src', 'new.jpg');
+
+const photo = document.querySelector('.photo');
+photo.setAttribute('src', 'new.jpg');
+
+const photo = document.querySelector('.photo');
+console.log(photo.getAttribute('src'));
+
+const link = document.querySelector('.link');
+link.href = 'https://google.com';
+
+const box = document.querySelector('.box');
+box.classList.add('hidden');
+
+const boxHidden = document.querySelector('.box');
+boxHidden.classList.remove('hidden');
+
+const boxHidden = document.querySelector('.box');
+console.log(boxHidden.classList.contains('hidden'));
+
+const boxHidden = document.querySelector('.box');
+boxHidden.classList.toggle('hidden');
+
+
+
+
+const photo = document.querySelector('.photo');
+photo.setAttribute('src', 'new.jpg');
+photo.style.width = '300px';
+photo.classList.add('rounded');
+console.log(photo.classList.contains('rounded'));
+
+
+
+
