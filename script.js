@@ -1,6 +1,6 @@
 'use strict';
 
-const { createElement } = require('react');
+// const { createElement } = require('react');
 
 ///////////////////////////////////////
 // Modal window
@@ -64,13 +64,6 @@ document.addEventListener('keydown', function (e) {
 // // header.before(message);
 // // header.after(message);
 
-// //delet elements
-// document
-//   .querySelector('.btn--close-cookie')
-//   .addEventListener('click', function () {
-//     message.remove();
-//   });
-
 // const body = document.querySelector('body');
 // console.log(body);
 
@@ -102,17 +95,78 @@ document.addEventListener('keydown', function (e) {
 // header.after(messages);
 // messages.remove();
 
-const messages = document.createElement('div');
+// const messages = document.createElement('div');
 
-messages.classList.add('cookie-message');
+// messages.classList.add('cookie-message');
 
-messages.innerHTML =
-  'We use cookies! <button class="btn--close-cookie">Got it</button>';
+// messages.innerHTML =
+//   'We use cookies! <button class="btn--close-cookie">Got it</button>';
 
-header.append(messages);
+// header.append(messages);
 
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    messages.remove();
-  });
+// document
+//   .querySelector('.btn--close-cookie')
+//   .addEventListener('click', function () {
+//     messages.remove();
+//   });
+
+const header = document.querySelector('.header');
+
+const message = document.createElement('div');
+
+message.classList.add('cookie-message');
+
+message.textContent = 'Hello Hadis!';
+
+header.append(message);
+
+// const message = document.querySelector('.message');
+
+// Style
+message.style.backgroundColor = '#37383d';
+message.style.color = 'white';
+message.style.width = '120%';
+
+console.log(message.style.color);
+console.log(message.style.backgroundColor);
+
+console.log(getComputedStyle(message).color);
+console.log(getComputedStyle(message).height);
+
+message.style.height =
+  Number.parseFloat(getComputedStyle(message).height) + 30 + 'px';
+
+document.documentElement.style.setProperty('--color-primary', 'orangered');
+
+// Attributes
+const logo = document.querySelector('.nav__logo');
+console.log(logo.alt);
+console.log(logo.src);
+console.log(logo.className);
+console.log(logo.designer);
+
+logo.alt = 'Beautiful minimalist logo';
+
+// Non-standard
+console.log(logo.designer);
+console.log(logo.getAttribute('designer'));
+logo.setAttribute('company', 'Bankist');
+
+console.log(logo.src);
+console.log(logo.getAttribute('src'));
+
+const link = document.querySelector('.nav__ link--btn');
+console.log(link.href);
+console.log(link.getAttribute('href'));
+
+//Data attribute
+console.log(logo.dataset.versionNumber);
+
+//Classes
+logo.classList.add('c', 'j');
+logo.classList.remove('c', 'j');
+logo.classList.add('c'); // not includes
+logo.classList.add('c');
+
+// Don't use
+logo.className = 'jonas'
