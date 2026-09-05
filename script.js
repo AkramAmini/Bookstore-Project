@@ -175,50 +175,147 @@ const message = document.querySelector('.message');
 
 message.style.color = 'red';
 
-document.querySelector('.message').style.color = 'red';
+// document.querySelector('.message').style.color = 'red';
 
-document.querySelector('.message').style.color = 'red';
+// document.querySelector('.message').style.color = 'red';
 
-document.querySelector('.message').style.backgroundColor = 'yellow';
+// document.querySelector('.message').style.backgroundColor = 'yellow';
 
-document.querySelector('.message').style.height = '100px';
-document.querySelector('.message').style.width = '200px';
-document.querySelector('.message').style.fontSize = '20px';
+// document.querySelector('.message').style.height = '100px';
+// document.querySelector('.message').style.width = '200px';
+// document.querySelector('.message').style.fontSize = '20px';
 
-console.log(document.querySelector('.message').style.backgroundColor);
+// console.log(document.querySelector('.message').style.backgroundColor);
 
-const photo = document.querySelector('.photo');
-photo.setAttribute('src', 'new.jpg');
+// const photo = document.querySelector('.photo');
+// photo.setAttribute('src', 'new.jpg');
 
-const photo = document.querySelector('.photo');
-photo.setAttribute('src', 'new.jpg');
+// const photo = document.querySelector('.photo');
+// photo.setAttribute('src', 'new.jpg');
 
-const photo = document.querySelector('.photo');
-console.log(photo.getAttribute('src'));
+// const photo = document.querySelector('.photo');
+// console.log(photo.getAttribute('src'));
 
-const link = document.querySelector('.link');
-link.href = 'https://google.com';
+// const link = document.querySelector('.link');
+// link.href = 'https://google.com';
 
-const box = document.querySelector('.box');
-box.classList.add('hidden');
+// const box = document.querySelector('.box');
+// box.classList.add('hidden');
 
-const boxHidden = document.querySelector('.box');
-boxHidden.classList.remove('hidden');
+// const boxHidden = document.querySelector('.box');
+// boxHidden.classList.remove('hidden');
 
-const boxHidden = document.querySelector('.box');
-console.log(boxHidden.classList.contains('hidden'));
+// const boxHidden = document.querySelector('.box');
+// console.log(boxHidden.classList.contains('hidden'));
 
-const boxHidden = document.querySelector('.box');
-boxHidden.classList.toggle('hidden');
+// const boxHidden = document.querySelector('.box');
+// boxHidden.classList.toggle('hidden');
+
+// const photo = document.querySelector('.photo');
+// photo.setAttribute('src', 'new.jpg');
+// photo.style.width = '300px';
+// photo.classList.add('rounded');
+// console.log(photo.classList.contains('rounded'));
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function () {
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+const btn = document.querySelector('.btn');
+const section1 = document.querySelector('#section--1');
+
+btn.addEventListener('click', function () {
+  section1.scrollIntoView();
+});
+
+const btn = document.querySelector('.btn');
+const section1 = document.querySelector('#section--1');
+
+btn.addEventListener('click', function () {
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+const btnAbout = document.querySelector('.btn-about');
+const about = document.querySelector('#about');
+
+btnAbout.addEventListener('click', function () {
+  about.scrollIntoView({ behavior: 'smooth' });
+});
+
+const btnAbout = document.querySelector('.btn-about');
+const about = document.querySelector('#about');
+
+btnAbout.addEventListener('click', function (e) {
+  e.preventDefault();
+  about.scrollIntoView({ behavior: 'smooth' });
+});
+
+const btns = document.querySelectorAll('.btn-1, .btn-2');
+const section1 = document.querySelector('#section--1');
+
+btns.forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    section1.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+const btn1 = document.querySelector('.btn-home');
+const section1 = document.querySelector('#home');
+const btn2 = document.querySelector('.btn-about');
+const section2 = document.querySelector('#about');
+
+btn1.addEventListener('click', function () {
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+btn2.addEventListener('click', function () {
+  section2.scrollIntoView({ behavior: 'smooth' });
+});
+
+const btn1 = document.querySelector('.btn-contact');
+const section1 = document.querySelector('#contact');
+
+btn1.addEventListener('click', function () {
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
+
+const section = document.querySelector('#section--1');
+console.log(section.getBoundingClientRect());
+
+const section = document.querySelector('#section--1');
+console.log(section.getBoundingClientRect().top);
+
+section.getBoundingClientRect().top;
+window.scrollY;
+
+const section = document.querySelector('#section--1');
+
+console.log(section.getBoundingClientRect().top + window.scrollY);
 
 
 
 
-const photo = document.querySelector('.photo');
-photo.setAttribute('src', 'new.jpg');
-photo.style.width = '300px';
-photo.classList.add('rounded');
-console.log(photo.classList.contains('rounded'));
+const section = document.querySelector('#section--1');
+
+window.scrollTo({
+  top: section.getBoundingClientRect().top + window.scrollY,
+  behavior: 'smooth'
+});
+
+
+const btn1 = document.querySelector('.btn-go');
+const section = document.querySelector('#section--1');
+
+btn1.addEventListener('click', function () {
+  window.scrollTo({
+  top: section.getBoundingClientRect().top + window.scrollY,
+  behavior: 'smooth'
+});
+});
+
 
 
 
