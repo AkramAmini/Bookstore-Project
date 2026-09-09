@@ -449,6 +449,56 @@ document.querySelector('.nav').addEventListener('click', function (e) {
   console.log('NAV', e.target, e.currentTarget);
 });
 
+// document.querySelector('.btn').addEventListener('click', function (e) {
+//   console.log('BUTTON', e.target);
+//   console.log('CURRENT', e.currentTarget);
+// });
+
+// document.querySelector('.btn').addEventListener('click', function (e) {
+//   console.log('BUTTON');
+// });
+
+// document.querySelector('.parent').addEventListener('click', function (e) {
+//   console.log('PARENT');
+// });
+
+// document.querySelector('.btn').addEventListener('click', function (e) {
+//   console.log('BUTTON');
+//   e.stopPropagation();
+// });
+
+// document.querySelector('.parent').addEventListener('click', function (e) {
+//   console.log('PARENT');
+// });
+
+// document.querySelector('.parent').addEventListener('click', function (e) {
+//   console.log('TARGET:', e.target);
+//   console.log('CURRENT TARGET:', e.currentTarget);
+// });
+
+// document.querySelector('.btn').addEventListener('click', function (e) {
+//   console.log('BUTTON', e.target, e.currentTarget);
+// });
+
+// document.querySelector('.parent').addEventListener('click', function (e) {
+//   console.log('PARENT', e.target, e.currentTarget);
+// });
+
+// document.querySelector('.btn').addEventListener('click', function (e) {
+//   console.log('BUTTON');
+//   e.stopPropagation();
+// });
+
+// document.querySelector('.parent').addEventListener('click', function (e) {
+//   console.log('PARENT');
+// });
+
+// document.querySelector('.parent').addEventListener('click', function (e) {
+//   console.log(e.currentTarget === this);
+// });
+
 document.querySelector('.btn').addEventListener('click', function (e) {
-  console.log('HANDLER', e.target, e.currentTarget);
+console.log('TARGET:', e.target);
+console.log('CURRENT:', e.currentTarget);
+console.log('SAME:', e.target === e.currentTarget);
 });
