@@ -325,3 +325,101 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 // h1.onmouseenter = function (e) {
 //   alert('addEventListener: Great! You are reading the heading');
 // };
+
+// const h1 = document.querySelector('h1');
+
+// const alertH1 = function (e) {
+//   alert('addEventListener: Mouse entered the heading!');
+// };
+
+// h1.addEventListener('mouseenter', alertH1);
+
+// const btn = document.querySelector('.btn');
+
+// const alertBtn1 = function (e) {
+//   alert('addEventListener: Button clicked!')
+// };
+
+// btn.addEventListener('click', alertBtn1);
+
+// const btn = document.querySelector('.btn');
+
+// const alertBtn = function (e) {
+//   alert('addEventListener: Mouse entered the button!');
+// };
+
+// btn.addEventListener('mouseenter', alertBtn);
+
+// const h2 = document.querySelector('h2');
+
+// const alertH2 = function (e) {
+//   alert('addEventListener: You entered the title!');
+// };
+
+// h2.addEventListener('mouseenter', alertH2);
+
+// const btn = document.querySelector('.btn');
+
+// const handleClick = function (e) {
+//   alert('addEventListener: Clicked!');
+// };
+
+// btn.addEventListener('click', handleClick);
+
+// setTimeout(() => btn.removeEventListener('click', handleClick), 3000);
+
+// const h1 = document.querySelector('h1');
+
+// const showMessage = function (e) {
+//   alert('addEventListener: Welcome!');
+// };
+
+// h1.addEventListener('mouseenter', showMessage);
+
+// setTimeout(() => h1.removeEventListener('mouseenter', showMessage), 5000);
+
+// const btn = document.querySelector('.btn');
+
+// const handleClick = function (e) {
+//   alert('addEventListener: Clicked!');
+// };
+
+// btn.addEventListener('click', handleClick);
+
+// setTimeout(() => btn.removeEventListener('click', handleClick), 2000);
+
+// const h2 = document.querySelector('h2');
+
+// const showTitle = function (e) {
+//   alert('addEventListener: Title entered!');
+// };
+
+// h2.addEventListener('mouseenter', showTitle);
+
+// setTimeout(() => h2.removeEventListener('mouseenter', showTitle), 4000);
+
+// const btn = document.querySelector('.btn');
+
+// const handleClick = function (e) {
+//   alert('addEventListener: Button clicked!');
+// };
+
+// const handleMouseEnter = function (e) {
+//   alert('addEventListener: Mouse entered!');
+// };
+
+// btn.addEventListener('click', handleClick);
+// btn.addEventListener('mouseenter', handleMouseEnter);
+
+// const btn = document.querySelector('.btn');
+
+// const handleClick = function (e) {
+//   alert('addEventListener: Clicked!');
+// };
+
+// const handleMouseEnter = function (e) {
+//   alert('addEventListener: Mouse entered!');
+// };
+
+// btn.addEventListener('click', handleClick);
+// btn.addEventListener('mouseenter', handleMouseEnter);
