@@ -1,5 +1,7 @@
 'use strict';
 
+const { startTransition } = require('react');
+
 // const { createElement } = require('react');
 
 ///////////////////////////////////////
@@ -503,16 +505,76 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 // console.log('SAME:', e.target === e.currentTarget);
 // });
 
-link1.addEventListener(...)
-link2.addEventListener(...)
-link3.addEventListener(...)
+// link1.addEventListener(...)
+// link2.addEventListener(...)
+// link3.addEventListener(...)
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   console.log(e.target);
+// });
+
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', ...);
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', ...);
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   console.log('Handler', e.target);
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   console.log(e.target.textContent);
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   console.log(e.currentTarget);
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+// console.log(e.target);
+// console.log(e.currentTarget);
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+// console.log('Clicked:', e.target.textContent);
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   console.log('Parent clicked');
+// });
+
+// document.querySelector('.nav__link').addEventListener('click', function (e) {
+//   console.log('Link clicked');
+//   e.stopPropagation();
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   console.log(e.target.textContent);
+// });
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   const href = e.target.getAttribute('href');
+
+//   if (href === '#section--1') {
+//     console.log(e.target.textContent);
+//   }
+// });
+
+
+
+// document.querySelector('.nav__links').addEventListener('click', function (e) {
+//   const href = e.target.getAttribute('href');
+
+//   const section = document.querySelector(href);
+
+//   console.log(section);
+// });
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
-  console.log(e.target);
-});
+  const href = e.target.getAttribute('href');
 
-document.querySelectorAll('.nav__link').forEach(function (el) {
-  el.addEventListener('click', ...);
-});
+  const section = document.querySelector(href);
 
-document.querySelector('.nav__links').addEventListener('click', ...);
+  section.scrollIntoView({ behavior: 'smooth' });
+});
