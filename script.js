@@ -152,28 +152,28 @@ console.log(logo.designer);
 console.log(logo.getAttribute('designer'));
 logo.setAttribute('company', 'Bankist');
 
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
+// console.log(logo.src);
+// console.log(logo.getAttribute('src'));
 
-const link = document.querySelector('.nav__ link--btn');
-console.log(link.href);
-console.log(link.getAttribute('href'));
+// const link = document.querySelector('.nav__ link--btn');
+// console.log(link.href);
+// console.log(link.getAttribute('href'));
 
-//Data attribute
-console.log(logo.dataset.versionNumber);
+// //Data attribute
+// console.log(logo.dataset.versionNumber);
 
-//Classes
-logo.classList.add('c', 'j');
-logo.classList.remove('c', 'j');
-logo.classList.add('c'); // not includes
-logo.classList.add('c');
+// //Classes
+// logo.classList.add('c', 'j');
+// logo.classList.remove('c', 'j');
+// logo.classList.add('c'); // not includes
+// logo.classList.add('c');
 
-// Don't use
-logo.className = 'jonas';
+// // Don't use
+// logo.className = 'jonas';
 
-const message = document.querySelector('.message');
+// const message = document.querySelector('.message');
 
-message.style.color = 'red';
+// message.style.color = 'red';
 
 // document.querySelector('.message').style.color = 'red';
 
@@ -312,15 +312,15 @@ message.style.color = 'red';
 //   });
 // });
 
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
 
-const alertH1 = function (e) {
-  alert('addEventListener: Great! You are reading the heading');
-};
+// const alertH1 = function (e) {
+//   alert('addEventListener: Great! You are reading the heading');
+// };
 
-h1.addEventListener('mouseenter', alertH1);
+// h1.addEventListener('mouseenter', alertH1);
 
-setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+// setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
 // h1.onmouseenter = function (e) {
 //   alert('addEventListener: Great! You are reading the heading');
@@ -423,3 +423,32 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
 // btn.addEventListener('click', handleClick);
 // btn.addEventListener('mouseenter', handleMouseEnter);
+
+//rgb(255,255,255)
+const randomInt = (min, max) =>
+  Math.floor(Math.random() * (max - min + 1) + min);
+const randomColor = () =>
+  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+document.querySelector('.nav__link').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('LINK', e.target, e.currentTarget);
+  console.log(e.currentTarget === this);
+
+  // Stop propagation
+  // e.stopPropagation();
+});
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('CONTAINER', e.target, e.currentTarget);
+});
+
+document.querySelector('.nav').addEventListener('click', function (e) {
+  this.style.backgroundColor = randomColor();
+  console.log('NAV', e.target, e.currentTarget);
+});
+
+document.querySelector('.btn').addEventListener('click', function (e) {
+  console.log('HANDLER', e.target, e.currentTarget);
+});
