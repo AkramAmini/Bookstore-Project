@@ -217,106 +217,111 @@ message.style.color = 'red';
 // photo.classList.add('rounded');
 // console.log(photo.classList.contains('rounded'));
 
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
+// const btnScrollTo = document.querySelector('.btn--scroll-to');
+// const section1 = document.querySelector('#section--1');
 
-btnScrollTo.addEventListener('click', function () {
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
+// btnScrollTo.addEventListener('click', function () {
+//   section1.scrollIntoView({ behavior: 'smooth' });
+// });
 
-const btn = document.querySelector('.btn');
-const section1 = document.querySelector('#section--1');
+// const btn = document.querySelector('.btn');
+// const section1 = document.querySelector('#section--1');
 
-btn.addEventListener('click', function () {
-  section1.scrollIntoView();
-});
+// btn.addEventListener('click', function () {
+//   section1.scrollIntoView();
+// });
 
-const btn = document.querySelector('.btn');
-const section1 = document.querySelector('#section--1');
+// const btn = document.querySelector('.btn');
+// const section1 = document.querySelector('#section--1');
 
-btn.addEventListener('click', function () {
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
+// btn.addEventListener('click', function () {
+//   section1.scrollIntoView({ behavior: 'smooth' });
+// });
 
-const btnAbout = document.querySelector('.btn-about');
-const about = document.querySelector('#about');
+// const btnAbout = document.querySelector('.btn-about');
+// const about = document.querySelector('#about');
 
-btnAbout.addEventListener('click', function () {
-  about.scrollIntoView({ behavior: 'smooth' });
-});
+// btnAbout.addEventListener('click', function () {
+//   about.scrollIntoView({ behavior: 'smooth' });
+// });
 
-const btnAbout = document.querySelector('.btn-about');
-const about = document.querySelector('#about');
+// const btnAbout = document.querySelector('.btn-about');
+// const about = document.querySelector('#about');
 
-btnAbout.addEventListener('click', function (e) {
-  e.preventDefault();
-  about.scrollIntoView({ behavior: 'smooth' });
-});
+// btnAbout.addEventListener('click', function (e) {
+//   e.preventDefault();
+//   about.scrollIntoView({ behavior: 'smooth' });
+// });
 
-const btns = document.querySelectorAll('.btn-1, .btn-2');
-const section1 = document.querySelector('#section--1');
+// const btns = document.querySelectorAll('.btn-1, .btn-2');
+// const section1 = document.querySelector('#section--1');
 
-btns.forEach(function (btn) {
-  btn.addEventListener('click', function () {
-    section1.scrollIntoView({ behavior: 'smooth' });
-  });
-});
+// btns.forEach(function (btn) {
+//   btn.addEventListener('click', function () {
+//     section1.scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
 
-const btn1 = document.querySelector('.btn-home');
-const section1 = document.querySelector('#home');
-const btn2 = document.querySelector('.btn-about');
-const section2 = document.querySelector('#about');
+// const btn1 = document.querySelector('.btn-home');
+// const section1 = document.querySelector('#home');
+// const btn2 = document.querySelector('.btn-about');
+// const section2 = document.querySelector('#about');
 
-btn1.addEventListener('click', function () {
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
+// btn1.addEventListener('click', function () {
+//   section1.scrollIntoView({ behavior: 'smooth' });
+// });
 
-btn2.addEventListener('click', function () {
-  section2.scrollIntoView({ behavior: 'smooth' });
-});
+// btn2.addEventListener('click', function () {
+//   section2.scrollIntoView({ behavior: 'smooth' });
+// });
 
-const btn1 = document.querySelector('.btn-contact');
-const section1 = document.querySelector('#contact');
+// const btn1 = document.querySelector('.btn-contact');
+// const section1 = document.querySelector('#contact');
 
-btn1.addEventListener('click', function () {
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
+// btn1.addEventListener('click', function () {
+//   section1.scrollIntoView({ behavior: 'smooth' });
+// });
 
-const section = document.querySelector('#section--1');
-console.log(section.getBoundingClientRect());
+// const section = document.querySelector('#section--1');
+// console.log(section.getBoundingClientRect());
 
-const section = document.querySelector('#section--1');
-console.log(section.getBoundingClientRect().top);
+// const section = document.querySelector('#section--1');
+// console.log(section.getBoundingClientRect().top);
 
-section.getBoundingClientRect().top;
-window.scrollY;
+// section.getBoundingClientRect().top;
+// window.scrollY;
 
-const section = document.querySelector('#section--1');
+// const section = document.querySelector('#section--1');
 
-console.log(section.getBoundingClientRect().top + window.scrollY);
+// console.log(section.getBoundingClientRect().top + window.scrollY);
 
+// const section = document.querySelector('#section--1');
 
+// window.scrollTo({
+//   top: section.getBoundingClientRect().top + window.scrollY,
+//   behavior: 'smooth',
+// });
 
+// const btn1 = document.querySelector('.btn-go');
+// const section = document.querySelector('#section--1');
 
-const section = document.querySelector('#section--1');
+// btn1.addEventListener('click', function () {
+//   window.scrollTo({
+//     top: section.getBoundingClientRect().top + window.scrollY,
+//     behavior: 'smooth',
+//   });
+// });
 
-window.scrollTo({
-  top: section.getBoundingClientRect().top + window.scrollY,
-  behavior: 'smooth'
-});
+const h1 = document.querySelector('h1');
 
+const alertH1 = function (e) {
+  alert('addEventListener: Great! You are reading the heading');
+};
 
-const btn1 = document.querySelector('.btn-go');
-const section = document.querySelector('#section--1');
+h1.addEventListener('mouseenter', alertH1);
 
-btn1.addEventListener('click', function () {
-  window.scrollTo({
-  top: section.getBoundingClientRect().top + window.scrollY,
-  behavior: 'smooth'
-});
-});
+setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
-
-
-
-
+// h1.onmouseenter = function (e) {
+//   alert('addEventListener: Great! You are reading the heading');
+// };
