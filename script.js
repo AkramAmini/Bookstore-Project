@@ -497,8 +497,22 @@ document.querySelector('.nav').addEventListener('click', function (e) {
 //   console.log(e.currentTarget === this);
 // });
 
-document.querySelector('.btn').addEventListener('click', function (e) {
-console.log('TARGET:', e.target);
-console.log('CURRENT:', e.currentTarget);
-console.log('SAME:', e.target === e.currentTarget);
+// document.querySelector('.btn').addEventListener('click', function (e) {
+// console.log('TARGET:', e.target);
+// console.log('CURRENT:', e.currentTarget);
+// console.log('SAME:', e.target === e.currentTarget);
+// });
+
+link1.addEventListener(...)
+link2.addEventListener(...)
+link3.addEventListener(...)
+
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  console.log(e.target);
 });
+
+document.querySelectorAll('.nav__link').forEach(function (el) {
+  el.addEventListener('click', ...);
+});
+
+document.querySelector('.nav__links').addEventListener('click', ...);
