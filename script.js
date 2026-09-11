@@ -508,35 +508,36 @@ window.addEventListener('beforeunload', function (e) {
 });
 */
 
-///////////////////////////////////////
-// DOM Traversing
-const h1 = document.querySelector('h1');
+// const h2 = document.querySelector('h2');
 
-// Going downwards: child
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'orangered';
+// console.log(h2.firstElementChild);
 
-// Going upwards: parents
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// const h2 = document.querySelector('h2');
+// console.log(h2.parentElement);
 
-h1.closest('.header').style.background = 'var(--gradient-secondary)';
+// const h2 = document.querySelector('h2');
 
-h1.closest('h1').style.background = 'var(--gradient-primary)';
+// console.log(h2.closest('.box'));
 
-// Going sideways: siblings
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// const h2 = document.querySelector('h2');
+// console.log(h2.parentElement.firstElementChild);
 
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
+// const h2 = document.querySelector('h2');
+// console.log(h2.nextElementSibling);
 
-console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.transform = 'scale(0.5)';
-});
+// const box = document.querySelector('.box');
+// console.log(box.childNodes);
 
-///////////////////////////////////////
+// const box = document.querySelector('.box');
+// console.log(box.firstElementChild);
+
+// const box = document.querySelector('.box');
+// console.log(box.lastElementChild);
+
+// const h2 = document.querySelector('h2');
+// console.log(h2.parentElement.children);
+
+// const h2 = document.querySelector('h2');
+// [...h2.parentElement.children].forEach(function (el) {
+//   console.log(el.textContent);
+// });
