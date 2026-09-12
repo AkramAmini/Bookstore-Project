@@ -541,3 +541,126 @@ window.addEventListener('beforeunload', function (e) {
 // [...h2.parentElement.children].forEach(function (el) {
 //   console.log(el.textContent);
 // });
+
+// const tabs = document.querySelectorAll('.tab');
+// console.log(tabs);
+
+// const tabs = document.querySelectorAll('.tab');
+
+// tabs.forEach(function (tab) {
+//   tab.addEventListener('click', function () {
+//     console.log('Tab clicked');
+//   });
+// });
+
+// const tabs = document.querySelectorAll('.tab');
+
+// tabs.forEach(function (tab) {
+//   tab.addEventListener('click', function (e) {
+//     console.log(e.target.textContent);
+//   });
+// });
+
+// const tabs = document.querySelectorAll('.tab');
+
+// tabs.forEach(function (tab) {
+//   tab.addEventListener('click', function (e) {
+//     e.target.classList.add('active');
+//   });
+// });
+
+// const tabs = document.querySelectorAll('.tab');
+
+// tabs.forEach(function (tab) {
+//   tab.addEventListener('click', function (e) {
+//     tabs.forEach(function (tab) {
+//       tab.classList.remove('active');
+//     });
+
+//     e.target.classList.add('active');
+//   });
+// });
+
+// const tabs = document.querySelectorAll('.tab');
+
+// tabs.forEach(function (tab) {
+//   tab.addEventListener('click', function (e) {
+//     console.log(e.target.dataset.tab);
+//   });
+// });
+
+// const tabs = document.querySelectorAll('.tab');
+
+// tabs.forEach(function (tab) {
+//   tab.addEventListener('click', function (e) {
+//     console.log(e.target.dataset.tab);
+//     console.log(e.target.textContent);
+
+//   });
+// });
+
+// const tab = e.target.dataset.tab;
+
+// const content = document.querySelector(`.content--${tab}`);
+
+// console.log(content);
+
+// const contents = document.querySelectorAll('.content');
+
+// contents.forEach(function (content) {
+//   content.classList.remove('active');
+// });
+
+// const contents = document.querySelectorAll('.content');
+
+// contents.forEach(function (content) {
+//   content.classList.remove('active');
+// });
+
+// const tab = e.target.dataset.tab;
+// const content = document.querySelector(`.content--${tab}`);
+
+// content.classList.add('active');
+const tabs = document.querySelectorAll('.tab');
+const contents = document.querySelectorAll('.content');
+
+tabs.forEach(function (tab) {
+  tab.addEventListener('click', function (e) {
+    
+    // Remove active from all tabs
+    tabs.forEach(function (tab) {
+      tab.classList.remove('active');
+    });
+
+    // Remove active from all contents
+    contents.forEach(function (content) {
+      content.classList.remove('active');
+    });
+
+    // Activate clicked tab
+    e.target.classList.add('active');
+
+    // Find and activate corresponding content
+    const tabNumber = e.target.dataset.tab;
+    const content = document.querySelector(`.content--${tabNumber}`);
+
+    content.classList.add('active');
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
