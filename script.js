@@ -101,7 +101,7 @@ tabsContainer.addEventListener('click', function (e) {
   // Guard clause
   if (!clicked) return;
 
-  // Remove active classes
+  // Remove active classes // بالا رفتن تب فعال و پایین امدن تب های غیرفعال
   tabs.forEach(t => t.classList.remove('operations__tab--active'));
   tabsContent.forEach(c => c.classList.remove('operations__content--active'));
 
@@ -621,34 +621,56 @@ window.addEventListener('beforeunload', function (e) {
 // const content = document.querySelector(`.content--${tab}`);
 
 // content.classList.add('active');
-const tabs = document.querySelectorAll('.tab');
-const contents = document.querySelectorAll('.content');
+// const tabs = document.querySelectorAll('.tab');
+// const contents = document.querySelectorAll('.content');
 
-tabs.forEach(function (tab) {
-  tab.addEventListener('click', function (e) {
+// tabs.forEach(function (tab) {
+//   tab.addEventListener('click', function (e) {
     
-    // Remove active from all tabs
-    tabs.forEach(function (tab) {
-      tab.classList.remove('active');
-    });
+//     // Remove active from all tabs
+//     tabs.forEach(function (tab) {
+//       tab.classList.remove('active');
+//     });
 
-    // Remove active from all contents
-    contents.forEach(function (content) {
-      content.classList.remove('active');
-    });
+//     // Remove active from all contents
+//     contents.forEach(function (content) {
+//       content.classList.remove('active');
+//     });
 
-    // Activate clicked tab
-    e.target.classList.add('active');
+//     // Activate clicked tab
+//     e.target.classList.add('active');
 
-    // Find and activate corresponding content
-    const tabNumber = e.target.dataset.tab;
-    const content = document.querySelector(`.content--${tabNumber}`);
+//     // Find and activate corresponding content
+//     const tabNumber = e.target.dataset.tab;
+//     const content = document.querySelector(`.content--${tabNumber}`);
 
-    content.classList.add('active');
-  });
+//     content.classList.add('active');
+//   });
+// });
+
+///////////////////////////////////////
+// Tabbed component
+
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+
+  // Guard clause
+  if (!clicked) return;
+
+  // Remove active classes // بالا رفتن تب فعال و پایین امدن تب های غیرفعال
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // Activate tab
+  clicked.classList.add('operations__tab--active');
+
+  // Activate content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
 });
 
-
+///////////////////////////////////////
 
 
 
