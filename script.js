@@ -626,7 +626,7 @@ window.addEventListener('beforeunload', function (e) {
 
 // tabs.forEach(function (tab) {
 //   tab.addEventListener('click', function (e) {
-    
+
 //     // Remove active from all tabs
 //     tabs.forEach(function (tab) {
 //       tab.classList.remove('active');
@@ -648,41 +648,83 @@ window.addEventListener('beforeunload', function (e) {
 //   });
 // });
 
-///////////////////////////////////////
-// Tabbed component
+// function greet(name) {
+//   console.log(`Hello ${name}`);
+// }
 
-tabsContainer.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.operations__tab');
+// greet('Hadis');
 
-  // Guard clause
-  if (!clicked) return;
+// const btn = document.querySelector('.btn');
+// btn.addEventListener('click', function () {
+//   greet('Hadis');
+// });
 
-  // Remove active classes // بالا رفتن تب فعال و پایین امدن تب های غیرفعال
-  tabs.forEach(t => t.classList.remove('operations__tab--active'));
-  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+// const btn = document.querySelector('.btn');
 
-  // Activate tab
-  clicked.classList.add('operations__tab--active');
+// function showMessage(message, name) {
+//   console.log(`${message} ${name}, welcome!`);
+// }
+// btn.addEventListener('click', function () {
+//   showMessage('Hello', 'Hadis');
+// });
 
-  // Activate content area
-  document
-    .querySelector(`.operations__content--${clicked.dataset.tab}`)
-    .classList.add('operations__content--active');
-});
+// function showMessage(message, name) {
+//   console.log(`${message} ${name}, welcome!`);
+// }
+// btn.addEventListener('click',
+//    showMessage.bind(null, 'Hello', 'Hadis')
+// );
 
-///////////////////////////////////////
+// function multiply(a, b) {
+//   console.log(a * b);
+// }
 
+// btn.addEventListener('click', multiply.bind(null, 4, 5));
 
+// function greet(greeting, name) {
+//   console.log(`${greeting}, ${name}!`);
+// }
 
+// btn.addEventListener('click', greet.bind(null, 'Hello', 'Hadis'));
 
+// function greet(greeting, name) {
+//   console.log(`${greeting}, ${name}!`);
+// }
 
+// const greetHadis = greet.bind(null, 'Hello');
 
+// greetHadis('Hadis');
 
+// function introduce(greeting, name, job) {
+//   console.log(`${greeting}, I'm ${name} and I'm a ${job}.`);
+// }
 
+// const introduceHadis = introduce.bind(null, 'Hello', 'Hadis');
 
+// introduceHadis('Frontend Developer');
 
+// function calculate(operation, a, b) {
+//   console.log(a + b);
+// }
 
+// const addNumbers = calculate.bind(null, 'add', 10);
+// addNumbers(5);
 
+// function show(a, b) {
+//   console.log(a, b);
+// }
+// const showValues = show.bind(null);
 
+// showValues(10, 20);
 
+// function greet(name) {
+//   console.log(`Hello ${name}!`);
+// }
 
+// btn.addEventListener('click', greet.bind(null, 'Hadis') )
+
+// function sendMessage(message, name) {
+//   console.log(`${message}, ${name}!`);
+// }
+
+// btn.addEventListener('click', sendMessage.bind(null, 'Welcome'));
