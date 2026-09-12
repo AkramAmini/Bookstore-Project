@@ -728,3 +728,83 @@ window.addEventListener('beforeunload', function (e) {
 // }
 
 // btn.addEventListener('click', sendMessage.bind(null, 'Welcome'));
+
+// window.addEventListener('scroll', function () {
+//   console.log(window.scrollY);
+// });
+
+// const nav = document.querySelector('.nav');
+// window.addEventListener('scroll', function () {
+//   console.log(nav);
+// });
+
+// const nav = document.querySelector('.nav');
+// window.addEventListener('scroll', function () {
+//  nav.getBoundingClientRect();
+// });
+
+// const nav = document.querySelector('.nav');
+
+// window.addEventListener('scroll', function () {
+//   if (nav.getBoundingClientRect().top <= 0) {
+//   nav.classList.add('sticky');
+// }
+// });
+
+// if (nav.getBoundingClientRect().top <= 0) {
+//   nav.classList.add('sticky');
+// } else {
+//   nav.classList.remove('sticky');
+// }
+
+// const initialCoords = nav.getBoundingClientRect();
+
+// if (nav.getBoundingClientRect().top <= initialCoords.top) {
+//   nav.classList.add('sticky');
+// } else {
+//   nav.classList.remove('sticky');
+// }
+
+// const nav = document.querySelector('.nav');
+
+// const initialCoords = nav.getBoundingClientRect();
+
+// window.addEventListener('scroll', function () {
+//   if (nav.getBoundingClientRect().top <= initialCoords.top) {
+//     nav.classList.add('sticky');
+//   } else {
+//     nav.classList.remove('sticky');
+//   }
+// });
+
+// const nav = document.querySelector('.nav');
+
+// const initialCoords = nav.getBoundingClientRect();
+
+// window.addEventListener('scroll', function () {
+//   if (window.scrollY > initialCoords.top) {
+//     nav.classList.add('sticky');
+//   } else {
+//     nav.classList.remove('sticky');
+//   }
+// });
+
+// const nav = document.querySelector('.nav');
+// console.log(nav.getBoundingClientRect().height);
+
+// const navs = document.querySelector('.nav');
+
+// console.log(navs.getBoundingClientRect().height);
+// console.log(navs.getBoundingClientRect().top);
+
+
+// const navs = document.querySelector('.nav');
+
+
+// window.addEventListener('scroll', function () {
+//   if (navs.getBoundingClientRect().top <= 0) {
+//     navs.classList.add('sticky');
+//   } else {
+//     navs.classList.remove('sticky');
+//   }
+// });
