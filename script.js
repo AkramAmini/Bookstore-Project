@@ -1168,31 +1168,56 @@ window.addEventListener('beforeunload', function (e) {
 
 
 ////////////////////////////////////////////////////
-const imgTargets = document.querySelectorAll('img[data-src]');
+// const imgTargets = document.querySelectorAll('img[data-src]');
 
-const loadImg = function (entries) {
-  const [entry] = entries;
-  const img = entry.target;
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   const img = entry.target;
 
-  if (entry.isIntersecting) {
-    console.log('Image is visible');
-    img.src = img.dataset.src;
-    imgObserver.unobserve(img);
-    img.addEventListener('load', function () {
-  img.classList.remove('lazy-img');
-  img.removeAttribute('data-src');
-  console.log('Image loaded successfully');
-});
-  }
-};
+//   if (entry.isIntersecting) {
+//     console.log('Image is visible');
+//     img.src = img.dataset.src;
+//     imgObserver.unobserve(img);
+//     img.addEventListener('load', function () {
+//   img.classList.remove('lazy-img');
+//   img.removeAttribute('data-src');
+//   console.log('Image loaded successfully');
+// });
+//   }
+// };
 
-const imgObserver = new IntersectionObserver(loadImg);
+// const imgObserver = new IntersectionObserver(loadImg);
 
-imgTargets.forEach(img => {
-  imgObserver.observe(img);
-});
+// imgTargets.forEach(img => {
+//   imgObserver.observe(img);
+// });
 ////////////////////////////////////////////////////////////
 
+// Lazy loading images
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const loadImg = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  // Replace src with data-src
+  entry.target.src = entry.target.dataset.src;
+
+  entry.target.addEventListener('load', function () {
+    entry.target.classList.remove('lazy-img');
+  });
+
+  observer.unobserve(entry.target);
+};
+
+const imgObserver = new IntersectionObserver(loadImg, {
+  root: null,
+  threshold: 0,
+  rootMargin: '200px',
+});
+
+imgTargets.forEach(img => imgObserver.observe(img));
 
 
 
