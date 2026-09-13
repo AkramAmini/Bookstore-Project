@@ -1,5 +1,7 @@
 'use strict';
 
+const { useCallback } = require('react');
+
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
@@ -826,8 +828,6 @@ window.addEventListener('beforeunload', function (e) {
 
 // observer.observe(section);
 
-
-
 // const section = document.querySelector('.section');
 
 // const observer = new IntersectionObserver(function (entries) {
@@ -836,7 +836,7 @@ window.addEventListener('beforeunload', function (e) {
 //   console.log('Section is visible');
 // else{
 //   console.log('Section is NOT visible');
-  
+
 // }
 // });
 
@@ -858,7 +858,6 @@ window.addEventListener('beforeunload', function (e) {
 //   }
 // }, options);
 
-
 // const options = {
 //   root: null,
 //   threshold: 0.5,
@@ -875,26 +874,137 @@ window.addEventListener('beforeunload', function (e) {
 //   }
 // }, options);
 
+// const allSections = document.querySelectorAll('.section');
 
-// Sticky navigation: Intersection Observer API
+// const observer = new IntersectionObserver(function (entries) {
+//   console.log(entries);
+// });
 
-const header = document.querySelector('.header');
-const navHeight = nav.getBoundingClientRect().height;
+// allSections.forEach(function (section) {
+//   observer.observe(section);
+// });
 
-const stickyNav = function (entries) {
-  const [entry] = entries;
-  // console.log(entry);
+// const allSections = document.querySelectorAll('.section');
 
-  if (!entry.isIntersecting) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
-};
+// const observer = new IntersectionObserver(function (entries) {
+//   const [entry] = entries;
+//   console.log(entry);
+// });
 
-const headerObserver = new IntersectionObserver(stickyNav, {
-  root: null,
-  threshold: 0,
-  rootMargin: `-${navHeight}px`,
-});
+// allSections.forEach(function (section) {
+//   observer.observe(section);
+// });
 
-headerObserver.observe(header);
+// const allSections = document.querySelectorAll('.section');
 
-///////////////////////////////////////
+// const observer = new IntersectionObserver(function (entries) {
+//   const [entry] = entries;
+
+//   console.log(entry);
+
+//   if (entry.isIntersecting) {
+//     entry.target.classList.add('section--visible');
+//     console.log('Section is visible');
+//   } else {
+
+//     console.log('Section is NOT visible');
+//   }
+// });
+
+// allSections.forEach(function (section) {
+//   observer.observe(section);
+// });
+
+// const allSections = document.querySelectorAll('.section');
+
+// const observer = new IntersectionObserver(function (entries) {
+//   const [entry] = entries;
+
+//   console.log(entry);
+
+//   if (entry.isIntersecting) {
+//     entry.target.classList.add('section--visible');
+//     console.log('Section is visible');
+//   } else {
+//     entry.target.classList.remove('section--visible');
+//     console.log('Section is NOT visible');
+//   }
+// });
+
+// allSections.forEach(function (section) {
+//   observer.observe(section);
+// });
+
+// const allSections = document.querySelectorAll('.section');
+
+// const options = {
+//   threshold: 0.15,
+// };
+
+// const observer = new IntersectionObserver(function (entries) {
+//   const [entry] = entries;
+
+//   console.log(entry);
+
+//   if (entry.isIntersecting) {
+//     entry.target.classList.add('section--visible');
+//     console.log('Section is visible');
+//   } else {
+//     entry.target.classList.remove('section--visible');
+//     console.log('Section is NOT visible');
+//   }
+// }, options);
+
+// allSections.forEach(function (section) {
+//   observer.observe(section);
+// });
+
+
+// const allSections = document.querySelectorAll('.section');
+
+// const options = {
+//   threshold: 0.15,
+//   rootMargin: '0px',
+// };
+
+// const observer = new IntersectionObserver(function (entries) {
+//   const [entry] = entries;
+
+//   console.log(entry);
+
+//   if (entry.isIntersecting) {
+//     entry.target.classList.add('section--visible');
+//     observer.unobserve(entry.target);
+//     console.log('Section is visible');
+//   } else {
+//     entry.target.classList.remove('section--visible');
+//     console.log('Section is NOT visible');
+//   }
+// }, options);
+
+// allSections.forEach(function (section) {
+//   observer.observe(section);
+// });
+
+// const allSections = document.querySelectorAll('.section');
+
+// const options = {
+//   threshold: 0.15,
+//   rootMargin: '0px',
+// };
+
+// const observer = new IntersectionObserver(function (entries) {
+//   const [entry] = entries;
+
+//   console.log(entry);
+
+//   if (entry.isIntersecting) {
+//     entry.target.classList.add('section--visible');
+//     observer.unobserve(entry.target);
+//     console.log('Section is visible');
+//   } 
+// }, options);
+
+// allSections.forEach(function (section) {
+//   observer.observe(section);
+// });
