@@ -959,7 +959,6 @@ window.addEventListener('beforeunload', function (e) {
 //   observer.observe(section);
 // });
 
-
 // const allSections = document.querySelectorAll('.section');
 
 // const options = {
@@ -1002,9 +1001,199 @@ window.addEventListener('beforeunload', function (e) {
 //     entry.target.classList.add('section--visible');
 //     observer.unobserve(entry.target);
 //     console.log('Section is visible');
-//   } 
+//   }
 // }, options);
 
 // allSections.forEach(function (section) {
 //   observer.observe(section);
 // });
+
+// const imgTargets = document.querySelectorAll('img[data-src]');
+
+// const loadImg = function (entries) {
+//   // فعلاً خالی
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// const imgTargets = document.querySelectorAll('img[data-src]');
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// const imgTargets = document.querySelectorAll('img[data-src]');
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   if (entry.isIntersecting) {
+//   console.log('Image is visible');
+// }
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// const imgTargets = document.querySelectorAll('img[data-src]');
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   const img = entry.target;
+//   if (entry.isIntersecting) {
+//   console.log('Image is visible');
+// }
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// const imgTargets = document.querySelectorAll('img[data-src]');
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   const img = entry.target;
+
+//   if (entry.isIntersecting) {
+//     console.log('Image is visible');
+//     img.src = img.dataset.src;
+//   }
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   const img = entry.target;
+
+//   if (entry.isIntersecting) {
+//     console.log('Image is visible');
+//     img.src = img.dataset.src;
+//   }
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// imgTargets.forEach(img => {
+//   imgObserver.observe(img);
+// });
+
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   const img = entry.target;
+
+//   if (entry.isIntersecting) {
+//     console.log('Image is visible');
+//     img.src = img.dataset.src;
+//     img.addEventListener('load', function () {
+//   img.classList.remove('lazy-img');
+// });
+//   }
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// imgTargets.forEach(img => {
+//   imgObserver.observe(img);
+// });
+
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   const img = entry.target;
+
+//   if (entry.isIntersecting) {
+//     console.log('Image is visible');
+//     img.src = img.dataset.src;
+//     imgObserver.unobserve(img);
+//     img.addEventListener('load', function () {
+//   img.classList.remove('lazy-img');
+// });
+//   }
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// imgTargets.forEach(img => {
+//   imgObserver.observe(img);
+// });
+
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   const img = entry.target;
+
+//   if (entry.isIntersecting) {
+//     console.log('Image is visible');
+//     img.src = img.dataset.src;
+//     imgObserver.unobserve(img);
+//     img.addEventListener('load', function () {
+//   img.classList.remove('lazy-img');
+//   img.removeAttribute('data-src');
+// });
+//   }
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// imgTargets.forEach(img => {
+//   imgObserver.observe(img);
+// });
+
+// const loadImg = function (entries) {
+//   const [entry] = entries;
+//   const img = entry.target;
+
+//   if (entry.isIntersecting) {
+//     console.log('Image is visible');
+//     img.src = img.dataset.src;
+//     imgObserver.unobserve(img);
+//     img.addEventListener('load', function () {
+//   img.classList.remove('lazy-img');
+//   img.removeAttribute('data-src');
+//   console.log('Image loaded successfully');
+// });
+//   }
+// };
+
+// const imgObserver = new IntersectionObserver(loadImg);
+
+// imgTargets.forEach(img => {
+//   imgObserver.observe(img);
+// });
+
+
+
+
+
+////////////////////////////////////////////////////
+const imgTargets = document.querySelectorAll('img[data-src]');
+
+const loadImg = function (entries) {
+  const [entry] = entries;
+  const img = entry.target;
+
+  if (entry.isIntersecting) {
+    console.log('Image is visible');
+    img.src = img.dataset.src;
+    imgObserver.unobserve(img);
+    img.addEventListener('load', function () {
+  img.classList.remove('lazy-img');
+  img.removeAttribute('data-src');
+  console.log('Image loaded successfully');
+});
+  }
+};
+
+const imgObserver = new IntersectionObserver(loadImg);
+
+imgTargets.forEach(img => {
+  imgObserver.observe(img);
+});
+////////////////////////////////////////////////////////////
+
+
+
+
+
