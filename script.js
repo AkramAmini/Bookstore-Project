@@ -1,6 +1,6 @@
 'use strict';
 
-const { useCallback } = require('react');
+// const { useCallback } = require('react');
 
 const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
@@ -1061,7 +1061,6 @@ window.addEventListener('beforeunload', function (e) {
 
 // const imgObserver = new IntersectionObserver(loadImg);
 
-
 // const loadImg = function (entries) {
 //   const [entry] = entries;
 //   const img = entry.target;
@@ -1077,7 +1076,6 @@ window.addEventListener('beforeunload', function (e) {
 // imgTargets.forEach(img => {
 //   imgObserver.observe(img);
 // });
-
 
 // const loadImg = function (entries) {
 //   const [entry] = entries;
@@ -1097,7 +1095,6 @@ window.addEventListener('beforeunload', function (e) {
 // imgTargets.forEach(img => {
 //   imgObserver.observe(img);
 // });
-
 
 // const loadImg = function (entries) {
 //   const [entry] = entries;
@@ -1118,7 +1115,6 @@ window.addEventListener('beforeunload', function (e) {
 // imgTargets.forEach(img => {
 //   imgObserver.observe(img);
 // });
-
 
 // const loadImg = function (entries) {
 //   const [entry] = entries;
@@ -1162,10 +1158,6 @@ window.addEventListener('beforeunload', function (e) {
 // imgTargets.forEach(img => {
 //   imgObserver.observe(img);
 // });
-
-
-
-
 
 ////////////////////////////////////////////////////
 // const imgTargets = document.querySelectorAll('img[data-src]');
@@ -1193,32 +1185,45 @@ window.addEventListener('beforeunload', function (e) {
 // });
 ////////////////////////////////////////////////////////////
 
-// Lazy loading images
-const imgTargets = document.querySelectorAll('img[data-src]');
+// const slides = document.querySelectorAll('.slide');
+// const btnRight = document.querySelector('.btn--right');
+// const btnLeft = document.querySelector('.btn--left');
+// let currentSlide = 0;
+// btnRight.addEventListener('click', function () {
+//   currentSlide++;
+//   goToSlide(currentSlide);
+// });
 
-const loadImg = function (entries, observer) {
-  const [entry] = entries;
+// const goToSlide = function (slide) {
+//   slides.forEach(function (s, i) {
+// s.style.transform = `translateX(${100 * (i - slide)}%)`;
+// });
+// };
 
-  if (!entry.isIntersecting) return;
+// goToSlide(0);
 
-  // Replace src with data-src
-  entry.target.src = entry.target.dataset.src;
+// const slides = document.querySelectorAll('.slide');
+// const btnRight = document.querySelector('.btn--right');
+// const btnLeft = document.querySelector('.btn--left');
 
-  entry.target.addEventListener('load', function () {
-    entry.target.classList.remove('lazy-img');
-  });
+// let currentSlide = 0;
 
-  observer.unobserve(entry.target);
-};
+// const goToSlide = function (slide) {
+//   slides.forEach(function (s, i) {
+//     s.style.transform = `translateX(${100 * (i - slide)}%)`;
+//   });
+// };
 
-const imgObserver = new IntersectionObserver(loadImg, {
-  root: null,
-  threshold: 0,
-  rootMargin: '200px',
-});
+// goToSlide(0);
 
-imgTargets.forEach(img => imgObserver.observe(img));
+// btnRight.addEventListener('click', function () {
+//   currentSlide++;
+//   goToSlide(currentSlide);
+// });
 
+// btnLeft.addEventListener('click', function () {
+//   currentSlide--;
+//   goToSlide(currentSlide);
+// });
 
-
-
+// goToSlide(0);
