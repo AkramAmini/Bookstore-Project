@@ -1285,22 +1285,45 @@ window.addEventListener('beforeunload', function (e) {
 //   goToSlide(currentSlide);
 // });
 
-btnRight.addEventListener('click', function () {
-  currentSlide++;
+// btnRight.addEventListener('click', function () {
+//   currentSlide++;
 
-  if (currentSlide === maxSlide) {
-    currentSlide = 0;
-  }
-  goToSlide(currentSlide);
-});
+//   if (currentSlide === maxSlide) {
+//     currentSlide = 0;
+//   }
+//   goToSlide(currentSlide);
+// });
 
 
-btnLeft.addEventListener('click', function () {
-  currentSlide--;
+// btnLeft.addEventListener('click', function () {
+//   currentSlide--;
 
-  if (currentSlide < 0) {
-    currentSlide = maxSlide - 1;
-  }
-  goToSlide(currentSlide);
-});
+//   if (currentSlide < 0) {
+//     currentSlide = maxSlide - 1;
+//   }
+//   goToSlide(currentSlide);
+// });
 
+
+
+
+// Event handlers
+  btnRight.addEventListener('click', nextSlide);
+  btnLeft.addEventListener('click', prevSlide);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') prevSlide();
+    e.key === 'ArrowRight' && nextSlide();
+  });
+
+  dotContainer.addEventListener('click', function (e) {
+    if (e.target.classList.contains('dots__dot')) {
+      const { slide } = e.target.dataset;
+      goToSlide(slide);
+      activateDot(slide);
+    }
+  });
+};
+slider();
+
+///////////////////////////////////////
