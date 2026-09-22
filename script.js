@@ -1375,20 +1375,16 @@ window.addEventListener('beforeunload', function (e) {
 //   console.log('Leaving the page...');
 // });
 
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log('DOM is ready');
+//   });
 
+//   window.addEventListener('load', function () {
+//     console.log('Everything is loaded');
+//   });
 
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log('Goodbye!');
+// });
 
-
-document.addEventListener('DOMContentLoaded', function () {
-  console.log('DOM is ready');
-  });
-  
-
-  window.addEventListener('load', function () {
-    console.log('Everything is loaded');
-  });
-
-window.addEventListener('beforeunload', function (e) {
-  e.preventDefault();
-  console.log('Goodbye!');
-});
