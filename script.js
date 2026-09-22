@@ -1246,8 +1246,6 @@ window.addEventListener('beforeunload', function (e) {
 //   }
 // });
 
-
-
 // btnRight.addEventListener('click', function () {
 //   currentSlide++;
 
@@ -1257,6 +1255,23 @@ window.addEventListener('beforeunload', function (e) {
 //   goToSlide(currentSlide);
 // });
 
+// btnLeft.addEventListener('click', function () {
+//   currentSlide--;
+
+//   if (currentSlide < 0) {
+//     currentSlide = maxSlide - 1;
+//   }
+//   goToSlide(currentSlide);
+// });
+
+// btnRight.addEventListener('click', function () {
+//   currentSlide++;
+
+//   if (currentSlide === maxSlide) {
+//     currentSlide = 0;
+//   }
+//   goToSlide(currentSlide);
+// });
 
 // btnLeft.addEventListener('click', function () {
 //   currentSlide--;
@@ -1285,45 +1300,95 @@ window.addEventListener('beforeunload', function (e) {
 //   goToSlide(currentSlide);
 // });
 
-// btnRight.addEventListener('click', function () {
-//   currentSlide++;
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log('DOM is ready!');
+// });
 
-//   if (currentSlide === maxSlide) {
-//     currentSlide = 0;
-//   }
-//   goToSlide(currentSlide);
+// window.addEventListener('load', function () {
+//   console.log('Page fully loaded!');
+// });
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+// });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log('DOM is ready!');
+// });
+
+// window.addEventListener('load', function () {
+//   console.log('Page fully loaded!');
+// });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log('HTML parsed');
+//   console.log('DOM is ready');
+// });
+
+// window.addEventListener('load', function () {
+//   console.log('Page loaded!');
+//   console.log('Images loaded');
+//   console.log('Everything is ready');
+// });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log('DOM is ready');
+// });
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+// });
+
+// window.addEventListener('load', function (e) {
+//   console.log('Page is loaded!');
+// });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log('DOM is ready');
+
+//   window.addEventListener('load', function () {
+//     console.log('Page is fully loaded');
+//   });
+// });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log('DOM ready');
+
+//   window.addEventListener('load', function () {
+//     console.log('Page loaded');
+//   });
+
+//   window.addEventListener('beforeunload', function (e) {
+//     e.preventDefault();
+//   });
+// });
+
+// document.addEventListener('DOMContentLoaded', function () {
+//   console.log('DOM ready');
+
+//   window.addEventListener('load', function () {
+//     console.log('Page loaded');
+//   });
+
+// window.addEventListener('beforeunload', function (e) {
+//   e.preventDefault();
+//   console.log('Leaving the page...');
 // });
 
 
-// btnLeft.addEventListener('click', function () {
-//   currentSlide--;
-
-//   if (currentSlide < 0) {
-//     currentSlide = maxSlide - 1;
-//   }
-//   goToSlide(currentSlide);
-// });
 
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOM is ready');
+  });
+  
 
-// Event handlers
-  btnRight.addEventListener('click', nextSlide);
-  btnLeft.addEventListener('click', prevSlide);
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') prevSlide();
-    e.key === 'ArrowRight' && nextSlide();
+  window.addEventListener('load', function () {
+    console.log('Everything is loaded');
   });
 
-  dotContainer.addEventListener('click', function (e) {
-    if (e.target.classList.contains('dots__dot')) {
-      const { slide } = e.target.dataset;
-      goToSlide(slide);
-      activateDot(slide);
-    }
-  });
-};
-slider();
-
-///////////////////////////////////////
+window.addEventListener('beforeunload', function (e) {
+  e.preventDefault();
+  console.log('Goodbye!');
+});
