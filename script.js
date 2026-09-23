@@ -1,1390 +1,749 @@
 'use strict';
 
-// const { useCallback } = require('react');
+const btn = document.querySelector('.btn-country');
+const countriesContainer = document.querySelector('.countries');
 
-const modal = document.querySelector('.modal');
-const overlay = document.querySelector('.overlay');
-const btnCloseModal = document.querySelector('.btn--close-modal');
-const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
-const nav = document.querySelector('.nav');
-const tabs = document.querySelectorAll('.operations__tab');
-const tabsContainer = document.querySelector('.operations__tab-container');
-const tabsContent = document.querySelectorAll('.operations__content');
-
-///////////////////////////////////////
-// Modal window
-
-const openModal = function (e) {
-  e.preventDefault();
-  modal.classList.remove('hidden');
-  overlay.classList.remove('hidden');
+const renderCountry = function (data, className = '') {
+  const html = `
+  <article class="country ${className}">
+    <img class="country__img" src="${data.flag}" />
+    <div class="country__data">
+      <h3 class="country__name">${data.name}</h3>
+      <h4 class="country__region">${data.region}</h4>
+      <p class="country__row"><span>👫</span>${(
+        +data.population / 1000000
+      ).toFixed(1)} people</p>
+      <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+      <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+    </div>
+  </article>
+  `;
+  countriesContainer.insertAdjacentHTML('beforeend', html);
+  countriesContainer.style.opacity = 1;
 };
 
-const closeModal = function () {
-  modal.classList.add('hidden');
-  overlay.classList.add('hidden');
+const renderError = function (msg) {
+  countriesContainer.insertAdjacentText('beforeend', msg);
+  countriesContainer.style.opacity = 1;
 };
 
-btnsOpenModal.forEach(btn => btn.addEventListener('click', openModal));
+const getJSON = function (url, errorMsg = 'Something went wrong') {
+  return fetch(url).then(response => {
+    if (!response.ok) throw new Error(`${errorMsg} (${response.status})`);
 
-btnCloseModal.addEventListener('click', closeModal);
-overlay.addEventListener('click', closeModal);
-
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
-    closeModal();
-  }
-});
-
-///////////////////////////////////////
-// Button scrolling
-btnScrollTo.addEventListener('click', function (e) {
-  const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
-
-  console.log(e.target.getBoundingClientRect());
-
-  console.log('Current scroll (X/Y)', window.pageXOffset, window.pageYOffset);
-
-  console.log(
-    'height/width viewport',
-    document.documentElement.clientHeight,
-    document.documentElement.clientWidth,
-  );
-
-  // Scrolling
-  // window.scrollTo(
-  //   s1coords.left + window.pageXOffset,
-  //   s1coords.top + window.pageYOffset
-  // );
-
-  // window.scrollTo({
-  //   left: s1coords.left + window.pageXOffset,
-  //   top: s1coords.top + window.pageYOffset,
-  //   behavior: 'smooth',
-  // });
-
-  section1.scrollIntoView({ behavior: 'smooth' });
-});
-
-///////////////////////////////////////
-// Page navigation
-
-// document.querySelectorAll('.nav__link').forEach(function (el) {
-//   el.addEventListener('click', function (e) {
-//     e.preventDefault();
-//     const id = this.getAttribute('href');
-//     console.log(id);
-//     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-//   });
-// });
-
-// 1. Add event listener to common parent element
-// 2. Determine what element originated the event
-
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  e.preventDefault();
-
-  // Matching strategy
-  if (e.target.classList.contains('nav__link')) {
-    const id = e.target.getAttribute('href');
-    document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
-  }
-});
-
-///////////////////////////////////////
-// Tabbed component
-
-tabsContainer.addEventListener('click', function (e) {
-  const clicked = e.target.closest('.operations__tab');
-
-  // Guard clause
-  if (!clicked) return;
-
-  // Remove active classes // بالا رفتن تب فعال و پایین امدن تب های غیرفعال
-  tabs.forEach(t => t.classList.remove('operations__tab--active'));
-  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
-
-  // Activate tab
-  clicked.classList.add('operations__tab--active');
-
-  // Activate content area
-  document
-    .querySelector(`.operations__content--${clicked.dataset.tab}`)
-    .classList.add('operations__content--active');
-});
-
-///////////////////////////////////////
-// Menu fade animation
-const handleHover = function (e) {
-  if (e.target.classList.contains('nav__link')) {
-    const link = e.target;
-    const siblings = link.closest('.nav').querySelectorAll('.nav__link');
-    const logo = link.closest('.nav').querySelector('img');
-
-    siblings.forEach(el => {
-      if (el !== link) el.style.opacity = this;
-    });
-    logo.style.opacity = this;
-  }
-};
-
-// Passing "argument" into handler
-nav.addEventListener('mouseover', handleHover.bind(0.5));
-nav.addEventListener('mouseout', handleHover.bind(1));
-
-///////////////////////////////////////
-// Sticky navigation: Intersection Observer API
-
-const header = document.querySelector('.header');
-const navHeight = nav.getBoundingClientRect().height;
-
-const stickyNav = function (entries) {
-  const [entry] = entries;
-  // console.log(entry);
-
-  if (!entry.isIntersecting) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
-};
-
-const headerObserver = new IntersectionObserver(stickyNav, {
-  root: null,
-  threshold: 0,
-  rootMargin: `-${navHeight}px`,
-});
-
-headerObserver.observe(header);
-
-///////////////////////////////////////
-// Reveal sections
-const allSections = document.querySelectorAll('.section');
-
-const revealSection = function (entries, observer) {
-  const [entry] = entries;
-
-  if (!entry.isIntersecting) return;
-
-  entry.target.classList.remove('section--hidden');
-  observer.unobserve(entry.target);
-};
-
-const sectionObserver = new IntersectionObserver(revealSection, {
-  root: null,
-  threshold: 0.15,
-});
-
-allSections.forEach(function (section) {
-  sectionObserver.observe(section);
-  section.classList.add('section--hidden');
-});
-
-// Lazy loading images
-const imgTargets = document.querySelectorAll('img[data-src]');
-
-const loadImg = function (entries, observer) {
-  const [entry] = entries;
-
-  if (!entry.isIntersecting) return;
-
-  // Replace src with data-src
-  entry.target.src = entry.target.dataset.src;
-
-  entry.target.addEventListener('load', function () {
-    entry.target.classList.remove('lazy-img');
-  });
-
-  observer.unobserve(entry.target);
-};
-
-const imgObserver = new IntersectionObserver(loadImg, {
-  root: null,
-  threshold: 0,
-  rootMargin: '200px',
-});
-
-imgTargets.forEach(img => imgObserver.observe(img));
-
-///////////////////////////////////////
-// Slider
-const slider = function () {
-  const slides = document.querySelectorAll('.slide');
-  const btnLeft = document.querySelector('.slider__btn--left');
-  const btnRight = document.querySelector('.slider__btn--right');
-  const dotContainer = document.querySelector('.dots');
-
-  let curSlide = 0;
-  const maxSlide = slides.length;
-
-  // Functions
-  const createDots = function () {
-    slides.forEach(function (_, i) {
-      dotContainer.insertAdjacentHTML(
-        'beforeend',
-        `<button class="dots__dot" data-slide="${i}"></button>`,
-      );
-    });
-  };
-
-  const activateDot = function (slide) {
-    document
-      .querySelectorAll('.dots__dot')
-      .forEach(dot => dot.classList.remove('dots__dot--active'));
-
-    document
-      .querySelector(`.dots__dot[data-slide="${slide}"]`)
-      .classList.add('dots__dot--active');
-  };
-
-  const goToSlide = function (slide) {
-    slides.forEach(
-      (s, i) => (s.style.transform = `translateX(${100 * (i - slide)}%)`),
-    );
-  };
-
-  // Next slide
-  const nextSlide = function () {
-    if (curSlide === maxSlide - 1) {
-      curSlide = 0;
-    } else {
-      curSlide++;
-    }
-
-    goToSlide(curSlide);
-    activateDot(curSlide);
-  };
-
-  const prevSlide = function () {
-    if (curSlide === 0) {
-      curSlide = maxSlide - 1;
-    } else {
-      curSlide--;
-    }
-    goToSlide(curSlide);
-    activateDot(curSlide);
-  };
-
-  const init = function () {
-    goToSlide(0);
-    createDots();
-
-    activateDot(0);
-  };
-  init();
-
-  // Event handlers
-  btnRight.addEventListener('click', nextSlide);
-  btnLeft.addEventListener('click', prevSlide);
-
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowLeft') prevSlide();
-    e.key === 'ArrowRight' && nextSlide();
-  });
-
-  dotContainer.addEventListener('click', function (e) {
-    if (e.target.classList.contains('dots__dot')) {
-      const { slide } = e.target.dataset;
-      goToSlide(slide);
-      activateDot(slide);
-    }
+    return response.json();
   });
 };
-slider();
-
-///////////////////////////////////////
-///////////////////////////////////////
-///////////////////////////////////////
 
 /*
 ///////////////////////////////////////
-// Selecting, Creating, and Deleting Elements
+// Our First AJAX Call: XMLHttpRequest
 
-// Selecting elements
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
+const getCountryData = function (country) {
+  const request = new XMLHttpRequest();
+  request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
+  request.send();
 
-const header = document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
-console.log(allSections);
+  request.addEventListener('load', function () {
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
 
-document.getElementById('section--1');
-const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
-
-console.log(document.getElementsByClassName('btn'));
-
-// Creating and inserting elements
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-// message.textContent = 'We use cookied for improved functionality and analytics.';
-message.innerHTML =
-  'We use cookied for improved functionality and analytics. <button class="btn btn--close-cookie">Got it!</button>';
-
-// header.prepend(message);
-header.append(message);
-// header.append(message.cloneNode(true));
-
-// header.before(message);
-// header.after(message);
-
-// Delete elements
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    // message.remove();
-    message.parentElement.removeChild(message);
-  });
-
-  
-///////////////////////////////////////
-// Styles, Attributes and Classes
-  
-// Styles
-message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
-
-console.log(message.style.color);
-console.log(message.style.backgroundColor);
-
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
-
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
-
-document.documentElement.style.setProperty('--color-primary', 'orangered');
-
-// Attributes
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-console.log(logo.className);
-
-logo.alt = 'Beautiful minimalist logo';
-
-// Non-standard
-console.log(logo.designer);
-console.log(logo.getAttribute('designer'));
-logo.setAttribute('company', 'Bankist');
-
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
-
-const link = document.querySelector('.nav__link--btn');
-console.log(link.href);
-console.log(link.getAttribute('href'));
-
-// Data attributes
-console.log(logo.dataset.versionNumber);
-
-// Classes
-logo.classList.add('c', 'j');
-logo.classList.remove('c', 'j');
-logo.classList.toggle('c');
-logo.classList.contains('c'); // not includes
-
-// Don't use
-logo.clasName = 'jonas';
-
-
-///////////////////////////////////////
-// Types of Events and Event Handlers
-const h1 = document.querySelector('h1');
-
-const alertH1 = function (e) {
-  alert('addEventListener: Great! You are reading the heading :D');
-};
-
-h1.addEventListener('mouseenter', alertH1);
-
-setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
-
-// h1.onmouseenter = function (e) {
-//   alert('onmouseenter: Great! You are reading the heading :D');
-// };
-
-
-///////////////////////////////////////
-// Event Propagation in Practice
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
-
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('LINK', e.target, e.currentTarget);
-  console.log(e.currentTarget === this);
-
-  // Stop propagation
-  // e.stopPropagation();
-});
-
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('CONTAINER', e.target, e.currentTarget);
-});
-
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = randomColor();
-  console.log('NAV', e.target, e.currentTarget);
-});
-
-
-///////////////////////////////////////
-// DOM Traversing
-const h1 = document.querySelector('h1');
-
-// Going downwards: child
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children);
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'orangered';
-
-// Going upwards: parents
-console.log(h1.parentNode);
-console.log(h1.parentElement);
-
-// h1.closest('.header').style.background = 'var(--gradient-secondary)';
-
-// h1.closest('h1').style.background = 'var(--gradient-primary)';
-
-// Going sideways: siblings
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
-
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
-
-console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.transform = 'scale(0.5)';
-});
-
-///////////////////////////////////////
-// Sticky navigation
-const initialCoords = section1.getBoundingClientRect();
-console.log(initialCoords);
-
-window.addEventListener('scroll', function () {
-  console.log(window.scrollY);
-
-  if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
-  else nav.classList.remove('sticky');
-});
-
-///////////////////////////////////////
-// Sticky navigation: Intersection Observer API
-
-const obsCallback = function (entries, observer) {
-  entries.forEach(entry => {
-    console.log(entry);
+    const html = `
+  <article class="country">
+    <img class="country__img" src="${data.flag}" />
+    <div class="country__data">
+      <h3 class="country__name">${data.name}</h3>
+      <h4 class="country__region">${data.region}</h4>
+      <p class="country__row"><span>👫</span>${(
+        +data.population / 1000000
+      ).toFixed(1)} people</p>
+      <p class="country__row"><span>🗣️</span>${data.languages[0].name}</p>
+      <p class="country__row"><span>💰</span>${data.currencies[0].name}</p>
+    </div>
+  </article>
+  `;
+    countriesContainer.insertAdjacentHTML('beforeend', html);
+    countriesContainer.style.opacity = 1;
   });
 };
 
-const obsOptions = {
-  root: null,
-  threshold: [0, 0.2],
-};
-
-const observer = new IntersectionObserver(obsCallback, obsOptions);
-observer.observe(section1);
-
-
-///////////////////////////////////////
-// Lifecycle DOM Events
-document.addEventListener('DOMContentLoaded', function (e) {
-  console.log('HTML parsed and DOM tree built!', e);
-});
-
-window.addEventListener('load', function (e) {
-  console.log('Page fully loaded', e);
-});
-
-window.addEventListener('beforeunload', function (e) {
-  e.preventDefault();
-  console.log(e);
-  e.returnValue = '';
-});
+getCountryData('portugal');
+getCountryData('usa');
+getCountryData('germany');
 */
 
-// const h2 = document.querySelector('h2');
+///////////////////////////////////////
+// Welcome to Callback Hell
 
-// console.log(h2.firstElementChild);
+/*
+const getCountryAndNeighbour = function (country) {
+  // AJAX call country 1
+  const request = new XMLHttpRequest();
+  request.open('GET', `https://restcountries.eu/rest/v2/name/${country}`);
+  request.send();
 
-// const h2 = document.querySelector('h2');
-// console.log(h2.parentElement);
+  request.addEventListener('load', function () {
+    const [data] = JSON.parse(this.responseText);
+    console.log(data);
 
-// const h2 = document.querySelector('h2');
+    // Render country 1
+    renderCountry(data);
 
-// console.log(h2.closest('.box'));
+    // Get neighbour country (2)
+    const [neighbour] = data.borders;
 
-// const h2 = document.querySelector('h2');
-// console.log(h2.parentElement.firstElementChild);
+    if (!neighbour) return;
 
-// const h2 = document.querySelector('h2');
-// console.log(h2.nextElementSibling);
+    // AJAX call country 2
+    const request2 = new XMLHttpRequest();
+    request2.open('GET', `https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+    request2.send();
 
-// const box = document.querySelector('.box');
-// console.log(box.childNodes);
+    request2.addEventListener('load', function () {
+      const data2 = JSON.parse(this.responseText);
+      console.log(data2);
 
-// const box = document.querySelector('.box');
-// console.log(box.firstElementChild);
+      renderCountry(data2, 'neighbour');
+    });
+  });
+};
 
-// const box = document.querySelector('.box');
-// console.log(box.lastElementChild);
+// getCountryAndNeighbour('portugal');
+getCountryAndNeighbour('usa');
 
-// const h2 = document.querySelector('h2');
-// console.log(h2.parentElement.children);
+setTimeout(() => {
+  console.log('1 second passed');
+  setTimeout(() => {
+    console.log('2 seconds passed');
+    setTimeout(() => {
+      console.log('3 second passed');
+      setTimeout(() => {
+        console.log('4 second passed');
+      }, 1000);
+    }, 1000);
+  }, 1000);
+}, 1000);
 
-// const h2 = document.querySelector('h2');
-// [...h2.parentElement.children].forEach(function (el) {
-//   console.log(el.textContent);
-// });
 
-// const tabs = document.querySelectorAll('.tab');
-// console.log(tabs);
+///////////////////////////////////////
+// Consuming Promises
+// Chaining Promises
+// Handling Rejected Promises
+// Throwing Errors Manually
 
-// const tabs = document.querySelectorAll('.tab');
-
-// tabs.forEach(function (tab) {
-//   tab.addEventListener('click', function () {
-//     console.log('Tab clicked');
-//   });
-// });
-
-// const tabs = document.querySelectorAll('.tab');
-
-// tabs.forEach(function (tab) {
-//   tab.addEventListener('click', function (e) {
-//     console.log(e.target.textContent);
-//   });
-// });
-
-// const tabs = document.querySelectorAll('.tab');
-
-// tabs.forEach(function (tab) {
-//   tab.addEventListener('click', function (e) {
-//     e.target.classList.add('active');
-//   });
-// });
-
-// const tabs = document.querySelectorAll('.tab');
-
-// tabs.forEach(function (tab) {
-//   tab.addEventListener('click', function (e) {
-//     tabs.forEach(function (tab) {
-//       tab.classList.remove('active');
+// const getCountryData = function (country) {
+//   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+//     .then(function (response) {
+//       console.log(response);
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       renderCountry(data[0]);
 //     });
+// };
 
-//     e.target.classList.add('active');
-//   });
-// });
+// const getCountryData = function (country) {
+//   // Country 1
+//   fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+//     .then(response => {
+//       console.log(response);
 
-// const tabs = document.querySelectorAll('.tab');
+//       if (!response.ok)
+//         throw new Error(`Country not found (${response.status})`);
 
-// tabs.forEach(function (tab) {
-//   tab.addEventListener('click', function (e) {
-//     console.log(e.target.dataset.tab);
-//   });
-// });
+//       return response.json();
+//     })
+//     .then(data => {
+//       renderCountry(data[0]);
+//       // const neighbour = data[0].borders[0];
+//       const neighbour = 'dfsdfdef';
 
-// const tabs = document.querySelectorAll('.tab');
+//       if (!neighbour) return;
 
-// tabs.forEach(function (tab) {
-//   tab.addEventListener('click', function (e) {
-//     console.log(e.target.dataset.tab);
-//     console.log(e.target.textContent);
+//       // Country 2
+//       return fetch(`https://restcountries.eu/rest/v2/alpha/${neighbour}`);
+//     })
+//     .then(response => {
+//       if (!response.ok)
+//         throw new Error(`Country not found (${response.status})`);
 
-//   });
-// });
-
-// const tab = e.target.dataset.tab;
-
-// const content = document.querySelector(`.content--${tab}`);
-
-// console.log(content);
-
-// const contents = document.querySelectorAll('.content');
-
-// contents.forEach(function (content) {
-//   content.classList.remove('active');
-// });
-
-// const contents = document.querySelectorAll('.content');
-
-// contents.forEach(function (content) {
-//   content.classList.remove('active');
-// });
-
-// const tab = e.target.dataset.tab;
-// const content = document.querySelector(`.content--${tab}`);
-
-// content.classList.add('active');
-// const tabs = document.querySelectorAll('.tab');
-// const contents = document.querySelectorAll('.content');
-
-// tabs.forEach(function (tab) {
-//   tab.addEventListener('click', function (e) {
-
-//     // Remove active from all tabs
-//     tabs.forEach(function (tab) {
-//       tab.classList.remove('active');
+//       return response.json();
+//     })
+//     .then(data => renderCountry(data, 'neighbour'))
+//     .catch(err => {
+//       console.error(`${err} 💥💥💥`);
+//       renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+//     })
+//     .finally(() => {
+//       countriesContainer.style.opacity = 1;
 //     });
-
-//     // Remove active from all contents
-//     contents.forEach(function (content) {
-//       content.classList.remove('active');
-//     });
-
-//     // Activate clicked tab
-//     e.target.classList.add('active');
-
-//     // Find and activate corresponding content
-//     const tabNumber = e.target.dataset.tab;
-//     const content = document.querySelector(`.content--${tabNumber}`);
-
-//     content.classList.add('active');
-//   });
-// });
-
-// function greet(name) {
-//   console.log(`Hello ${name}`);
-// }
-
-// greet('Hadis');
-
-// const btn = document.querySelector('.btn');
-// btn.addEventListener('click', function () {
-//   greet('Hadis');
-// });
-
-// const btn = document.querySelector('.btn');
-
-// function showMessage(message, name) {
-//   console.log(`${message} ${name}, welcome!`);
-// }
-// btn.addEventListener('click', function () {
-//   showMessage('Hello', 'Hadis');
-// });
-
-// function showMessage(message, name) {
-//   console.log(`${message} ${name}, welcome!`);
-// }
-// btn.addEventListener('click',
-//    showMessage.bind(null, 'Hello', 'Hadis')
-// );
-
-// function multiply(a, b) {
-//   console.log(a * b);
-// }
-
-// btn.addEventListener('click', multiply.bind(null, 4, 5));
-
-// function greet(greeting, name) {
-//   console.log(`${greeting}, ${name}!`);
-// }
-
-// btn.addEventListener('click', greet.bind(null, 'Hello', 'Hadis'));
-
-// function greet(greeting, name) {
-//   console.log(`${greeting}, ${name}!`);
-// }
-
-// const greetHadis = greet.bind(null, 'Hello');
-
-// greetHadis('Hadis');
-
-// function introduce(greeting, name, job) {
-//   console.log(`${greeting}, I'm ${name} and I'm a ${job}.`);
-// }
-
-// const introduceHadis = introduce.bind(null, 'Hello', 'Hadis');
-
-// introduceHadis('Frontend Developer');
-
-// function calculate(operation, a, b) {
-//   console.log(a + b);
-// }
-
-// const addNumbers = calculate.bind(null, 'add', 10);
-// addNumbers(5);
-
-// function show(a, b) {
-//   console.log(a, b);
-// }
-// const showValues = show.bind(null);
-
-// showValues(10, 20);
-
-// function greet(name) {
-//   console.log(`Hello ${name}!`);
-// }
-
-// btn.addEventListener('click', greet.bind(null, 'Hadis') )
-
-// function sendMessage(message, name) {
-//   console.log(`${message}, ${name}!`);
-// }
-
-// btn.addEventListener('click', sendMessage.bind(null, 'Welcome'));
-
-// window.addEventListener('scroll', function () {
-//   console.log(window.scrollY);
-// });
-
-// const nav = document.querySelector('.nav');
-// window.addEventListener('scroll', function () {
-//   console.log(nav);
-// });
-
-// const nav = document.querySelector('.nav');
-// window.addEventListener('scroll', function () {
-//  nav.getBoundingClientRect();
-// });
-
-// const nav = document.querySelector('.nav');
-
-// window.addEventListener('scroll', function () {
-//   if (nav.getBoundingClientRect().top <= 0) {
-//   nav.classList.add('sticky');
-// }
-// });
-
-// if (nav.getBoundingClientRect().top <= 0) {
-//   nav.classList.add('sticky');
-// } else {
-//   nav.classList.remove('sticky');
-// }
-
-// const initialCoords = nav.getBoundingClientRect();
-
-// if (nav.getBoundingClientRect().top <= initialCoords.top) {
-//   nav.classList.add('sticky');
-// } else {
-//   nav.classList.remove('sticky');
-// }
-
-// const nav = document.querySelector('.nav');
-
-// const initialCoords = nav.getBoundingClientRect();
-
-// window.addEventListener('scroll', function () {
-//   if (nav.getBoundingClientRect().top <= initialCoords.top) {
-//     nav.classList.add('sticky');
-//   } else {
-//     nav.classList.remove('sticky');
-//   }
-// });
-
-// const nav = document.querySelector('.nav');
-
-// const initialCoords = nav.getBoundingClientRect();
-
-// window.addEventListener('scroll', function () {
-//   if (window.scrollY > initialCoords.top) {
-//     nav.classList.add('sticky');
-//   } else {
-//     nav.classList.remove('sticky');
-//   }
-// });
-
-// const nav = document.querySelector('.nav');
-// console.log(nav.getBoundingClientRect().height);
-
-// const navs = document.querySelector('.nav');
-
-// console.log(navs.getBoundingClientRect().height);
-// console.log(navs.getBoundingClientRect().top);
-
-// const navs = document.querySelector('.nav');
-
-// window.addEventListener('scroll', function () {
-//   if (navs.getBoundingClientRect().top <= 0) {
-//     navs.classList.add('sticky');
-//   } else {
-//     navs.classList.remove('sticky');
-//   }
-// });
-
-// const section = document.querySelector('.section');
-
-// const observer = new IntersectionObserver(function (entries) {
-//     const [entry] = entries;
-//   console.log(entry);
-// });
-
-// observer.observe(section);
-
-// const section = document.querySelector('.section');
-
-// const observer = new IntersectionObserver(function (entries) {
-//     const [entry] = entries;
-//     if (entry.isIntersecting)
-//   console.log('Section is visible');
-// });
-
-// observer.observe(section);
-
-// const section = document.querySelector('.section');
-
-// const observer = new IntersectionObserver(function (entries) {
-//     const [entry] = entries;
-//     if (entry.isIntersecting)
-//   console.log('Section is visible');
-// else{
-//   console.log('Section is NOT visible');
-
-// }
-// });
-
-// observer.observe(section);
-
-// const options = {
-//   root: null,
-//   threshold: 0.5,
-//   rootMargin: '-100px',
 // };
 
-// const observer = new IntersectionObserver(function (entries) {
-//   const [entry] = entries;
-
-//   if (entry.isIntersecting) {
-//     console.log(entry.isIntersecting);
-//   } else {
-//     console.log('Section is NOT visible');
-//   }
-// }, options);
-
-// const options = {
-//   root: null,
-//   threshold: 0.5,
-//   rootMargin: '-100px',
-// };
-
-// const observer = new IntersectionObserver(function (entries) {
-//   const [entry] = entries;
-
-//   if (!entry.isIntersecting) {
-//     nav.classList.add('sticky');
-//   } else {
-//      nav.classList.remove('sticky');
-//   }
-// }, options);
-
-// const allSections = document.querySelectorAll('.section');
-
-// const observer = new IntersectionObserver(function (entries) {
-//   console.log(entries);
-// });
-
-// allSections.forEach(function (section) {
-//   observer.observe(section);
-// });
-
-// const allSections = document.querySelectorAll('.section');
-
-// const observer = new IntersectionObserver(function (entries) {
-//   const [entry] = entries;
-//   console.log(entry);
-// });
-
-// allSections.forEach(function (section) {
-//   observer.observe(section);
-// });
-
-// const allSections = document.querySelectorAll('.section');
-
-// const observer = new IntersectionObserver(function (entries) {
-//   const [entry] = entries;
-
-//   console.log(entry);
-
-//   if (entry.isIntersecting) {
-//     entry.target.classList.add('section--visible');
-//     console.log('Section is visible');
-//   } else {
-
-//     console.log('Section is NOT visible');
-//   }
-// });
-
-// allSections.forEach(function (section) {
-//   observer.observe(section);
-// });
-
-// const allSections = document.querySelectorAll('.section');
-
-// const observer = new IntersectionObserver(function (entries) {
-//   const [entry] = entries;
-
-//   console.log(entry);
-
-//   if (entry.isIntersecting) {
-//     entry.target.classList.add('section--visible');
-//     console.log('Section is visible');
-//   } else {
-//     entry.target.classList.remove('section--visible');
-//     console.log('Section is NOT visible');
-//   }
-// });
-
-// allSections.forEach(function (section) {
-//   observer.observe(section);
-// });
-
-// const allSections = document.querySelectorAll('.section');
-
-// const options = {
-//   threshold: 0.15,
-// };
-
-// const observer = new IntersectionObserver(function (entries) {
-//   const [entry] = entries;
-
-//   console.log(entry);
-
-//   if (entry.isIntersecting) {
-//     entry.target.classList.add('section--visible');
-//     console.log('Section is visible');
-//   } else {
-//     entry.target.classList.remove('section--visible');
-//     console.log('Section is NOT visible');
-//   }
-// }, options);
-
-// allSections.forEach(function (section) {
-//   observer.observe(section);
-// });
-
-// const allSections = document.querySelectorAll('.section');
-
-// const options = {
-//   threshold: 0.15,
-//   rootMargin: '0px',
-// };
-
-// const observer = new IntersectionObserver(function (entries) {
-//   const [entry] = entries;
-
-//   console.log(entry);
-
-//   if (entry.isIntersecting) {
-//     entry.target.classList.add('section--visible');
-//     observer.unobserve(entry.target);
-//     console.log('Section is visible');
-//   } else {
-//     entry.target.classList.remove('section--visible');
-//     console.log('Section is NOT visible');
-//   }
-// }, options);
-
-// allSections.forEach(function (section) {
-//   observer.observe(section);
-// });
-
-// const allSections = document.querySelectorAll('.section');
-
-// const options = {
-//   threshold: 0.15,
-//   rootMargin: '0px',
-// };
-
-// const observer = new IntersectionObserver(function (entries) {
-//   const [entry] = entries;
-
-//   console.log(entry);
-
-//   if (entry.isIntersecting) {
-//     entry.target.classList.add('section--visible');
-//     observer.unobserve(entry.target);
-//     console.log('Section is visible');
-//   }
-// }, options);
-
-// allSections.forEach(function (section) {
-//   observer.observe(section);
-// });
-
-// const imgTargets = document.querySelectorAll('img[data-src]');
-
-// const loadImg = function (entries) {
-//   // فعلاً خالی
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// const imgTargets = document.querySelectorAll('img[data-src]');
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// const imgTargets = document.querySelectorAll('img[data-src]');
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   if (entry.isIntersecting) {
-//   console.log('Image is visible');
-// }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// const imgTargets = document.querySelectorAll('img[data-src]');
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   const img = entry.target;
-//   if (entry.isIntersecting) {
-//   console.log('Image is visible');
-// }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// const imgTargets = document.querySelectorAll('img[data-src]');
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   const img = entry.target;
-
-//   if (entry.isIntersecting) {
-//     console.log('Image is visible');
-//     img.src = img.dataset.src;
-//   }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   const img = entry.target;
-
-//   if (entry.isIntersecting) {
-//     console.log('Image is visible');
-//     img.src = img.dataset.src;
-//   }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// imgTargets.forEach(img => {
-//   imgObserver.observe(img);
-// });
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   const img = entry.target;
-
-//   if (entry.isIntersecting) {
-//     console.log('Image is visible');
-//     img.src = img.dataset.src;
-//     img.addEventListener('load', function () {
-//   img.classList.remove('lazy-img');
-// });
-//   }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// imgTargets.forEach(img => {
-//   imgObserver.observe(img);
-// });
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   const img = entry.target;
-
-//   if (entry.isIntersecting) {
-//     console.log('Image is visible');
-//     img.src = img.dataset.src;
-//     imgObserver.unobserve(img);
-//     img.addEventListener('load', function () {
-//   img.classList.remove('lazy-img');
-// });
-//   }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// imgTargets.forEach(img => {
-//   imgObserver.observe(img);
-// });
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   const img = entry.target;
-
-//   if (entry.isIntersecting) {
-//     console.log('Image is visible');
-//     img.src = img.dataset.src;
-//     imgObserver.unobserve(img);
-//     img.addEventListener('load', function () {
-//   img.classList.remove('lazy-img');
-//   img.removeAttribute('data-src');
-// });
-//   }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// imgTargets.forEach(img => {
-//   imgObserver.observe(img);
-// });
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   const img = entry.target;
-
-//   if (entry.isIntersecting) {
-//     console.log('Image is visible');
-//     img.src = img.dataset.src;
-//     imgObserver.unobserve(img);
-//     img.addEventListener('load', function () {
-//   img.classList.remove('lazy-img');
-//   img.removeAttribute('data-src');
-//   console.log('Image loaded successfully');
-// });
-//   }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// imgTargets.forEach(img => {
-//   imgObserver.observe(img);
-// });
-
-////////////////////////////////////////////////////
-// const imgTargets = document.querySelectorAll('img[data-src]');
-
-// const loadImg = function (entries) {
-//   const [entry] = entries;
-//   const img = entry.target;
-
-//   if (entry.isIntersecting) {
-//     console.log('Image is visible');
-//     img.src = img.dataset.src;
-//     imgObserver.unobserve(img);
-//     img.addEventListener('load', function () {
-//   img.classList.remove('lazy-img');
-//   img.removeAttribute('data-src');
-//   console.log('Image loaded successfully');
-// });
-//   }
-// };
-
-// const imgObserver = new IntersectionObserver(loadImg);
-
-// imgTargets.forEach(img => {
-//   imgObserver.observe(img);
-// });
-////////////////////////////////////////////////////////////
-
-// const slides = document.querySelectorAll('.slide');
-// const btnRight = document.querySelector('.btn--right');
-// const btnLeft = document.querySelector('.btn--left');
-// let currentSlide = 0;
-// btnRight.addEventListener('click', function () {
-//   currentSlide++;
-//   goToSlide(currentSlide);
-// });
-
-// const goToSlide = function (slide) {
-//   slides.forEach(function (s, i) {
-// s.style.transform = `translateX(${100 * (i - slide)}%)`;
-// });
-// };
-
-// goToSlide(0);
-
-// const slides = document.querySelectorAll('.slide');
-// const btnRight = document.querySelector('.btn--right');
-// const btnLeft = document.querySelector('.btn--left');
-
-// let currentSlide = 0;
-
-// const goToSlide = function (slide) {
-//   slides.forEach(function (s, i) {
-//     s.style.transform = `translateX(${100 * (i - slide)}%)`;
-//   });
-// };
-
-// goToSlide(0);
-
-// btnRight.addEventListener('click', function () {
-//   currentSlide++;
-//   goToSlide(currentSlide);
-// });
-
-// btnLeft.addEventListener('click', function () {
-//   currentSlide--;
-//   goToSlide(currentSlide);
-// });
-
-// goToSlide(0);
-
-// const maxSlide = slides.length;
-// if(currentSlide === maxSlide - 1) {
-//   currentSlide = 0;
+const getCountryData = function (country) {
+  // Country 1
+  getJSON(
+    `https://restcountries.eu/rest/v2/name/${country}`,
+    'Country not found'
+  )
+    .then(data => {
+      renderCountry(data[0]);
+      const neighbour = data[0].borders[0];
+
+      if (!neighbour) throw new Error('No neighbour found!');
+
+      // Country 2
+      return getJSON(
+        `https://restcountries.eu/rest/v2/alpha/${neighbour}`,
+        'Country not found'
+      );
+    })
+
+    .then(data => renderCountry(data, 'neighbour'))
+    .catch(err => {
+      console.error(`${err} 💥💥💥`);
+      renderError(`Something went wrong 💥💥 ${err.message}. Try again!`);
+    })
+    .finally(() => {
+      countriesContainer.style.opacity = 1;
+    });
+};
+
+btn.addEventListener('click', function () {
+  getCountryData('portugal');
+});
+
+// getCountryData('australia');
+*/
+
+///////////////////////////////////////
+// Coding Challenge #1
+
+/* 
+In this challenge you will build a function 'whereAmI' which renders a country ONLY based on GPS coordinates. For that, you will use a second API to geocode coordinates.
+
+Here are your tasks:
+
+PART 1
+1. Create a function 'whereAmI' which takes as inputs a latitude value (lat) and a longitude value (lng) (these are GPS coordinates, examples are below).
+2. Do 'reverse geocoding' of the provided coordinates. Reverse geocoding means to convert coordinates to a meaningful location, like a city and country name. Use this API to do reverse geocoding: https://geocode.xyz/api.
+The AJAX call will be done to a URL with this format: https://geocode.xyz/52.508,13.381?geoit=json. Use the fetch API and promises to get the data. Do NOT use the getJSON function we created, that is cheating 😉
+3. Once you have the data, take a look at it in the console to see all the attributes that you recieved about the provided location. Then, using this data, log a messsage like this to the console: 'You are in Berlin, Germany'
+4. Chain a .catch method to the end of the promise chain and log errors to the console
+5. This API allows you to make only 3 requests per second. If you reload fast, you will get this error with code 403. This is an error with the request. Remember, fetch() does NOT reject the promise in this case. So create an error to reject the promise yourself, with a meaningful error message.
+
+PART 2
+6. Now it's time to use the received data to render a country. So take the relevant attribute from the geocoding API result, and plug it into the countries API that we have been using.
+7. Render the country and catch any errors, just like we have done in the last lecture (you can even copy this code, no need to type the same code)
+
+TEST COORDINATES 1: 52.508, 13.381 (Latitude, Longitude)
+TEST COORDINATES 2: 19.037, 72.873
+TEST COORDINATES 2: -33.933, 18.474
+
+GOOD LUCK 😀
+*/
+
+/*
+const whereAmI = function (lat, lng) {
+  fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`)
+    .then(res => {
+      if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      console.log(data);
+      console.log(`You are in ${data.city}, ${data.country}`);
+
+      return fetch(`https://restcountries.eu/rest/v2/name/${data.country}`);
+    })
+    .then(res => {
+      if (!res.ok) throw new Error(`Country not found (${res.status})`);
+
+      return res.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => console.error(`${err.message} 💥`));
+};
+whereAmI(52.508, 13.381);
+whereAmI(19.037, 72.873);
+whereAmI(-33.933, 18.474);
+
+
+///////////////////////////////////////
+// The Event Loop in Practice
+console.log('Test start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Resolved promise 1').then(res => console.log(res));
+
+Promise.resolve('Resolved promise 2').then(res => {
+  for (let i = 0; i < 1000000000; i++) {}
+  console.log(res);
+});
+
+console.log('Test end');
+
+
+///////////////////////////////////////
+// Building a Simple Promise
+const lotteryPromise = new Promise(function (resolve, reject) {
+  console.log('Lotter draw is happening 🔮');
+  setTimeout(function () {
+    if (Math.random() >= 0.5) {
+      resolve('You WIN 💰');
+    } else {
+      reject(new Error('You lost your money 💩'));
+    }
+  }, 2000);
+});
+
+lotteryPromise.then(res => console.log(res)).catch(err => console.error(err));
+
+// Promisifying setTimeout
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+wait(1)
+  .then(() => {
+    console.log('1 second passed');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('2 second passed');
+    return wait(1);
+  })
+  .then(() => {
+    console.log('3 second passed');
+    return wait(1);
+  })
+  .then(() => console.log('4 second passed'));
+
+// setTimeout(() => {
+//   console.log('1 second passed');
+//   setTimeout(() => {
+//     console.log('2 seconds passed');
+//     setTimeout(() => {
+//       console.log('3 second passed');
+//       setTimeout(() => {
+//         console.log('4 second passed');
+//       }, 1000);
+//     }, 1000);
+//   }, 1000);
+// }, 1000);
+
+Promise.resolve('abc').then(x => console.log(x));
+Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+
+
+///////////////////////////////////////
+// Promisifying the Geolocation API
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+// getPosition().then(pos => console.log(pos));
+
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+
+      return fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    })
+    .then(res => {
+      if (!res.ok) throw new Error(`Problem with geocoding ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      console.log(data);
+      console.log(`You are in ${data.city}, ${data.country}`);
+
+      return fetch(`https://restcountries.eu/rest/v2/name/${data.country}`);
+    })
+    .then(res => {
+      if (!res.ok) throw new Error(`Country not found (${res.status})`);
+
+      return res.json();
+    })
+    .then(data => renderCountry(data[0]))
+    .catch(err => console.error(`${err.message} 💥`));
+};
+
+btn.addEventListener('click', whereAmI);
+*/
+
+///////////////////////////////////////
+// Coding Challenge #2
+
+/* 
+Build the image loading functionality that I just showed you on the screen.
+
+Tasks are not super-descriptive this time, so that you can figure out some stuff on your own. Pretend you're working on your own 😉
+
+PART 1
+1. Create a function 'createImage' which receives imgPath as an input. This function returns a promise which creates a new image (use document.createElement('img')) and sets the .src attribute to the provided image path. When the image is done loading, append it to the DOM element with the 'images' class, and resolve the promise. The fulfilled value should be the image element itself. In case there is an error loading the image ('error' event), reject the promise.
+
+If this part is too tricky for you, just watch the first part of the solution.
+
+PART 2
+2. Comsume the promise using .then and also add an error handler;
+3. After the image has loaded, pause execution for 2 seconds using the wait function we created earlier;
+4. After the 2 seconds have passed, hide the current image (set display to 'none'), and load a second image (HINT: Use the image element returned by the createImage promise to hide the current image. You will need a global variable for that 😉);
+5. After the second image has loaded, pause execution for 2 seconds again;
+6. After the 2 seconds have passed, hide the current image.
+
+TEST DATA: Images in the img folder. Test the error handler by passing a wrong image path. Set the network speed to 'Fast 3G' in the dev tools Network tab, otherwise images load too fast.
+
+GOOD LUCK 😀
+*/
+
+/*
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+const imgContainer = document.querySelector('.images');
+
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement('img');
+    img.src = imgPath;
+
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
+
+    img.addEventListener('error', function () {
+      reject(new Error('Image not found'));
+    });
+  });
+};
+
+let currentImg;
+
+createImage('img/img-1.jpg')
+  .then(img => {
+    currentImg = img;
+    console.log('Image 1 loaded');
+    return wait(2);
+  })
+  .then(() => {
+    currentImg.style.display = 'none';
+    return createImage('img/img-2.jpg');
+  })
+  .then(img => {
+    currentImg = img;
+    console.log('Image 2 loaded');
+    return wait(2);
+  })
+  .then(() => {
+    currentImg.style.display = 'none';
+  })
+  .catch(err => console.error(err));
+
+
+///////////////////////////////////////
+// Consuming Promises with Async/Await
+// Error Handling With try...catch
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+// fetch(`https://restcountries.eu/rest/v2/name/${country}`).then(res => console.log(res))
+
+const whereAmI = async function () {
+  try {
+    // Geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
+
+    // Reverse geocoding
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    if (!resGeo.ok) throw new Error('Problem getting location data');
+
+    const dataGeo = await resGeo.json();
+    console.log(dataGeo);
+
+    // Country data
+    const res = await fetch(
+      `https://restcountries.eu/rest/v2/name/${dataGeo.country}`
+    );
+    
+    // BUG in video:
+    // if (!resGeo.ok) throw new Error('Problem getting country');
+    
+    // FIX:
+    if (!res.ok) throw new Error('Problem getting country');
+
+    const data = await res.json();
+    console.log(data);
+    renderCountry(data[0]);
+  } catch (err) {
+    console.error(`${err} 💥`);
+    renderError(`💥 ${err.message}`);
+  }
+};
+whereAmI();
+whereAmI();
+whereAmI();
+console.log('FIRST');
+
+// try {
+//   let y = 1;
+//   const x = 2;
+//   y = 3;
+// } catch (err) {
+//   alert(err.message);
 // }
 
-// const maxSlide = slides.length;
-// if (currentSlide === 0) {
-//   currentSlide = maxSlide - 1;
-// }
 
-// btnRight.addEventListener('click', function () {
-//   currentSlide++;
+///////////////////////////////////////
+// Returning Values from Async Functions
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
 
-//   if (currentSlide === maxSlide) {
-//     currentSlide = 0;
-//   }
-// });
+const whereAmI = async function () {
+  try {
+    // Geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
 
-// btnRight.addEventListener('click', function () {
-//   currentSlide++;
+    // Reverse geocoding
+    const resGeo = await fetch(`https://geocode.xyz/${lat},${lng}?geoit=json`);
+    if (!resGeo.ok) throw new Error('Problem getting location data');
+    const dataGeo = await resGeo.json();
 
-//   if (currentSlide === maxSlide) {
-//     currentSlide = 0;
-//   }
-//   goToSlide(currentSlide);
-// });
+    // Country data
+    const res = await fetch(
+      `https://restcountries.eu/rest/v2/name/${dataGeo.country}`
+    );
+    if (!resGeo.ok) throw new Error('Problem getting country');
+    const data = await res.json();
+    renderCountry(data[0]);
 
-// btnLeft.addEventListener('click', function () {
-//   currentSlide--;
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
+  } catch (err) {
+    console.error(`${err} 💥`);
+    renderError(`💥 ${err.message}`);
 
-//   if (currentSlide < 0) {
-//     currentSlide = maxSlide - 1;
-//   }
-//   goToSlide(currentSlide);
-// });
+    // Reject promise returned from async function
+    throw err;
+  }
+};
 
-// btnRight.addEventListener('click', function () {
-//   currentSlide++;
+console.log('1: Will get location');
+// const city = whereAmI();
+// console.log(city);
 
-//   if (currentSlide === maxSlide) {
-//     currentSlide = 0;
-//   }
-//   goToSlide(currentSlide);
-// });
+// whereAmI()
+//   .then(city => console.log(`2: ${city}`))
+//   .catch(err => console.error(`2: ${err.message} 💥`))
+//   .finally(() => console.log('3: Finished getting location'));
 
-// btnLeft.addEventListener('click', function () {
-//   currentSlide--;
+(async function () {
+  try {
+    const city = await whereAmI();
+    console.log(`2: ${city}`);
+  } catch (err) {
+    console.error(`2: ${err.message} 💥`);
+  }
+  console.log('3: Finished getting location');
+})();
 
-//   if (currentSlide < 0) {
-//     currentSlide = maxSlide - 1;
-//   }
-//   goToSlide(currentSlide);
-// });
 
-// btnRight.addEventListener('click', function () {
-//   currentSlide++;
+///////////////////////////////////////
+// Running Promises in Parallel
+const get3Countries = async function (c1, c2, c3) {
+  try {
+    // const [data1] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c1}`
+    // );
+    // const [data2] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c2}`
+    // );
+    // const [data3] = await getJSON(
+    //   `https://restcountries.eu/rest/v2/name/${c3}`
+    // );
+    // console.log([data1.capital, data2.capital, data3.capital]);
 
-//   if (currentSlide === maxSlide) {
-//     currentSlide = 0;
-//   }
-//   goToSlide(currentSlide);
-// });
+    const data = await Promise.all([
+      getJSON(`https://restcountries.eu/rest/v2/name/${c1}`),
+      getJSON(`https://restcountries.eu/rest/v2/name/${c2}`),
+      getJSON(`https://restcountries.eu/rest/v2/name/${c3}`),
+    ]);
+    console.log(data.map(d => d[0].capital));
+  } catch (err) {
+    console.error(err);
+  }
+};
+get3Countries('portugal', 'canada', 'tanzania');
 
-// btnLeft.addEventListener('click', function () {
-//   currentSlide--;
 
-//   if (currentSlide < 0) {
-//     currentSlide = maxSlide - 1;
-//   }
-//   goToSlide(currentSlide);
-// });
+///////////////////////////////////////
+// Other Promise Combinators: race, allSettled and any
+// Promise.race
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.eu/rest/v2/name/italy`),
+    getJSON(`https://restcountries.eu/rest/v2/name/egypt`),
+    getJSON(`https://restcountries.eu/rest/v2/name/mexico`),
+  ]);
+  console.log(res[0]);
+})();
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('DOM is ready!');
-// });
+const timeout = function (sec) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error('Request took too long!'));
+    }, sec * 1000);
+  });
+};
 
-// window.addEventListener('load', function () {
-//   console.log('Page fully loaded!');
-// });
+Promise.race([
+  getJSON(`https://restcountries.eu/rest/v2/name/tanzania`),
+  timeout(5),
+])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
 
-// window.addEventListener('beforeunload', function (e) {
-//   e.preventDefault();
-// });
+// Promise.allSettled
+Promise.allSettled([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+]).then(res => console.log(res));
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('DOM is ready!');
-// });
+Promise.all([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
 
-// window.addEventListener('load', function () {
-//   console.log('Page fully loaded!');
-// });
+// Promise.any [ES2021]
+Promise.any([
+  Promise.resolve('Success'),
+  Promise.reject('ERROR'),
+  Promise.resolve('Another success'),
+])
+  .then(res => console.log(res))
+  .catch(err => console.error(err));
+*/
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('HTML parsed');
-//   console.log('DOM is ready');
-// });
+///////////////////////////////////////
+// Coding Challenge #3
 
-// window.addEventListener('load', function () {
-//   console.log('Page loaded!');
-//   console.log('Images loaded');
-//   console.log('Everything is ready');
-// });
+/* 
+PART 1
+Write an async function 'loadNPause' that recreates Coding Challenge #2, this time using async/await (only the part where the promise is consumed). Compare the two versions, think about the big differences, and see which one you like more.
+Don't forget to test the error handler, and to set the network speed to 'Fast 3G' in the dev tools Network tab.
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('DOM is ready');
-// });
+PART 2
+1. Create an async function 'loadAll' that receives an array of image paths 'imgArr';
+2. Use .map to loop over the array, to load all the images with the 'createImage' function (call the resulting array 'imgs')
+3. Check out the 'imgs' array in the console! Is it like you expected?
+4. Use a promise combinator function to actually get the images from the array 😉
+5. Add the 'paralell' class to all the images (it has some CSS styles).
 
-// window.addEventListener('beforeunload', function (e) {
-//   e.preventDefault();
-// });
+TEST DATA: ['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']. To test, turn off the 'loadNPause' function.
 
-// window.addEventListener('load', function (e) {
-//   console.log('Page is loaded!');
-// });
+GOOD LUCK 😀
+*/
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('DOM is ready');
+/*
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
 
-//   window.addEventListener('load', function () {
-//     console.log('Page is fully loaded');
-//   });
-// });
+const imgContainer = document.querySelector('.images');
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('DOM ready');
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement('img');
+    img.src = imgPath;
 
-//   window.addEventListener('load', function () {
-//     console.log('Page loaded');
-//   });
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
 
-//   window.addEventListener('beforeunload', function (e) {
-//     e.preventDefault();
-//   });
-// });
+    img.addEventListener('error', function () {
+      reject(new Error('Image not found'));
+    });
+  });
+};
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('DOM ready');
+let currentImg;
 
-//   window.addEventListener('load', function () {
-//     console.log('Page loaded');
-//   });
+// createImage('img/img-1.jpg')
+//   .then(img => {
+//     currentImg = img;
+//     console.log('Image 1 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImg.style.display = 'none';
+//     return createImage('img/img-2.jpg');
+//   })
+//   .then(img => {
+//     currentImg = img;
+//     console.log('Image 2 loaded');
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImg.style.display = 'none';
+//   })
+//   .catch(err => console.error(err));
 
-// window.addEventListener('beforeunload', function (e) {
-//   e.preventDefault();
-//   console.log('Leaving the page...');
-// });
+// PART 1
+const loadNPause = async function () {
+  try {
+    // Load image 1
+    let img = await createImage('img/img-1.jpg');
+    console.log('Image 1 loaded');
+    await wait(2);
+    img.style.display = 'none';
 
-// document.addEventListener('DOMContentLoaded', function () {
-//   console.log('DOM is ready');
-//   });
+    // Load image 1
+    img = await createImage('img/img-2.jpg');
+    console.log('Image 2 loaded');
+    await wait(2);
+    img.style.display = 'none';
+  } catch (err) {
+    console.error(err);
+  }
+};
+// loadNPause();
 
-//   window.addEventListener('load', function () {
-//     console.log('Everything is loaded');
-//   });
-
-// window.addEventListener('beforeunload', function (e) {
-//   e.preventDefault();
-//   console.log('Goodbye!');
-// });
-
+// PART 2
+const loadAll = async function (imgArr) {
+  try {
+    const imgs = imgArr.map(async img => await createImage(img));
+    const imgsEl = await Promise.all(imgs);
+    console.log(imgsEl);
+    imgsEl.forEach(img => img.classList.add('parallel'));
+  } catch (err) {
+    console.error(err);
+  }
+};
+loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
+*/
