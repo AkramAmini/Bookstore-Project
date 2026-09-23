@@ -768,7 +768,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   }
 // });
 
-
 // const request = new XMLHttpRequest();
 
 // request.open('GET', 'https://example.com');
@@ -780,7 +779,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //     console.log(this.status);
 // });
 
-
 // request.addEventListener('load', function () {
 //   if (this.status === 200) {
 //     const data = JSON.parse(this.responseText);
@@ -800,3 +798,64 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //     console.log(data);
 //   }
 // });
+
+// function first(callback) {
+//   callback();
+// }
+
+// first (function () {
+//   console.log('First operation finished');
+// });
+
+// function second(callback) {
+//   callback();
+
+// }
+
+// first(function () {
+//   second(function () {
+//     console.log('Second operation finished');
+//   });
+// });
+
+//  function third(callback) {
+//   callback();
+// }
+
+// first(function () {
+//   second(function () {
+//     third(function () {
+//       console.log('Third operation finished');
+//     });
+//   });
+// });
+
+// function fourth(callback) {
+//   callback();
+// }
+
+first(function () {
+  second(function () {
+    third(function () {
+      fourth(function () {
+        console.log('Fourth operation finished');
+      });
+    });
+  });
+});
+
+// function fifth(callback) {
+//   callback();
+// }
+
+first(function () {
+  second(function () {
+    third(function () {
+      fourth(function () {
+        fifth(function () {
+          console.log('All operations finished');
+        });
+      });
+    });
+  });
+});
