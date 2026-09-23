@@ -747,3 +747,56 @@ const loadAll = async function (imgArr) {
 };
 loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 */
+
+// const request = new XMLHttpRequest();
+// request.open('GET', 'https://example.com');
+// request.send();
+// request.addEventListener('load', function () {
+//   console.log(this.responseText);
+// });
+
+// const request = new XMLHttpRequest();
+
+// request.open('GET', 'https://example.com');
+
+// request.send();
+
+// request.addEventListener('load', function () {
+//   if (this.status === 200) {
+//     const data = JSON.parse(this.responseText);
+//     console.log(data);
+//   }
+// });
+
+
+// const request = new XMLHttpRequest();
+
+// request.open('GET', 'https://example.com');
+
+// request.send();
+
+// request.addEventListener('load', function () {
+//     const data = JSON.parse(this.responseText);
+//     console.log(this.status);
+// });
+
+
+// request.addEventListener('load', function () {
+//   if (this.status === 200) {
+//     const data = JSON.parse(this.responseText);
+//     console.log(data);
+//   }
+// });
+
+// const request = new XMLHttpRequest();
+
+// request.open('GET', 'https://example.com');
+
+// request.send();
+
+// request.addEventListener('load', function () {
+//   if (this.status === 200) {
+//     const data = JSON.parse(this.responseText);
+//     console.log(data);
+//   }
+// });
