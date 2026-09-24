@@ -951,3 +951,78 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   .finally(function () {
 //     console.log('Done!');
 //   });
+
+// const promise = Promise.resolve(10);
+
+// promise
+//   .then(function (data) {
+//     return data + 5;
+//   });
+
+// const promise = Promise.resolve(10);
+
+// promise
+//   .then(function (data) {
+//     return data + 5;
+//   })
+//   .then(function (data) {
+//     return data * 2
+//   });
+
+// const promise = Promise.resolve(10);
+
+// promise
+//   .then(function (data) {
+//     return data + 5;
+//   })
+//   .then(function (data) {
+//     return data * 2;
+//   })
+//   .then(function (data) {
+//     console.log(data);
+
+// const promise = Promise.resolve(10);
+
+// promise
+//   .then(function (data) {
+//     return data / 2;
+//   })
+//   .then(function (data) {
+//     return data + 7;
+//   })
+//   .then(function (data) {
+//     console.log(data);
+
+//   });
+
+// const promise = Promise.resolve(10);
+
+// promise
+//   .then(function (data) {
+//     return data * 2;
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .finally(function () {
+//     console.log('Finished');
+//   });
+
+// const promise = Promise.resolve(5);
+
+// promise
+//   .then(function (data) {
+//     return data + 10;
+//   })
+//   .then(function (data) {
+//     return data * 2;
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   })
+//   .finally(function () {
+//     console.log('Done!');
+//   });
