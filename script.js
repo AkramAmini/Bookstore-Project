@@ -1209,3 +1209,41 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   .catch(function (error) {
 //     console.log(error.message);
 //   });
+
+
+
+function whereAmI(lat, lng) {
+  const url = `https://geocode.xyz/${lat},${lng}?geoit=json`;
+
+  fetch(url)
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error(`Problem with geocoding: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+
+      console.log(`You are in ${data.city}, ${data.country}`);
+
+      return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
+    })
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error(`Country not found: ${response.status}`);
+      }
+
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data[0]);
+    })
+    .catch(function (error) {
+      console.error(`Something went wrong: ${error.message}`);
+    });
+}
+
+whereAmI(52.508, 13.381);
+
