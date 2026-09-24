@@ -1076,9 +1076,8 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   })
 //   .catch(function (error) {
 //     console.log(error.message);
-    
-//   });
 
+//   });
 
 // Promise.reject(new Error('Failed!'))
 //   .catch(function (error) {
@@ -1088,7 +1087,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //     console.log(data);
 //   });
 
-
 // Promise.reject(new Error('Network error'))
 //   .catch(function (error) {
 //     console.log(error.message);
@@ -1097,7 +1095,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   .then(function (data) {
 //     console.log(data);
 //   });
-
 
 // Promise.resolve('Start')
 //   .then(function (data) {
@@ -1111,7 +1108,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //     console.log(data);
 //   });
 
-
 // Promise.resolve('Success')
 //   .then(function (data) {
 //     console.log(data);
@@ -1122,4 +1118,94 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   })
 //   .finally(function () {
 //     console.log('Done');
+//   });
+
+// const age = 15;
+
+// if (age < 18) {
+//   throw new Error('You are too young!');
+// }
+
+// const password = '12345';
+
+// if (password.length < 8) {
+//  throw new Error('Password is too short!');
+// }
+
+// const username = '';
+
+// if (username === '') {
+//   throw new Error('Username is required!');
+// }
+
+// const score = 35;
+
+// if (score < 50) {
+//   throw new Error("Score is too low!");
+
+// }
+
+// Promise.resolve('Start')
+//   .then(function (data) {
+//     throw new Error("Something went wrong!");
+
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//   });
+
+// Promise.resolve(45)
+//   .then(function (temperature) {
+//     if (temperature > 40) {
+//       throw new Error("Temperature is too high!");
+
+//     }
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//   });
+
+// Promise.resolve(-100)
+//   .then(function (balance) {
+//     if (balance < 0) {
+//       throw new Error('Balance cannot be negative!');
+//     }
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//   });
+
+// Promise.resolve(16)
+//   .then(function (age) {
+//     if (age < 18) {
+//       throw new Error("You must be 18 or older!");
+
+//     }
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//   });
+
+// Promise.resolve('hadisgmail.com')
+//   .then(function (email) {
+//     if (!email.includes('@')) {
+//       throw new Error('Invalid email!');
+//     }
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//   });
+
+
+// Promise.resolve(25)
+//   .then(function (age) {
+//     if (age < 18) {
+//       throw new Error("You must be 18 or older!");
+      
+//     }
+
+//     console.log(age);
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
 //   });
