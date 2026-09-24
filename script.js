@@ -1026,3 +1026,100 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   .finally(function () {
 //     console.log('Done!');
 //   });
+
+// const promise = new Promise(function (resolve, reject) {
+//   reject(new Error('Something went wrong!'));
+// });
+
+// promise.catch(function (error) {
+//   console.log(error.message);
+// });
+
+// const promise = Promise.resolve('Success!');
+
+// promise
+//   .then(function (data) {
+//     console.log(data);
+//     throw new Error('Something went wrong!');
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//   });
+
+// const promise = new Promise(function (resolve, reject) {
+//   reject(new Error('Request failed!'));
+// });
+
+// promise.catch(function (error) {
+//   console.log(error.message);
+// });
+
+// Promise.resolve(10)
+//   .then(function (data) {
+//     return data + 5;
+//   })
+//   .then(function (data) {
+//     throw new Error('Calculation failed!');
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//   });
+// Promise.resolve(5)
+//   .then(function (data) {
+//     return data * 2;
+//   })
+//   .then(function (data) {
+//     throw new Error('Something failed!');
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+    
+//   });
+
+
+// Promise.reject(new Error('Failed!'))
+//   .catch(function (error) {
+//     return 'Recovered!';
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   });
+
+
+// Promise.reject(new Error('Network error'))
+//   .catch(function (error) {
+//     console.log(error.message);
+//     return 'Default data';
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   });
+
+
+// Promise.resolve('Start')
+//   .then(function (data) {
+//     throw new Error('Something failed!');
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//     return 'Recovered';
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   });
+
+
+// Promise.resolve('Success')
+//   .then(function (data) {
+//     console.log(data);
+//     throw new Error('Oops!');
+//   })
+//   .catch(function (error) {
+//     console.log(error.message);
+//   })
+//   .finally(function () {
+//     console.log('Done');
+//   });
