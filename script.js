@@ -834,28 +834,120 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   callback();
 // }
 
-first(function () {
-  second(function () {
-    third(function () {
-      fourth(function () {
-        console.log('Fourth operation finished');
-      });
-    });
-  });
-});
+// first(function () {
+//   second(function () {
+//     third(function () {
+//       fourth(function () {
+//         console.log('Fourth operation finished');
+//       });
+//     });
+//   });
+// });
 
 // function fifth(callback) {
 //   callback();
 // }
 
-first(function () {
-  second(function () {
-    third(function () {
-      fourth(function () {
-        fifth(function () {
-          console.log('All operations finished');
-        });
-      });
-    });
-  });
-});
+// first(function () {
+//   second(function () {
+//     third(function () {
+//       fourth(function () {
+//         fifth(function () {
+//           console.log('All operations finished');
+//         });
+//       });
+//     });
+//   });
+// });
+
+// promise.then(function (data) {
+//   console.log(data);
+// });
+
+// const promise = new Promise(function (resolve) {
+//   resolve('Success!');
+// });
+
+// promise.then(function (data) {
+//   console.log(data);
+
+// });
+
+// const promise = new Promise(function (resolve, reject) {
+//   reject('Something went wrong!');
+// });
+
+// promise
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .catch(function (error) {
+//     console.log(error);
+//   });
+
+// const promise = new Promise(function (resolve, reject) {
+//   resolve('Done!');
+// });
+
+// promise.then(function (data) {
+//   console.log(data);
+// });
+
+// const promise = new Promise(function (resolve, reject) {
+//   resolve("Success");
+// });
+
+// promise.then(function (data) {
+//   console.log(data);
+//   })
+// .finally(function () {
+//     console.log('Finished');
+//   });
+
+// const promise = new Promise(function (resolve, reject) {
+//   reject('Error!');
+// })
+//   .catch(function (error) {
+//     console.log(error);
+//   })
+//   .finally(function () {
+//     console.log('Finished');
+//   });
+
+// const promise = new Promise(function (resolve) {
+//   resolve(5);
+// });
+
+// promise.then(function (data) {
+//   console.log(data + 10);
+// });
+
+// const promise = new Promise(function (resolve) {
+//   resolve(5);
+// });
+
+// promise
+//   .then(function (data) {
+//     return data + 10;
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   });
+
+// const promise = new Promise(function (resolve) {
+//   resolve(10);
+// });
+
+// promise
+//   .then(function (data) {
+//     return data + 5;
+//   })
+//   .then(function (data) {
+//     return data * 2;
+//   })
+//   .then(function (data) {
+//     console.log(data);
+//   })
+//   .finally(function () {
+//     console.log('Done!');
+//   });
