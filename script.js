@@ -1244,8 +1244,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 
 // whereAmI(52.508, 13.381);
 
-
-
 // function whereAmI(lat, lng) {
 //   const url = `https://geocode.xyz/${lat},${lng}?geoit=json`;
 
@@ -1278,7 +1276,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 
 // whereAmI(52.508, 13.381);
 
-
 // console.log('1');
 
 // setTimeout(() => {
@@ -1308,3 +1305,31 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // }, 0);
 
 // 1 → 7 → 4 → 2 → 6 → 3 → 5 → 8
+
+// const promise = new Promise((resolve, reject) => {
+//   resolve('Success!');
+// });
+
+// promise.then(res => console.log(res));
+
+// const promise = new Promise((resolve, reject) => {
+//   reject('Something went wrong!');
+// });
+
+// promise.catch(rej => console.log(rej));
+
+// const promise = new Promise((resolve, reject) => {
+//   resolve('Data received');
+// });
+
+// promise.then(res => console.log(res));
+
+// const num = Math.random();
+// const promise = new Promise((resolve, reject) => {
+//   if (num >= 0.5) resolve('You win!');
+//   if (num < 0.5) reject('You lost!');
+// });
+
+// promise
+// .then(res => console.log(res))
+// .catch(res => console.log(rej));
