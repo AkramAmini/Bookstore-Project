@@ -1333,3 +1333,75 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // promise
 // .then(res => console.log(res))
 // .catch(res => console.log(rej));
+
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     navigator.geolocation.getCurrentPosition(position => {
+//       resolve(position);
+//     });
+//   });
+// };
+
+// error => {
+//   reject(error);
+// }
+
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     navigator.geolocation.getCurrentPosition(
+//       position => {
+//         resolve(position);
+//       },
+//       error => {
+//         reject(error);
+//       },
+//     );
+//   });
+// };
+
+// getPosition().then(position => {
+//   console.log(position);
+// });
+
+// getPosition()
+//   .then(position => {
+//     console.log(position);
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     navigator.geolocation.getCurrentPosition(
+//       position => {
+//         resolve(position);
+//       },
+//       error => {
+//         reject(error);
+//       }
+//     );
+//   });
+// };
+
+// navigator.geolocation.getCurrentPosition(
+//   position => {
+//     resolve(position);
+//   },
+//   error => {
+//     reject(error);
+//   }
+// );
+
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        resolve(position);
+      },
+      error => {
+        reject(error);
+      },
+    );
+  });
+};
