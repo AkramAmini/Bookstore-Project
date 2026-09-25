@@ -1196,12 +1196,11 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //     console.log(error.message);
 //   });
 
-
 // Promise.resolve(25)
 //   .then(function (age) {
 //     if (age < 18) {
 //       throw new Error("You must be 18 or older!");
-      
+
 //     }
 
 //     console.log(age);
@@ -1210,40 +1209,102 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //     console.log(error.message);
 //   });
 
+// function whereAmI(lat, lng) {
+//   const url = `https://geocode.xyz/${lat},${lng}?geoit=json`;
+
+//   fetch(url)
+//     .then(function (response) {
+//       if (!response.ok) {
+//         throw new Error(`Problem with geocoding: ${response.status}`);
+//       }
+
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+
+//       console.log(`You are in ${data.city}, ${data.country}`);
+
+//       return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
+//     })
+//     .then(function (response) {
+//       if (!response.ok) {
+//         throw new Error(`Country not found: ${response.status}`);
+//       }
+
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data[0]);
+//     })
+//     .catch(function (error) {
+//       console.error(`Something went wrong: ${error.message}`);
+//     });
+// }
+
+// whereAmI(52.508, 13.381);
 
 
-function whereAmI(lat, lng) {
-  const url = `https://geocode.xyz/${lat},${lng}?geoit=json`;
 
-  fetch(url)
-    .then(function (response) {
-      if (!response.ok) {
-        throw new Error(`Problem with geocoding: ${response.status}`);
-      }
+// function whereAmI(lat, lng) {
+//   const url = `https://geocode.xyz/${lat},${lng}?geoit=json`;
 
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
+//   fetch(url)
+//     .then(function (response) {
+//       if (!response.ok) {
+//         throw new Error(`Problem with geocoding: ${response.status}`);
+//       }
 
-      console.log(`You are in ${data.city}, ${data.country}`);
+//       console.log(response);
 
-      return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
-    })
-    .then(function (response) {
-      if (!response.ok) {
-        throw new Error(`Country not found: ${response.status}`);
-      }
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data);
+//       console.log(`You are in ${data.city}, ${data.country}`);
 
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data[0]);
-    })
-    .catch(function (error) {
-      console.error(`Something went wrong: ${error.message}`);
-    });
-}
+//       return fetch(`https://restcountries.com/v3.1/name/${data.country}`);
+//     })
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       console.log(data[0].name.common);
+//     })
+//     .catch(function (error) {
+//       console.error(`Something went wrong: ${error.message}`);
+//     });
+// }
 
-whereAmI(52.508, 13.381);
+// whereAmI(52.508, 13.381);
 
+
+console.log('1');
+
+setTimeout(() => {
+  console.log('2');
+
+  Promise.resolve().then(() => {
+    console.log('3');
+  });
+}, 0);
+
+Promise.resolve().then(() => {
+  console.log('4');
+
+  setTimeout(() => {
+    console.log('5');
+  }, 0);
+
+  Promise.resolve().then(() => {
+    console.log('6');
+  });
+});
+
+console.log('7');
+
+setTimeout(() => {
+  console.log('8');
+}, 0);
+
+1 → 7 → 4 → 2 → 6 → 3 → 5 → 8
