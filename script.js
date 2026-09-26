@@ -1406,7 +1406,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   });
 // };
 
-
 // const wait = function (seconds) {
 //   return new Promise(function (resolve) {
 //     setTimeout(resolve, seconds * 1000);
@@ -1456,18 +1455,35 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // Chapter 16 - Lesson 19
 // Consuming Promises With Async/Await
 
-const getPosition = function () {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(resolve, reject);
-  });
-};
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     navigator.geolocation.getCurrentPosition(resolve, reject);
+//   });
+// };
 
-const whereAmI = async function () {
-  const position = await getPosition();
+// const whereAmI = async function () {
+//   const position = await getPosition();
 
-  console.log('Position:', position);
-  console.log('Latitude:', position.coords.latitude);
-  console.log('Longitude:', position.coords.longitude);
-};
+//   console.log('Position:', position);
+//   console.log('Latitude:', position.coords.latitude);
+//   console.log('Longitude:', position.coords.longitude);
+// };
 
-whereAmI();
+// whereAmI();
+
+// Chapter 16 - Lesson 20
+// Error Handling With Try...Catch
+
+// const whereAmI = async function () {
+//   try {
+//     const position = await getPosition();
+
+//     console.log('Position:', position);
+//     console.log('Latitude:', position.coords.latitude);
+//     console.log('Longitude:', position.coords.longitude);
+//   } catch (err) {
+//     console.error('Something went wrong:', err);
+//   }
+// };
+
+// whereAmI();
