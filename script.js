@@ -1407,48 +1407,67 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // };
 
 
-const wait = function (seconds) {
-  return new Promise(function (resolve) {
-    setTimeout(resolve, seconds * 1000);
-  });
-};
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
 
-let currentImage;
+// let currentImage;
 
-const createImage = function (imgPath) {
+// const createImage = function (imgPath) {
+//   return new Promise(function (resolve, reject) {
+//     const img = document.createElement('img');
+
+//     img.src = imgPath;
+
+//     img.addEventListener('load', function () {
+//       resolve(img);
+//     });
+
+//     img.addEventListener('error', function (error) {
+//       reject(error);
+//     });
+//   });
+// };
+
+// createImage('img/img-1.jpg')
+//   .then(img => {
+//     currentImage = img;
+//     document.querySelector('.images').append(img);
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImage.style.display = 'none';
+//     return createImage('img/img-2.jpg');
+//   })
+//   .then(img => {
+//     currentImage = img;
+//     document.querySelector('.images').append(img);
+//     return wait(2);
+//   })
+//   .then(() => {
+//     currentImage.style.display = 'none';
+//   })
+//   .catch(error => {
+//     console.log(error);
+//   });
+
+// Chapter 16 - Lesson 19
+// Consuming Promises With Async/Await
+
+const getPosition = function () {
   return new Promise(function (resolve, reject) {
-    const img = document.createElement('img');
-
-    img.src = imgPath;
-
-    img.addEventListener('load', function () {
-      resolve(img);
-    });
-
-    img.addEventListener('error', function (error) {
-      reject(error);
-    });
+    navigator.geolocation.getCurrentPosition(resolve, reject);
   });
 };
 
-createImage('img/img-1.jpg')
-  .then(img => {
-    currentImage = img;
-    document.querySelector('.images').append(img);
-    return wait(2);
-  })
-  .then(() => {
-    currentImage.style.display = 'none';
-    return createImage('img/img-2.jpg');
-  })
-  .then(img => {
-    currentImage = img;
-    document.querySelector('.images').append(img);
-    return wait(2);
-  })
-  .then(() => {
-    currentImage.style.display = 'none';
-  })
-  .catch(error => {
-    console.log(error);
-  });
+const whereAmI = async function () {
+  const position = await getPosition();
+
+  console.log('Position:', position);
+  console.log('Latitude:', position.coords.latitude);
+  console.log('Longitude:', position.coords.longitude);
+};
+
+whereAmI();
