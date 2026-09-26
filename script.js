@@ -1393,15 +1393,62 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 //   }
 // );
 
-const getPosition = function () {
-  return new Promise(function (resolve, reject) {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        resolve(position);
-      },
-      error => {
-        reject(error);
-      },
-    );
+// const getPosition = function () {
+//   return new Promise(function (resolve, reject) {
+//     navigator.geolocation.getCurrentPosition(
+//       position => {
+//         resolve(position);
+//       },
+//       error => {
+//         reject(error);
+//       },
+//     );
+//   });
+// };
+
+
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
   });
 };
+
+let currentImage;
+
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement('img');
+
+    img.src = imgPath;
+
+    img.addEventListener('load', function () {
+      resolve(img);
+    });
+
+    img.addEventListener('error', function (error) {
+      reject(error);
+    });
+  });
+};
+
+createImage('img/img-1.jpg')
+  .then(img => {
+    currentImage = img;
+    document.querySelector('.images').append(img);
+    return wait(2);
+  })
+  .then(() => {
+    currentImage.style.display = 'none';
+    return createImage('img/img-2.jpg');
+  })
+  .then(img => {
+    currentImage = img;
+    document.querySelector('.images').append(img);
+    return wait(2);
+  })
+  .then(() => {
+    currentImage.style.display = 'none';
+  })
+  .catch(error => {
+    console.log(error);
+  });
