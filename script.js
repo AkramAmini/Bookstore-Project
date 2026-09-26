@@ -1510,3 +1510,5 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // getName().then(name => {
 //   console.log('Name with then:', name);
 // });
+
+// const [a, b, c] = await Promise.all([p1, p2, p3]);
