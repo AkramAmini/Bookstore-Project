@@ -1487,3 +1487,26 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // };
 
 // whereAmI();
+
+
+// Chapter 16 - Lesson 21
+// Returning Values From Async Functions
+
+// Chapter 16 - Lesson 21
+// Returning Values From Async Functions
+
+// const getName = async function () {
+//   return 'Hadis';
+// };
+
+// const showName = async function () {
+//   const name = await getName();
+
+//   console.log('Name:', name);
+// };
+
+// showName();
+
+// getName().then(name => {
+//   console.log('Name with then:', name);
+// });
