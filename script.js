@@ -1,5 +1,7 @@
 'use strict';
 
+// const { createElement } = require('react');
+
 const btn = document.querySelector('.btn-country');
 const countriesContainer = document.querySelector('.countries');
 
@@ -1488,7 +1490,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 
 // whereAmI();
 
-
 // Chapter 16 - Lesson 21
 // Returning Values From Async Functions
 
@@ -1512,7 +1513,6 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // });
 
 // const [a, b, c] = await Promise.all([p1, p2, p3]);
-
 
 // Chapter 16 - Lesson 23
 // Other Promise Combinators
@@ -1576,3 +1576,62 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // raceExample();
 // allSettledExample();
 // anyExample();
+
+///part 1
+
+// const createImage = function (imgPath) {
+//   return new Promise(function (resolve, reject) {
+//     const img = document.createElement('img');
+//     img.src = imgPath;
+
+//     img.addEventListener('load', function () {
+//       resolve(img);
+//     });
+
+//     img.addEventListener('error', function (error) {
+//       reject(error);
+//     });
+//   });
+// };
+
+// const wait = function (seconds) {
+//   return new Promise(function (resolve) {
+//     setTimeout(resolve, seconds * 1000);
+//   });
+// };
+
+// const loadNPause = async function () {
+//   try {
+//     const img = await createImage('img/img-1.jpg');
+
+//     document.querySelector('.images').append(img);
+
+//     await wait(2);
+
+//     img.style.display = 'none';
+
+//     const img2 = await createImage('img/img-2.jpg');
+
+//     document.querySelector('.images').append(img2);
+
+//     await wait(2);
+
+//     img2.style.display = 'none';
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// // loadNPause();
+
+// //// part 2
+
+// const loadAll = async function (imgArr) {
+//   const imgs = imgArr.map(imgPath => createImage(imgPath));
+//   const imgsEl = await Promise.all(imgs);
+//   imgsEl.forEach(img => {
+//     img.classList.add('parallel');
+//   });
+//   console.log(imgsEl);
+// };
+// loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
