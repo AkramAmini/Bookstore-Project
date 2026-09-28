@@ -1512,3 +1512,67 @@ loadAll(['img/img-1.jpg', 'img/img-2.jpg', 'img/img-3.jpg']);
 // });
 
 // const [a, b, c] = await Promise.all([p1, p2, p3]);
+
+
+// Chapter 16 - Lesson 23
+// Other Promise Combinators
+
+// const getData = function (name, delay, shouldFail = false) {
+//   return new Promise(function (resolve, reject) {
+//     setTimeout(function () {
+//       if (shouldFail) {
+//         reject(`❌ ${name} failed`);
+//       } else {
+//         resolve(`✅ ${name} finished`);
+//       }
+//     }, delay * 1000);
+//   });
+// };
+
+// // 1. Promise.race()
+// // اولین Promise که settle شود
+// const raceExample = async function () {
+//   try {
+//     const result = await Promise.race([
+//       getData('First', 2),
+//       getData('Second', 1),
+//       getData('Third', 3),
+//     ]);
+
+//     console.log('race:', result);
+//   } catch (err) {
+//     console.error('race:', err);
+//   }
+// };
+
+// // 2. Promise.allSettled()
+// // منتظر همه می‌ماند، حتی اگر بعضی reject شوند
+// const allSettledExample = async function () {
+//   const results = await Promise.allSettled([
+//     getData('First', 1),
+//     getData('Second', 2, true),
+//     getData('Third', 3),
+//   ]);
+
+//   console.log('allSettled:', results);
+// };
+
+// // 3. Promise.any()
+// // اولین Promise موفق
+// const anyExample = async function () {
+//   try {
+//     const result = await Promise.any([
+//       getData('First', 2, true),
+//       getData('Second', 1),
+//       getData('Third', 3),
+//     ]);
+
+//     console.log('any:', result);
+//   } catch (err) {
+//     console.error('any:', err);
+//   }
+// };
+
+// raceExample();
+// allSettledExample();
+// anyExample();
