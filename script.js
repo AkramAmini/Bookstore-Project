@@ -350,3 +350,21 @@ import 'regenerator-runtime/runtime';
 
 // console.log(add(5, 3));
 // console.log(subtract(5, 3));
+
+// Chapter 17 — Lesson 9
+// A Brief Introduction To The Command Line
+
+// - Command Line = کار با سیستم‌عامل از طریق دستورات متنی
+// - Terminal محیطی برای اجرای دستورات است.
+
+// دستورات مهم:
+// - pwd → مسیر فعلی
+// - ls → نمایش فایل‌ها و پوشه‌ها
+// - cd → تغییر پوشه
+// - cd .. → یک پوشه به عقب
+// - mkdir → ساخت پوشه
+// - touch → ساخت فایل
+// - clear → پاک کردن صفحه
+
+// Command Line در برنامه‌نویسی برای کار با:
+// Node.js، npm، Git و پروژه‌ها استفاده می‌شود.
