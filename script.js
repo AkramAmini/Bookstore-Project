@@ -332,3 +332,21 @@ import 'regenerator-runtime/runtime';
 // bank.deposit(100);
 
 // console.log(bank.getBalance());
+
+
+///////////////////////
+// math.js:
+// const add = (a, b) => a + b;
+// const subtract = (a, b) => a - b;
+
+// module.exports = {
+//   add,
+//   subtract,
+// };
+
+
+// script.js
+// const { add, subtract } = require('./math');
+
+// console.log(add(5, 3));
+// console.log(subtract(5, 3));
