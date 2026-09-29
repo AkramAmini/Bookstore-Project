@@ -158,3 +158,177 @@ import 'regenerator-runtime/runtime';
 // const data = await getData();
 
 // console.log(data);
+
+// const user = (function () {
+//   const name = 'Hadis';
+
+//   return {
+//     getName: function () {
+//       return name;
+//     },
+//   };
+// })();
+
+// console.log(user.getName());
+
+// const account = (function () {
+//   const balance = 1000;
+
+//   return {
+//     getBalance: function () {
+//       return balance;
+//     },
+//   };
+// })();
+
+// console.log(account.getBalance());
+
+// const counter = (function () {
+//   const counter = 0;
+
+//   return {
+//     getCounter: function () {
+//       return counter;
+//     },
+//      increment: function () {
+//       return counter++;
+//     },
+//   };
+// })();
+
+// counter.increment();
+// counter.increment();
+
+// console.log(counter.getCounter());
+
+// const shoppingCart = (function () {
+// let total = 0;
+
+//   return {
+//     addPrice: function (price) {
+//       return total += price;
+//     },
+//      getTotal: function () {
+//       return total;
+//     },
+//   };
+// })();
+
+// shoppingCart.addPrice(100);
+// shoppingCart.addPrice(50);
+
+// console.log(shoppingCart.getTotal());
+
+// const userAccount = (function () {
+// let username = 'Hadis';
+
+//   return {
+//     changeName: function (newName) {
+//       username = newName;
+//     },
+//      getName: function () {
+//       return username;
+//     },
+//   };
+// })();
+
+// userAccount.changeName('Sara');
+
+// console.log(userAccount.getName());
+
+// const bankAccount = (function () {
+//   let balance = 500;
+
+//   return {
+//     deposit: function (amount) {
+//       return balance += amount;;
+//     },
+//     getBalance: function () {
+//       return balance;
+//     },
+//   };
+// })();
+// bankAccount.deposit(200);
+// bankAccount.deposit(100);
+
+// console.log(bankAccount.getBalance());
+
+// const temperature = (function () {
+//   let celsius = 20;
+
+//   return {
+//     increase: function () {
+//       return (celsius += 5);
+//     },
+//     getTemperature: function () {
+//       return celsius;
+//     },
+//   };
+// })();
+// temperature.increase();
+// temperature.increase();
+
+// console.log(temperature.getTemperature());
+
+// const counterModule = (function () {
+//   let count = 0;
+
+//   return {
+//     increase: function () {
+//       return (count += 2);
+//     },
+//     decrease: function () {
+//       return (count -= 1);
+//     },
+//     getCount: function () {
+//       return count;
+//     },
+//   };
+// })();
+// counterModule.increase();
+// counterModule.increase();
+// counterModule.decrease();
+
+// console.log(counterModule.getCount());
+
+// const scoreModule = (function () {
+//   let score = 0;
+
+//   return {
+//     add: function (points) {
+//       return (score += points);
+//     },
+//     reset: function () {
+//       return (score = 0);
+//     },
+//     getScore: function () {
+//       return score;
+//     },
+//   };
+// })();
+// scoreModule.add(10);
+// scoreModule.add(20);
+// scoreModule.reset();
+
+// console.log(scoreModule.getScore());
+
+// const bank = (function () {
+//   let balance = 1000;
+
+//   return {
+//     deposit: function (amount) {
+//       return (balance += amount);
+//     },
+//     withdraw: function (amount) {
+//       return (balance -= amount);
+//     },
+//     getBalance: function () {
+//       return balance;
+//     },
+//   };
+// })();
+// bank.deposit(500);
+// bank.withdraw(200);
+// bank.deposit(100);
+
+// console.log(bank.getBalance());
